@@ -30,6 +30,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 public final class Apresentacao {
 	public String helloDryve() {
+		
+		// Ainad fazer leitura do application.properties na classe 'ParametrosGlobais'.
+		
 		return "Hello Dryve!\n"
 				+ "\n"
 				+ "\tNome da aplicação: " + ParametrosGlobais.getNOME_APLICACAO() + "\n"
