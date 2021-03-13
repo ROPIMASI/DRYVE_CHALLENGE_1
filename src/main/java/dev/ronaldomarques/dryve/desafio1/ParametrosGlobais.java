@@ -35,6 +35,12 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "dryve")
 public class ParametrosGlobais {
+	
+	/* FIXME: A leitura das 'application.properties' para os parâmetros globais da aplicação (os atributos desta classe)
+	 * não funcionaram como o esperado, está carregando 0 e null.
+	 * 
+	 * Verificarei correção desta questão com menos prioridade futuramente, conforme meu objetivo/prioriades de
+	 * entrega. Enquanto isso colocarei valores nas propriedades como 'Hard-Code', o que pretendo evitar. */
 	@Value("${versaoMaior}")
 	private static byte versaoMaior;
 	
@@ -59,12 +65,19 @@ public class ParametrosGlobais {
 	/* Pré-Constructor para processar dados para esta static-class que servirá dados à aplicação porém, obviamente, esta
 	 * não possuirá constructor padrão de uma instância por ser uma static-class. */
 	static {
+		/* FIXME: Temporariamente atribuir valores a estas propriedades modo Hard-Code.
+		 * Conforme o 'fixme' citado a cima. */
+		versaoMaior = 0;
+		versaoMenor = 1;
+		versaoCorrecao = 0;
+		versaoEstagio = "dev";
+		nomeAplicacao = "DRYVE-DESAFIO-1";
+		
 		/* Ler os valores de parâmetros do arquivo (application.properties) para dentro de suas respectivas properties.
 		 * SEGUINDO BOAS PRÁTICAS DE MANTER A CODIFICAÇÃO COM O MÍNIMO DE 'HARD-CODE' POSSÍVEL. */
 		
-		nomeAplicacao = versaoMaior + "." + versaoMenor + "." + versaoCorrecao + "-" + versaoEstagio;
-		
-		descricaoAplicacao = "[" + nomeAplicacao + "versão:" + versaoAplicacao + "]\n"
+		versaoAplicacao = versaoMaior + "." + versaoMenor + "." + versaoCorrecao + "-" + versaoEstagio;
+		descricaoAplicacao = "[" + nomeAplicacao + ", versão " + versaoAplicacao + "]\n"
 				+ "\n"
 				+ "Serviço web de cadastro de veículos com seus dados básicos o valor estimado aproximado desse\n"
 				+ "veículo (valor baseado na consultar na API da KBB).\n"
