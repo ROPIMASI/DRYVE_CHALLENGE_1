@@ -21,8 +21,10 @@ package dev.ronaldomarques.dryve.desafio1;
 
 
 /**
- * @author Ronaldo Marques
- *         Last change: 20210312.
+ * @author  Ronaldo Marques
+ * @since   20210312
+ * @version 20210313
+ * @category Launcher da aplicação: inicia em forma de serviço no servidor Tomcat.
  */
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,14 +34,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DryveDesafio1Application {
+	
 	public static void main(String[] args) {
-		
-		System.out.println("Dryve: [iniciado]");
-		/* Mostrar detalhes de meu interesse na inicialização do serviço e ao mesmo tempo já deixar a static-class
-		 * ParametrosGlobais abastecida com os dados atualizados do arquivo 'application.properties'.
-		 * SEGUINDO BOAS PRÁTICAS DE MANTER A CODIFICAÇÃO COM O MÍNIMO DE 'HARD-CODE' POSSÍVEL. */
-		System.out.println(ParametrosGlobais.getDescricaoAplicacao());
-		
 		/* Iniciar a aplicação API propriamente dita. */
 		SpringApplication.run(DryveDesafio1Application.class, args);
 	}

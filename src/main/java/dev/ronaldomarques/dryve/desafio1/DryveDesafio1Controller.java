@@ -20,6 +20,7 @@
 package dev.ronaldomarques.dryve.desafio1;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,21 +31,49 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * @author  Ronaldo Marques
  * @since   20210312
- * @version 20210312
+ * @version 20210313
+ * @category Controller base: apresenta e instrui o usuário em sua utilização.
  */
 
 @Controller
-public final class Apresentacao {
-	@GetMapping("/hello-dryve")
+public final class DryveDesafio1Controller {
+	
+	@Autowired
+	PropriedadesGlobais props;
+	
+	
+	
+	/* Simples apresentação da aplicação. */
+	@GetMapping("/hello")
 	@ResponseBody
-	public String helloDryve() {
-
-		// Ainda fazer leitura do application.properties na classe 'ParametrosGlobais'.
+	public String hello() {
 		
-		return "Hello Dryve!\n"
+		System.out.println("\n\nHello Dryve!\n"
 				+ "\n"
-				+ "\tNome da aplicação: " + ParametrosGlobais.getNomeAplicacao() + "\n"
-				+ "\tVersão: " + ParametrosGlobais.getVersaoAplicacao() + "\n"
-				+ "\tDescrição: " + ParametrosGlobais.getDescricaoAplicacao() + "\n";
+				+ "Nome da aplicação:\t" + props.getNomeAplicacao() + "\n"
+				+ "Versão:\t\t\t" + props.getVersaoAplicacao() + "\n"
+				+ "Descrição:\t\t" + props.getDescricaoAplicacao() + "\n");
+		
+		return "\n\nHello Dryve!\n"
+				+ "\n"
+				+ "Nome da aplicação:\t" + props.getNomeAplicacao() + "\n"
+				+ "Versão:\t\t" + props.getVersaoAplicacao() + "\n"
+				+ "Descrição:\t" + props.getDescricaoAplicacao() + "\n";
 	}
+	
+	
+	
+	/* Simples lista das funcionalidades disponíveis na versão. */
+	@GetMapping("/help")
+	@ResponseBody
+	public String help() {
+		
+		System.out.println("\n\nHELP:\n"
+				+ "\n"
+				+ "Lista das funcionalidades disponíveis nesta versão... Em construção...\n");
+		
+		return "\n\nHELP:\n"
+				+ "\n"
+				+ "Lista das funcionalidades disponíveis nesta versão... Em construção...\n";
+	}	
 }
