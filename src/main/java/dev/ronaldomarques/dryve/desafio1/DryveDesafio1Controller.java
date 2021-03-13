@@ -29,17 +29,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
- * @author  Ronaldo Marques
- * @since   20210312
- * @version 20210313
+ * @author   Ronaldo Marques
+ * @since    20210312
+ * @version  20210313
  * @category Controller base: apresenta e instrui o usuário em sua utilização.
  */
 
 @Controller
 public final class DryveDesafio1Controller {
-	
 	@Autowired
-	PropriedadesGlobais props;
+	private PropriedadesGlobais props;
 	
 	
 	
@@ -47,6 +46,8 @@ public final class DryveDesafio1Controller {
 	@GetMapping("/hello")
 	@ResponseBody
 	public String hello() {
+		
+		props.sinc(); // Vide PropriedadesGlobais.java na tag 'fixme'.
 		
 		System.out.println("\n\nHello Dryve!\n"
 				+ "\n"
@@ -67,7 +68,6 @@ public final class DryveDesafio1Controller {
 	@GetMapping("/help")
 	@ResponseBody
 	public String help() {
-		
 		System.out.println("\n\nHELP:\n"
 				+ "\n"
 				+ "Lista das funcionalidades disponíveis nesta versão... Em construção...\n");
@@ -75,5 +75,5 @@ public final class DryveDesafio1Controller {
 		return "\n\nHELP:\n"
 				+ "\n"
 				+ "Lista das funcionalidades disponíveis nesta versão... Em construção...\n";
-	}	
+	}
 }
