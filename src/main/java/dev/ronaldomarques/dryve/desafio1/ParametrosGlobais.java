@@ -18,102 +18,99 @@
  * neither for any possible reflexes or consequence of such use.
  */
 package dev.ronaldomarques.dryve.desafio1;
+
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+
+
+
 /**
- * @author Ronaldo Marques
- *         Last change: 20210312.
+ * @author  Ronaldo Marques
+ * @since   20210312
+ * @version 20210312
  */
-public final class ParametrosGlobais {
-	private static String NOME_APLICACAO = "-";
-	private static byte VERSAO_MAIOR = 0;
-	private static byte VERSAO_MENOR = 0;
-	private static byte VERSAO_CORRECAO = 0;
-	private static String VERSAO_ESTADO = "-";
-	private static String VERSAO_APLICACAO =
-			VERSAO_MAIOR + "." + VERSAO_MENOR + "." + VERSAO_CORRECAO + "-" + VERSAO_ESTADO;
-	public static final String DESCRICAO_APLICACAO = "[" + NOME_APLICACAO + "versão:" + VERSAO_APLICACAO + "]\n"
-			+ "\n"
-			+ "Serviço web de cadastro de veículos com seus dados básicos o valor estimado aproximado desse\n"
-			+ "veículo (valor baseado na consultar na API da KBB).\n"
-			+ "\n"
-			+ "Dados básicos do veículo são:\n"
-			+ "\tPlaca: _\n"
-			+ "\tID Marca: _\n"
-			+ "\tID Modelo: _\n"
-			+ "\tPreço do anúncio: _\n"
-			+ "\tAno: _\n";
+@Component
+@ConfigurationProperties(prefix = "dryve")
+public class ParametrosGlobais {
+	@Value("${versaoMaior}")
+	private static byte versaoMaior;
+	
+	@Value("${versaoMenor}")
+	private static byte versaoMenor;
+	
+	@Value("${versaoCorrecao}")
+	private static byte versaoCorrecao;
+	
+	@Value("${versaoEstagio}")
+	private static String versaoEstagio;
+	
+	/* Valor desta propriedade é determinado no pré-constructor. */
+	private static String versaoAplicacao;
+	
+	@Value("${nomeAplicacao}")
+	private static String nomeAplicacao;
+	
+	/* Valor desta propriedade é determinado no pré-constructor. */
+	private static final String descricaoAplicacao;
 	
 	/* Pré-Constructor para processar dados para esta static-class que servirá dados à aplicação porém, obviamente, esta
 	 * não possuirá constructor padrão de uma instância por ser uma static-class. */
 	static {
-		/* Ler os valores de parâmetros do arquivo externo (application.properties) à aplicação para dentro de suas
-		 * respectivas properties. SEGUINDO BOAS PRÁTICAS DE MANTER A CODIFICAÇÃO COM O MÍNIMO DE 'HARD-CODE'
-		 * POSSÍVEL. */
-		setNOME_APLICACAO("Dryve Desafio #1");
-		setVERSAO_MAIOR((byte) 0);
-		setVERSAO_MENOR((byte) 0);
-		setVERSAO_CORRECAO((byte) 0);
-		setVERSAO_ESTADO("dev");
+		/* Ler os valores de parâmetros do arquivo (application.properties) para dentro de suas respectivas properties.
+		 * SEGUINDO BOAS PRÁTICAS DE MANTER A CODIFICAÇÃO COM O MÍNIMO DE 'HARD-CODE' POSSÍVEL. */
+		
+		nomeAplicacao = versaoMaior + "." + versaoMenor + "." + versaoCorrecao + "-" + versaoEstagio;
+		
+		descricaoAplicacao = "[" + nomeAplicacao + "versão:" + versaoAplicacao + "]\n"
+				+ "\n"
+				+ "Serviço web de cadastro de veículos com seus dados básicos o valor estimado aproximado desse\n"
+				+ "veículo (valor baseado na consultar na API da KBB).\n"
+				+ "\n"
+				+ "Dados básicos do veículo são:\n"
+				+ "\tPlaca: _\n"
+				+ "\tID Marca: _\n"
+				+ "\tID Modelo: _\n"
+				+ "\tPreço do anúncio: _\n"
+				+ "\tAno: _\n";
 	}
 	
 	
 	
-	public static String getNOME_APLICACAO() { return NOME_APLICACAO; }
+	/* Nenhuma destas 7 propriedades a baixo, possuem 'setter'. Valores dinâmicos pré-determinados pela classe e arquivo
+	 * application.properties, não pelo 'desenvolvedor-coder', nem pelo usuário da aplicação.
+	 * -
+	 * Apesar destas 3 propriedades referentes aos 'getters' a baixo serem tipo 'byte', este retorno 'int' faz uso do
+	 * casting automático (graças a hierarquia de tipos primitivos, o 'byte' é menor então se enquadra no 'int') para
+	 * melhor experiência prática do desenvolvedor, assim guarda-se o objeto com menor tamanho de memória (byte) e,
+	 * como a maioria dos projetosdos usam cálculos matemáticos de números inteiros na aplitude das variáveis 'int',
+	 * então na utilização destes métodos não precisa lembrar-se de converter o tipo da propriedade em toda linha de
+	 * comando que usá-la. */
+	public static int getVersaoMaior() { return versaoMaior; }
 	
 	
 	
-	public static void setNOME_APLICACAO(String nome) { NOME_APLICACAO = nome; }
+	public static int getVersaoMenor() { return versaoMenor; }
 	
 	
 	
-	public static int getVERSAO_MAIOR() { return VERSAO_MAIOR; }
-	/* Apesar desta propriedade ser tipo byte, este retorno faz uso do casting automático (e hierarquia de tipos
-	 * primitivos, o 'byte' é menor então se enquadra no 'int') para uma experiência mais prática do desenvolvedor
-	 * pelos algoritmos da aplicação, assim guarda-se o objeto com menor tamanho de memória (byte) e na utilização não
-	 * precisa lembrar-se de converter o tipo da propriedade em toda linha de comando que usá-la. */
+	public static int getVersaoCorrecao() { return versaoCorrecao; }
 	
 	
 	
-	public static void setVERSAO_MAIOR(byte versao) { VERSAO_MAIOR = versao; }
+	public static String getVersaoEstagio() { return versaoEstagio; }
 	
 	
 	
-	public static int getVERSAO_MENOR() { return VERSAO_MENOR; }
-	/* Apesar desta propriedade ser tipo byte, este retorno faz uso do casting automático (e hierarquia de tipos
-	 * primitivos, o 'byte' é menor então se enquadra no 'int') para uma experiência mais prática do desenvolvedor
-	 * pelos algoritmos da aplicação, assim guarda-se o objeto com menor tamanho de memória (byte) e na utilização não
-	 * precisa lembrar-se de converter o tipo da propriedade em toda linha de comando que usá-la. */
+	public static String getVersaoAplicacao() { return versaoAplicacao; }
 	
 	
 	
-	public static void setVERSAO_MENOR(byte versao) { VERSAO_MENOR = versao; }
+	public static String getNomeAplicacao() { return nomeAplicacao; }
 	
 	
 	
-	public static int getVERSAO_CORRECAO() { return VERSAO_CORRECAO; }
-	/* Apesar desta propriedade ser tipo byte, este retorno faz uso do casting automático (e hierarquia de tipos
-	 * primitivos, o 'byte' é menor então se enquadra no 'int') para uma experiência mais prática do desenvolvedor
-	 * pelos algoritmos da aplicação, assim guarda-se o objeto com menor tamanho de memória (byte) e na utilização não
-	 * precisa lembrar-se de converter o tipo da propriedade em toda linha de comando que usá-la. */
-	
-	
-	
-	public static void setVERSAO_CORRECAO(byte versao) { VERSAO_CORRECAO = versao; }
-	
-	
-	
-	public static String getVERSAO_ESTADO() { return VERSAO_ESTADO; }
-	
-	
-	
-	public static void setVERSAO_ESTADO(String versao) { VERSAO_ESTADO = versao; }
-	
-	
-	
-	public static String getVERSAO_APLICACAO() { return VERSAO_APLICACAO; }
-	// VERSAO_APLICACAO não possui setter. String dinâmica pré-determinada pela classe.
-	
-	
-	
-	public static String getDESCRICAO_APLICACAO() { return DESCRICAO_APLICACAO; }
-	// DESCRICAO_APLICACAO não possui setter. String dinâmica pré-determinada pela classe.
+	public static String getDescricaoAplicacao() { return descricaoAplicacao; }
 }

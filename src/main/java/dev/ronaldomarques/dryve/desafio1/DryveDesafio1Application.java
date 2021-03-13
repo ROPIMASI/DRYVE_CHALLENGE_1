@@ -38,7 +38,7 @@ public class DryveDesafio1Application {
 		/* Mostrar detalhes de meu interesse na inicialização do serviço e ao mesmo tempo já deixar a static-class
 		 * ParametrosGlobais abastecida com os dados atualizados do arquivo 'application.properties'.
 		 * SEGUINDO BOAS PRÁTICAS DE MANTER A CODIFICAÇÃO COM O MÍNIMO DE 'HARD-CODE' POSSÍVEL. */
-		// System.out.println(ParametrosGlobais.getDESCRICAO_APLICACAO());
+		System.out.println(ParametrosGlobais.getDescricaoAplicacao());
 		
 		/* Iniciar a aplicação API propriamente dita. */
 		SpringApplication.run(DryveDesafio1Application.class, args);

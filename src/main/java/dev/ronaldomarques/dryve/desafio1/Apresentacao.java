@@ -19,24 +19,32 @@
  */
 package dev.ronaldomarques.dryve.desafio1;
 
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+
+
+
 /**
- * @author Ronaldo Marques
- *         Last change: 20210312.
+ * @author  Ronaldo Marques
+ * @since   20210312
+ * @version 20210312
  */
 
-@Controller("/hello-dryve")
-@ResponseBody
+@Controller
 public final class Apresentacao {
+	@GetMapping("/hello-dryve")
+	@ResponseBody
 	public String helloDryve() {
-		
-		// Ainad fazer leitura do application.properties na classe 'ParametrosGlobais'.
+
+		// Ainda fazer leitura do application.properties na classe 'ParametrosGlobais'.
 		
 		return "Hello Dryve!\n"
 				+ "\n"
-				+ "\tNome da aplicação: " + ParametrosGlobais.getNOME_APLICACAO() + "\n"
-				+ "\tVersão: " + ParametrosGlobais.getVERSAO_APLICACAO() + "\n"
-				+ "\tDescrição: " + ParametrosGlobais.getDESCRICAO_APLICACAO() + "\n";
+				+ "\tNome da aplicação: " + ParametrosGlobais.getNomeAplicacao() + "\n"
+				+ "\tVersão: " + ParametrosGlobais.getVersaoAplicacao() + "\n"
+				+ "\tDescrição: " + ParametrosGlobais.getDescricaoAplicacao() + "\n";
 	}
 }
