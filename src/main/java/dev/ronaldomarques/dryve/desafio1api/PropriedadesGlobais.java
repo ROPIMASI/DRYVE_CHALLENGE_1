@@ -17,7 +17,7 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1;
+package dev.ronaldomarques.dryve.desafio1api;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -27,9 +27,10 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @author  Ronaldo Marques
- * @since   20210312
- * @version 20210313
+ * @author   Ronaldo Marques.
+ * @since    20210312.
+ * @version  20210313.
+ * @category Parameters.
  */
 @Component
 public final class PropriedadesGlobais {
@@ -53,8 +54,6 @@ public final class PropriedadesGlobais {
 	
 	/* Valor desta propriedade é determinado no static-constructor. */
 	private String descricaoAplicacao;
-	
-	
 	
 	/* O Constructor Padrão (na JVM) é chamado ANTES da injeção de valor @Value, então constrói o MenagedBean no
 	 * SpringContainer com propriedades 0 e null, fica não-funcional. Sendo assim, farei um método para sincronizar

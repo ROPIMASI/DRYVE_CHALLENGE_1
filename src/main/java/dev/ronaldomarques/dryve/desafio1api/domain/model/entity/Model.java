@@ -17,26 +17,18 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1;
+package dev.ronaldomarques.dryve.desafio1api.domain.model.entity;
 
+import java.util.UUID;
 
 /**
- * @author  Ronaldo Marques
- * @since   20210312
- * @version 20210313
- * @category Launcher da aplicação: inicia em forma de serviço no servidor Tomcat.
+ * @author   Ronaldo Marques.
+ * @since    20210314.
+ * @version  20210314.
+ * @category Modelagem do Negócio, classe concreta que representa os modelos existentes na aplicação.
  */
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
-
-
-@SpringBootApplication
-public class DryveDesafio1Application {
-	
-	public static void main(String[] args) {
-		/* Iniciar a aplicação API propriamente dita. */
-		SpringApplication.run(DryveDesafio1Application.class, args);
-	}
+public class Model {
+	UUID id; // PK at DB.
+	String name;
+	UUID brandId; // FK(Brand.id) at DB.
 }

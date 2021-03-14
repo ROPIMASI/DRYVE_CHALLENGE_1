@@ -17,7 +17,7 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1;
+package dev.ronaldomarques.dryve.desafio1api;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +29,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
- * @author   Ronaldo Marques
- * @since    20210312
- * @version  20210313
+ * @author   Ronaldo Marques.
+ * @since    20210312.
+ * @version  20210313.
  * @category Controller base: apresenta e instrui o usuário em sua utilização.
  */
 
@@ -46,7 +46,6 @@ public final class DryveDesafio1Controller {
 	@GetMapping("/hello")
 	@ResponseBody
 	public String hello() {
-		
 		props.sinc(); // Vide PropriedadesGlobais.java na tag 'fixme'.
 		
 		System.out.println("\n\nHello Dryve!\n"
