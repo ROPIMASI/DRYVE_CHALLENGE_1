@@ -11,13 +11,10 @@ public final class Teste {
 	public static void main(String[] args) {
 		MotorVehicle mv = new MotorVehicle();
 		
-		System.out.println(mv.status);
-		System.out.println(mv.status.ACTIVE);
-		System.out.println(mv.status.INACTIVE);
-		
-		mv.status = VeAdStatus.ACTIVE;
-		System.out.println(mv.status);
-		mv.status = VeAdStatus.INACTIVE;
-		System.out.println(mv.status);
+		System.out.println(mv.getStatus());
+		mv.setStatus(VeAdStatus.ACTIVE);
+		System.out.println(mv.getStatus());
+		mv.setStatus(VeAdStatus.INACTIVE);
+		System.out.println(mv.getStatus());
 	}
 }

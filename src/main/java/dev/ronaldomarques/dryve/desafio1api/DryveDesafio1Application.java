@@ -21,9 +21,9 @@ package dev.ronaldomarques.dryve.desafio1api;
 
 
 /**
- * @author  Ronaldo Marques.
- * @since   20210312.
- * @version 20210313.
+ * @author   Ronaldo Marques.
+ * @since    20210312.
+ * @version  20210313.
  * @category Launcher da aplicação: inicia em forma de serviço no servidor Tomcat.
  */
 import org.springframework.boot.SpringApplication;
@@ -34,7 +34,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DryveDesafio1Application {
-	
 	public static void main(String[] args) {
 		/* Iniciar a aplicação API propriamente dita. */
 		SpringApplication.run(DryveDesafio1Application.class, args);

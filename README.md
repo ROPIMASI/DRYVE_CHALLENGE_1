@@ -4,7 +4,7 @@ Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor j
 &nbsp;  
   
 *Start 20210311 1830-0300*  
-*Last change 20210314 1730-0300*  
+*Last change 20210315 1015-0300*  
   
 &nbsp;  
   
@@ -18,7 +18,7 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
   
 ## Versões  
   
-### Versão autal 0.1.0-dev
+### Versão autal 0.1.0-**dev**
 + Cadastro de marca
   > *End-point* `/marca`, verbo `POST`;  
   

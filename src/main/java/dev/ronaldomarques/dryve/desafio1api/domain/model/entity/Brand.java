@@ -19,15 +19,92 @@
  */
 package dev.ronaldomarques.dryve.desafio1api.domain.model.entity;
 
+
 import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
 
 /**
  * @author   Ronaldo Marques.
  * @since    20210314.
- * @version  20210314.
+ * @version  20210315.
  * @category Modelagem do Negócio, classe concreta que representa as marcas existentes na aplicação.
  */
+@Entity
+@Table(name = "brand")
 public class Brand {
-	UUID id; // PK at DB.
-	String name;
+	@Id
+	private UUID id = null;
+	/* PK at DB. Garantir iniciado com null, pois ao ser persistido pela primeira vez no BD receberá automaticamente o
+	 * valor da chave UUID.function_v4() do PostgreSQL. */
+	
+	@Column(name = "name", nullable = false)
+	private String name;
+	
+	
+	
+	public Brand() {
+		super();
+	}
+	
+	
+	
+	public UUID getId() { return id; }
+	
+	// private void setId(UUID id) { this.id = id; }
+	/* Integridade: somente o BD gera o 'id' do objeto, e somente os Spring(Bean-Container) e Hibernate pode fazer o
+	 * 'bind' do valor ao atributo, por fim nem a codificação 'POJO' nem usuário devem ter acesso para alterar. */
+	
+	
+	
+	public String getName() { return name; }
+	
+	
+	
+	public void setName(String name) { this.name = name; }
+	
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Brand other = (Brand) obj;
+		
+		if (id == null) {
+			if (other.id != null) return false;
+		}
+		else if (!id.equals(other.id)) return false;
+		
+		if (name == null) {
+			if (other.name != null) return false;
+		}
+		else if (!name.equals(other.name)) return false;
+		
+		return true;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Brand [id=" + id + ", name=" + name + "]";
+	}
 }
