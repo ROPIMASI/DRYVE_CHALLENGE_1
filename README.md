@@ -4,7 +4,7 @@ Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor j
 &nbsp;  
   
 *Start 20210311 1830-0300*  
-*Last change 20210315 1015-0300*  
+*Last change 20210315 1855-0300*  
   
 &nbsp;  
   
@@ -18,100 +18,98 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
   
 ## Versões  
   
-### Versão autal 0.1.0-**dev**
-+ Cadastro de marca
-  > *End-point* `/marca`, verbo `POST`;  
+### Versão anterior 0.1.0-**beta** &nbsp; ::concluída
++ Listagem de marcas
+    > *End-point* `/brands`, método-http `GET`;  
   
-+ Cadastro de modelo  
-  > *End-point* `/modelo`, verbo `POST`;  
++ Listagem de modelo  
+  > *End-point* `/models`, método-http `GET`;  
   
-+ Cadastro de relações modelo-ano  
-  > *End-point* `/modelo-ano`, verbo `POST`;  
++ Listagem de relações modelo-ano  
+  > *End-point* `/modelsyears`, método-http `GET`;  
+  
++ Listagem de veículos-anunciados *(automotores)*
+  > *End-point* `/motorvehicles`, método-http `GET`;  
   
 &nbsp;  
   
-### Próxima versão 0.2.0-*-**beta**
-+ Cadastro de marca
-  > *End-point* `/marca`, verbo `POST`;  
+### Versão atual 0.2.0-*-**dev** &nbsp; ::em desenvolvimento
++ Todas as funcionalidades da versão anteior, mais...
++ Cadastro de marcas
+  > *End-point* `/brands`, método-http `POST`, corpo*(payload)* `objeto em JSON`;  
   
-+ Consulta de **uma** marca  
-  - Por 'id'. Retorna um objeto, ou nulo;  
-  > *End-point* `/marca/id/{um_valor}`, verbo `GET`.
-  
-+ Cadastro de modelo  
-  > *End-point* `/modelo`, verbo `POST`;  
-  
-+ Consulta de **um** modelo  
-  - Por 'id'. Retorna um objeto, ou nulo;  
-  > *End-point* `/modelo/id/{um_valor}`, verbo `GET`.
++ Cadastro de modelos  
+  > *End-point* `/models`, método-http `POST`, corpo*(payload)* `objeto em JSON`;  
   
 + Cadastro de relações modelo-ano  
-  > *End-point* `/modelo-ano`, verbo `POST`;  
+  > *End-point* `/modelsyears`, método-http `POST`, corpo*(payload)* `objeto em JSON`;  
   
-+ Consulta de **uma** relação modelo-ano  
-  - Por 'id'. Retorna um objeto, ou nulo;  
-  > *End-point* `/modelo-ano/id/{um_valor}`, verbo `GET`.
++ Cadastro de veículos-anunciados *(automotores)*  
+  > *End-point* `/motorvehicles`, método-http `POST`, corpo*(payload)* `objeto em JSON`;    
   
 &nbsp;
   
 ## Roadmap / To-Do / Tasks  
-+ Sumário de funcionalidades: Listar cada end-point disponível no projeto e uma breve descrição de sua função.  
-  > *End-point* `/help`, verbo `GET`.  
++ Autoapresentação: Retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial.  
+  > *End-point* `/hello`, método-http `GET`.  
   
-+ Cadastro de marca  
-  > *End-point* `/marca`, verbo `POST`;  
-  > *End-point* `/marca`, verbo `PUT`;  
-  > *End-point* `/marca`, verbo `PATCH`;  
-  > *End-point* `/marca`, verbo `DELETE`.  
++ Sumário de funcionalidades: Listar cada end-point disponível no projeto e uma breve descrição de sua função.  
+  > *End-point* `/help`, método-http `GET`.  
+  
++ Cadastro de marcas  
+  > *End-point* `/brands`, método-http `POST`;  
+  > *End-point* `/brands`, método-http `PUT`;  
+  > *End-point* `/brands`, método-http `PATCH`;  
+  > *End-point* `/brands`, método-http `DELETE`.  
   
 + Consulta de **uma** marca  
   - Por 'id'. Retorna um objeto, ou nulo;  
-  > *End-point* `/marca/id/{um_valor}`, verbo `GET`.  
+  > *End-point* `/brands/id/{um_valor}`, método-http `GET`.  
   
   - Por 'nome-da-marca'. Retorna um objeto, ou nulo.  
-  > *End-point* `/marca/nome/{um_valor}`, verbo `GET`.  
+  > *End-point* `/brands/name/{um_valor}`, método-http `GET`.  
   
-+ Cadastro de modelo  
-  > *End-point* `/modelo`, verbo `POST`;  
-  > *End-point* `/modelo`, verbo `PUT`;  
-  > *End-point* `/modelo`, verbo `PATCH`;  
-  > *End-point* `/modelo`, verbo `DELETE`.  
++ Cadastro de modelos  
+  > *End-point* `/models`, método-http `POST`;  
+  > *End-point* `/models`, método-http `PUT`;  
+  > *End-point* `/models`, método-http `PATCH`;  
+  > *End-point* `/models`, método-http `DELETE`.  
   
 + Consulta de **um** modelo  
   - Por 'id'. Retorna um objeto, ou nulo;  
-  > *End-point* `/modelo/id/{um_valor}`, verbo `GET`.
+  > *End-point* `/modelo/id/{um_valor}`, método-http `GET`.
   
   - Por 'nome-do-modelo'. Retorna um objeto, ou nulo.  
-  > *End-point* `/modelo/nome/{um_valor}`, verbo `GET`.  
+  > *End-point* `/modelo/name/{um_valor}`, método-http `GET`.  
   
 + Cadastro de relações modelo-ano  
-  > *End-point* `/modelo-ano`, verbo `POST`;  
-  > *End-point* `/modelo-ano`, verbo `PUT`;  
-  > *End-point* `/modelo-ano`, verbo `PATCH`;  
-  > *End-point* `/modelo-ano`, verbo `DELETE`.  
+  > *End-point* `/modelsyears`, método-http `POST`;  
+  > *End-point* `/modelsyears`, método-http `PUT`;  
+  > *End-point* `/modelsyears`, método-http `PATCH`;  
+  > *End-point* `/modelsyears`, método-http `DELETE`.  
   
 + Consulta de **uma** relação modelo-ano  
   - Por 'id'. Retorna um objeto, ou nulo;  
-  > *End-point* `/modelo-ano/id/{um_valor}`, verbo `GET`.
+  > *End-point* `/modelsyears/id/{um_valor}`, método-http `GET`.
   
   - Por 'nome-do-modelo'. Retorna um objeto, ou nulo.  
-  > *End-point* `/modelo-ano/nome/{um_valor}`, verbo `GET`.
+  > *End-point* `/modelsyears/name/{um_valor}`, método-http `GET`.
   
-+ Cadastro de veículo  
-  > *End-point* `/veiculo`, verbo `POST`;  
-  > *End-point* `/veiculo`, verbo `PUT`;  
-  > *End-point* `/veiculo`, verbo `PATCH`;  
-  > *End-point* `/veiculo`, verbo `DELETE`.  
++ Cadastro de veículo-anunciado *(automotor)*  
+  > *End-point* `/motorvehicles`, método-http `POST`;  
+  > *End-point* `/motorvehicles`, método-http `PUT`;  
+  > *End-point* `/motorvehicles`, método-http `PATCH`;  
+  > *End-point* `/motorvehicles`, método-http `DELETE`.  
   
 + Consulta de **um** veículo. Por 'placa'. Retorna um objeto, ou nulo  
-  > *End-point* `/veiculo/placa/{um_valor}`, verbo `GET`.  
+  > *End-point* `/motorvehicles/plate/{um_valor}`, método-http `GET`.  
   
 + Listagem de veículos  
-  - **Todos** os veículos cadastrados *(futura funcionalidade: com paginação)*. Retorna uma lista vazia ou populada;  
-  > *End-point* `/veiculo`, verbo `GET`.  
+  - **Todos** os veículos cadastrados *(futura funcionalidade: com paginação)*. Retorna uma lista **vazia** ou populada;  
+  > *End-point* `/motorvehicles`, método-http `GET`.  
   
-  - Filtrando por uma determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma lista vazia ou populada.  
-  > *End-point* `/veiculo/{um_valor}`, verbo `GET`.  
+  - **Filtrando por** uma determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma **lista** vazia ou populada.  
+  > *End-point* `/motorvehicles/{um_valor}`, método-http `GET`.  
   
 ###### Mais detalhes sobre cada end-point, seus verbos, e suas funcionalidades, vide [documentação do projeto](# "Em breve...") ou o `/help` da aplicação.  
   
@@ -132,9 +130,6 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
 &nbsp;  
   
 ## Influências de "GitFlow"  
-  
-&nbsp;  
-  
 ### Estrutura básica GitFlow deste projeto:  
 + main: *Branch* primário, inicial, e principal para mesclar/entregar a aplicação para o teste final de utilização. Branch De onde se dá o *release*;  
 + main/develop: *Branch* base para o desenvolvimento da aplicação, apesar de possível ocorrer implementação neste *branch*, evita-se, pois utiliza-se os *branches* específicos para a codificação, tais como citados logo abaixo. Este *branch* nunca deve ser excluído. Após cada *sprint* ou lista-de-metas serem concluídas e mescladas a este *branch* **develop** e devidamente testada, lança o *branch* **release-x.y.z** de acordo com a cultura de versionamento do time-de-desenvolvedores, neste caso sugiro o *SemVer - Semantic Versioning*;  
