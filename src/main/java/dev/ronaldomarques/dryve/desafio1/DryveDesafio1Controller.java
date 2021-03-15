@@ -21,9 +21,10 @@ package dev.ronaldomarques.dryve.desafio1;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
 
@@ -31,11 +32,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * @author   Ronaldo Marques.
  * @since    20210312.
- * @version  20210313.
+ * @version  20210315.
  * @category Controller base: apresenta e instrui o usuário em sua utilização.
  */
 
-@Controller
+@RestController
+@RequestMapping(value = "/")
 public final class DryveDesafio1Controller {
 	@Autowired
 	private PropriedadesGlobais props;
@@ -54,11 +56,13 @@ public final class DryveDesafio1Controller {
 				+ "Versão:\t\t\t" + props.getVersaoAplicacao() + "\n"
 				+ "Descrição:\t\t" + props.getDescricaoAplicacao() + "\n");
 		
-		return "\n\nHello Dryve!\n"
-				+ "\n"
-				+ "Nome da aplicação:\t" + props.getNomeAplicacao() + "\n"
-				+ "Versão:\t\t" + props.getVersaoAplicacao() + "\n"
-				+ "Descrição:\t" + props.getDescricaoAplicacao() + "\n";
+		return "<HTML>"
+				+ "<H1>Hello Dryve!</H1>"
+				+ "<BR/> <BR/>"
+				+ "<H4><B>Nome da aplicação: </B><I>" + props.getNomeAplicacao() + "</I></H4>"
+				+ "<H4><B>Versão: </B><I>" + props.getVersaoAplicacao() + "</I></H4>"
+				+ "<H4><B>Descrição: </B><I>" + props.getDescricaoAplicacao() + "</I></H4>"
+				+ "</HTML>";
 	}
 	
 	
@@ -71,8 +75,10 @@ public final class DryveDesafio1Controller {
 				+ "\n"
 				+ "Lista das funcionalidades disponíveis nesta versão... Em construção...\n");
 		
-		return "\n\nHELP:\n"
-				+ "\n"
-				+ "Lista das funcionalidades disponíveis nesta versão... Em construção...\n";
+		return "<HTML>"
+				+ "<H1>HELP:</H1>"
+				+ "<BR/> <BR/>"
+				+ "<H4><B>Lista das funcionalidades disponíveis nesta versão... Em construção...</B></H4>"
+				+ "</HTML>";
 	}
 }
