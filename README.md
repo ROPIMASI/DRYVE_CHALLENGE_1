@@ -30,7 +30,7 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
   
 &nbsp;  
   
-### Próxima versão 0.2.0-dev
+### Próxima versão 0.2.0-*-**beta**
 + Cadastro de marca
   > *End-point* `/marca`, verbo `POST`;  
   
