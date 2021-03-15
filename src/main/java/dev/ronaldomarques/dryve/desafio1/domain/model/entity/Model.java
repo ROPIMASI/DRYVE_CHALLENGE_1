@@ -17,13 +17,14 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1api.domain.model.entity;
+package dev.ronaldomarques.dryve.desafio1.domain.model.entity;
 
 
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -39,15 +40,22 @@ import javax.persistence.Table;
 @Table(name = "model")
 public class Model {
 	@Id
-	private UUID id = null;
-	/* PK at DB. Garantir iniciado com null, pois ao ser persistido pela primeira vez no BD receberá automaticamente o
-	 * valor da chave UUID.function_v4() do PostgreSQL. */
+	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
+	 * principalmente atrelando o código UUID à string do campo 'brand.id' para que nunca se registre
+	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
+	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
+	 * POSTGRSQL. */
+	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_model_id")
+	private UUID id = UUID.randomUUID();
+	/* PK at DB. Por agora ao instanciar o objeto já define-se seu 'id' com UUID-v4-random, posteriormente será valor da
+	 * chave UUID.function_v4() do PostgreSQL. */
 	
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	@Column(name = "band_id", nullable = false)
-	private UUID brandId; // FK(Brand.id) at DB.
+	@ManyToOne
+	// @Column(name = "brand_id", nullable = false)
+	private Brand brand; // FK(Brand.id) at DB.
 	
 	
 	
@@ -73,11 +81,11 @@ public class Model {
 	
 	
 	
-	public UUID getBrandId() { return brandId; }
+	public Brand getBrand() { return brand; }
 	
 	
 	
-	public void setBrandId(UUID brandId) { this.brandId = brandId; }
+	public void setBrand(Brand brand) { this.brand = brand; }
 	
 	
 	
@@ -85,7 +93,7 @@ public class Model {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((brandId == null) ? 0 : brandId.hashCode());
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
@@ -100,10 +108,10 @@ public class Model {
 		if (getClass() != obj.getClass()) return false;
 		Model other = (Model) obj;
 		
-		if (brandId == null) {
-			if (other.brandId != null) return false;
+		if (brand == null) {
+			if (other.brand != null) return false;
 		}
-		else if (!brandId.equals(other.brandId)) return false;
+		else if (!brand.equals(other.brand)) return false;
 		
 		if (id == null) {
 			if (other.id != null) return false;
@@ -122,6 +130,6 @@ public class Model {
 	
 	@Override
 	public String toString() {
-		return "Model [id=" + id + ", name=" + name + ", brandId=" + brandId + "]";
+		return "Model [id=" + id + ", name=" + name + ", brand=" + brand + "]";
 	}
 }

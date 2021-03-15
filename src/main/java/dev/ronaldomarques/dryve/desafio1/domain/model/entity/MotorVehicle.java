@@ -17,7 +17,7 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1api.domain.model.entity;
+package dev.ronaldomarques.dryve.desafio1.domain.model.entity;
 
 
 import java.math.BigDecimal;
@@ -26,8 +26,11 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import dev.ronaldomarques.dryve.desafio1api.domain.model.VeAdStatus;
+
+import dev.ronaldomarques.dryve.desafio1.domain.model.EnunVehicleAdvertisingStatus;
 
 
 
@@ -48,15 +51,16 @@ import dev.ronaldomarques.dryve.desafio1api.domain.model.VeAdStatus;
  */
 @Entity
 @Table(name = "motor_vehicle")
-public class MotorVehicle extends Vehicle {
+public class MotorVehicle extends AbstractVehicle {
 	
 	/* Overriding os atributos originais da classe abstrata para Modelarem-Objeto-Relacional do HIBERNATE. */
 	@Id
 	@Column(name = "plate")
 	private String plate; // PK at DB.
 	
-	@Column(name = "model_year_id", nullable = false)
-	private UUID modelYearId; // FK(modelYear.id) at DB.
+	@ManyToOne
+	@JoinColumn(name = "model_year_id", nullable = false)
+	private ModelYear modelYear; // FK(modelYear.id) at DB.
 	
 	@Column(name = "year", nullable = false)
 	private short year;
@@ -74,9 +78,14 @@ public class MotorVehicle extends Vehicle {
 	@Column(name = "registry_date", nullable = false)
 	private Date registryDate;
 	
-	/* Atributos novos, específicos desta classe herdeira. */
-	@Column(name = "ve_ad_status", nullable = false)
-	private VeAdStatus status; // "Vehicle Advertising Status" = "Estado de Anuncio de Veículo".
+	/* Atributos novos, específicos desta classe herdeira.
+	 * -
+	 * Adicionei este campo/atributo à tabela e classe para dar a possibilidade à aplicação de ativar e desativar cada
+	 * veículo anunciado, pois entendi na regra de negócio, que espera-se, que este veículo sejá vendido, logo seu
+	 * anúcio registrado precisa ser desativado para não ser anunciado erroneamente. */
+	@Column(name = "veh_adv_status", nullable = false)
+	private EnunVehicleAdvertisingStatus enunVehicleAdvertisingStatus = EnunVehicleAdvertisingStatus.ACTIVE;// AbstractVehicle Advertising Status = Estado de AnuncioVeículo.
+	/* Instancio o objeto com valor padrão para este atributo = ACTIVE, anúncio é criado ativo. */
 	
 	
 	
@@ -134,11 +143,11 @@ public class MotorVehicle extends Vehicle {
 	
 	
 	
-	public VeAdStatus getStatus() { return status; }
+	public EnunVehicleAdvertisingStatus getVeAdvStatus() { return enunVehicleAdvertisingStatus; }
 	
 	
 	
-	public void setStatus(VeAdStatus status) { this.status = status; }
+	public void setVeAdvStatus(EnunVehicleAdvertisingStatus status) { this.enunVehicleAdvertisingStatus = status; }
 	
 	
 	
@@ -151,7 +160,7 @@ public class MotorVehicle extends Vehicle {
 		result = prime * result + ((priceAdv == null) ? 0 : priceAdv.hashCode());
 		result = prime * result + ((priceKBB == null) ? 0 : priceKBB.hashCode());
 		result = prime * result + ((registryDate == null) ? 0 : registryDate.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((enunVehicleAdvertisingStatus == null) ? 0 : enunVehicleAdvertisingStatus.hashCode());
 		result = prime * result + year;
 		return result;
 	}
@@ -190,7 +199,7 @@ public class MotorVehicle extends Vehicle {
 		}
 		else if (!registryDate.equals(other.registryDate)) return false;
 		
-		if (status != other.status) return false;
+		if (enunVehicleAdvertisingStatus != other.enunVehicleAdvertisingStatus) return false;
 		if (year != other.year) return false;
 		return true;
 	}
@@ -200,6 +209,7 @@ public class MotorVehicle extends Vehicle {
 	@Override
 	public String toString() {
 		return "MotorVehicle [plate=" + plate + ", modelYearId=" + modelYearId + ", year=" + year + ", priceAdv="
-				+ priceAdv + ", priceKBB=" + priceKBB + ", registryDate=" + registryDate + ", status=" + status + "]";
+				+ priceAdv + ", priceKBB=" + priceKBB + ", registryDate=" + registryDate + ", EnunVehicleAdvertisingStatus="
+				+ enunVehicleAdvertisingStatus + "]";
 	}
 }

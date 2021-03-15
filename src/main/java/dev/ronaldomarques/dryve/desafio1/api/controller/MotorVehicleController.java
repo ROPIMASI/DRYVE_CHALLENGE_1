@@ -17,25 +17,45 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1api;
+package dev.ronaldomarques.dryve.desafio1.api.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import dev.ronaldomarques.dryve.desafio1.domain.model.repository.MotorVehicleRepository;
+
+
 
 
 /**
  * @author   Ronaldo Marques.
- * @since    20210312.
- * @version  20210313.
- * @category Launcher da aplicação: inicia em forma de serviço no servidor Tomcat.
+ * @since    20210315.
+ * @version  20210315.
+ * @category Controladora: Classa especializada em receber as requisições de clientes, processar dados preliminares
+ *           (mínimo possível seguindo pricípios de "SOLID"), delegar o processamento principal às respectivas classes
+ *           de regras de negócio do domínio, e ou de serviços, e então enviar respostas ao cliente-requisitante.
+ * @Análise  ...
  */
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
-
-
-@SpringBootApplication
-public class DryveDesafio1Application {
-	public static void main(String[] args) {
-		/* Iniciar a aplicação API propriamente dita. */
-		SpringApplication.run(DryveDesafio1Application.class, args);
+@RestController
+@RequestMapping(value = "/motorvehicles", produces = "application/json;charset=UTF-8")
+public class MotorVehicleController {
+	
+	@Autowired
+	private MotorVehicleRepository motorVehicleRepo;
+	
+	
+	
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<?> listar() {
+		
+		System.out.println("[DEBUG: "+ this.getClass().getName() +"]");
+		
+		return ResponseEntity.ok(motorVehicleRepo.findAll());
 	}
 }

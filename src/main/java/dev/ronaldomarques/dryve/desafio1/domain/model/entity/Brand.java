@@ -17,7 +17,7 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1api.domain.model.entity;
+package dev.ronaldomarques.dryve.desafio1.domain.model.entity;
 
 
 import java.util.UUID;
@@ -39,9 +39,15 @@ import javax.persistence.Table;
 @Table(name = "brand")
 public class Brand {
 	@Id
-	private UUID id = null;
-	/* PK at DB. Garantir iniciado com null, pois ao ser persistido pela primeira vez no BD receberá automaticamente o
-	 * valor da chave UUID.function_v4() do PostgreSQL. */
+	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
+	 * principalmente atrelando o código UUID à string do 'name' para que nunca se registre
+	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
+	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
+	 * POSTGRSQL. */
+	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_band_id")
+	private UUID id = UUID.randomUUID();
+	/* PK at DB. Por agora ao instanciar o objeto já define-se seu 'id' com UUID-v4-random, posteriormente será valor da
+	 * chave UUID.function_v4() do PostgreSQL. */
 	
 	@Column(name = "name", nullable = false)
 	private String name;

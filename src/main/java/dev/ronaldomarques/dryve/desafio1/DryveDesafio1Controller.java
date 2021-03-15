@@ -17,7 +17,7 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1api;
+package dev.ronaldomarques.dryve.desafio1;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

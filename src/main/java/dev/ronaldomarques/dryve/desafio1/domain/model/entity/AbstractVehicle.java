@@ -17,7 +17,7 @@
  * Therefore, the author of this project does not recognize or assume any responsibility for the use of it,
  * neither for any possible reflexes or consequence of such use.
  */
-package dev.ronaldomarques.dryve.desafio1api.domain.model.entity;
+package dev.ronaldomarques.dryve.desafio1.domain.model.entity;
 
 
 import java.math.BigDecimal;
@@ -35,7 +35,7 @@ import java.util.UUID;
  * @Análise  Esta abordagem possibilita implementação de diferentes tipos de veículos que precisarão do polimorfismo
  *           para terem diferentes tratamentos na aplicação e futura integração com NOSQL-DB.
  */
-public abstract class Vehicle {
+public abstract class AbstractVehicle {
 	protected String plate; // PK at DB.
 	protected UUID modelYearId; // FK(modelYear.id) at DB.
 	protected short year;
@@ -49,7 +49,7 @@ public abstract class Vehicle {
 	
 	
 	
-	public Vehicle() {
+	public AbstractVehicle() {
 		super();
 	}
 	
