@@ -4,7 +4,7 @@ Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor j
 &nbsp;  
   
 *Start 20210311 1830-0300*  
-*Last change 20210315 1855-0300*  
+*Last change 20210316 0610-0300*  
   
 &nbsp;  
   
@@ -33,95 +33,103 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
   
 &nbsp;  
   
-### Versão atual 0.2.0-*-**dev** &nbsp; ::em desenvolvimento
+### Versão atual 0.2.0-**dev** &nbsp; ::em desenvolvimento
 + Todas as funcionalidades da versão anteior, mais...
 + Cadastro de marcas
-  > *End-point* `/brands`, método-http `POST`, corpo*(payload)* `objeto em JSON`;  
+  > *End-point* `/brands`, método-http `POST`, corpo *(payload)* `objeto em JSON`;  
   
 + Cadastro de modelos  
-  > *End-point* `/models`, método-http `POST`, corpo*(payload)* `objeto em JSON`;  
+  > *End-point* `/models`, método-http `POST`, corpo *(payload)* `objeto em JSON`;  
   
 + Cadastro de relações modelo-ano  
-  > *End-point* `/modelsyears`, método-http `POST`, corpo*(payload)* `objeto em JSON`;  
+  > *End-point* `/modelsyears`, método-http `POST`, corpo *(payload)* `objeto em JSON`;  
   
 + Cadastro de veículos-anunciados *(automotores)*  
-  > *End-point* `/motorvehicles`, método-http `POST`, corpo*(payload)* `objeto em JSON`;    
+  > *End-point* `/motorvehicles`, método-http `POST`, corpo *(payload)* `objeto em JSON`;    
   
 &nbsp;
   
 ## Roadmap / To-Do / Tasks  
+### Versão Objetivo 1.0.0-**release**  
 + Autoapresentação: Retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial.  
   > *End-point* `/hello`, método-http `GET`.  
   
-+ Sumário de funcionalidades: Listar cada end-point disponível no projeto e uma breve descrição de sua função.  
++ Sumário de funcionalidades: Retorna uma **lista** de cada end-point disponível no projeto e uma breve descrição de sua função.  
   > *End-point* `/help`, método-http `GET`.  
   
-+ Cadastro de marcas  
++ Listagem de URIs  
+  - Listagem comun de todos registros de cada URI. Retorna uma _**ResponseEntity**_ com uma **lista** vazia ou populada no _**body**_.
+  > *End-point* `/brands`, método-http `GET`;
+  > *End-point* `/models`, método-http `GET`;
+  > *End-point* `/modelsyears`, método-http `GET`;
+  > *End-point* `/motovehicles`, método-http `GET`;
+  
+  - **Todos** os veículos cadastrados. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_;  
+  > *End-point* `/motorvehicles`, método-http `GET`.  
+  
+  - **Filtrando por uma** determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_.  
+  > *End-point* `/motorvehicles/{um_valor}`, método-http `GET`.  
+  
++ Cadastro de marcas
+  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
   > *End-point* `/brands`, método-http `POST`;  
   > *End-point* `/brands`, método-http `PUT`;  
   > *End-point* `/brands`, método-http `PATCH`;  
   > *End-point* `/brands`, método-http `DELETE`.  
   
 + Consulta de **uma** marca  
-  - Por 'id'. Retorna um objeto, ou nulo;  
+  - Por **um** 'id'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.    
   > *End-point* `/brands/id/{um_valor}`, método-http `GET`.  
   
-  - Por 'nome-da-marca'. Retorna um objeto, ou nulo.  
+  - Por **um** 'nome-da-marca'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
   > *End-point* `/brands/name/{um_valor}`, método-http `GET`.  
   
 + Cadastro de modelos  
+  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.
   > *End-point* `/models`, método-http `POST`;  
   > *End-point* `/models`, método-http `PUT`;  
   > *End-point* `/models`, método-http `PATCH`;  
   > *End-point* `/models`, método-http `DELETE`.  
   
 + Consulta de **um** modelo  
-  - Por 'id'. Retorna um objeto, ou nulo;  
+  - Por **um** 'id'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
   > *End-point* `/modelo/id/{um_valor}`, método-http `GET`.
   
-  - Por 'nome-do-modelo'. Retorna um objeto, ou nulo.  
+  - Por **um** 'nome-do-modelo'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
   > *End-point* `/modelo/name/{um_valor}`, método-http `GET`.  
   
 + Cadastro de relações modelo-ano  
+  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
   > *End-point* `/modelsyears`, método-http `POST`;  
   > *End-point* `/modelsyears`, método-http `PUT`;  
   > *End-point* `/modelsyears`, método-http `PATCH`;  
   > *End-point* `/modelsyears`, método-http `DELETE`.  
   
-+ Consulta de **uma** relação modelo-ano  
-  - Por 'id'. Retorna um objeto, ou nulo;  
++ Consulta de **uma ou mais** relação modelo-ano  
+  - Por **um** 'id'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
   > *End-point* `/modelsyears/id/{um_valor}`, método-http `GET`.
   
-  - Por 'nome-do-modelo'. Retorna um objeto, ou nulo.  
+  - Por **um** 'nome-do-modelo'. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_;  
   > *End-point* `/modelsyears/name/{um_valor}`, método-http `GET`.
   
-+ Cadastro de veículo-anunciado *(automotor)*  
++ Cadastro de veículo-anunciado *(automotor)*
+  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
   > *End-point* `/motorvehicles`, método-http `POST`;  
+  >> Integrado `API KBB externa para armazenar o atributo `kbb_id`.  
   > *End-point* `/motorvehicles`, método-http `PUT`;  
+  >> Integrado `API KBB externa para armazenar o atributo `kbb_id`.  
   > *End-point* `/motorvehicles`, método-http `PATCH`;  
+  >> Integrado `API KBB externa para armazenar o atributo `kbb_id`.  
   > *End-point* `/motorvehicles`, método-http `DELETE`.  
   
-+ Consulta de **um** veículo. Por 'placa'. Retorna um objeto, ou nulo  
++ Consulta de **um** veículo-anunciado.
+  - Por **uma** 'placa'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.
   > *End-point* `/motorvehicles/plate/{um_valor}`, método-http `GET`.  
   
-+ Listagem de veículos  
-  - **Todos** os veículos cadastrados *(futura funcionalidade: com paginação)*. Retorna uma lista **vazia** ou populada;  
-  > *End-point* `/motorvehicles`, método-http `GET`.  
-  
-  - **Filtrando por** uma determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma **lista** vazia ou populada.  
-  > *End-point* `/motorvehicles/{um_valor}`, método-http `GET`.  
-  
-###### Mais detalhes sobre cada end-point, seus verbos, e suas funcionalidades, vide [documentação do projeto](# "Em breve...") ou o `/help` da aplicação.  
+###### Mais detalhes sobre cada end-point, seus verbos, e suas funcionalidades, vide [documentação do projeto](documentation/ "Em breve...").  
   
 &nbsp;  
   
-<!--
-## Changelog / Dones / Features  
-+ Autoapresentação: Descreve brevemente o nome do projeto, sua versão, e seu propósito. *End-point* `/hello`, verbo `GET`.
-+ Modelagem das entidades do domínio de negócio: .
-  
-&nbsp;  
--->
   
 ## Tecnologia  
 + Java, Spring Boot, Spring Web, Spring Data JPA - Hibernate, Maven, PostgreSQL, Apache-Tomcat, Postman;  

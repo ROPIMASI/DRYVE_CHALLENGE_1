@@ -32,13 +32,13 @@ INSERT INTO model_year (id, model_id, year, kbb_id) VALUES ('6aa4d860-f5a8-439a-
 
 
 
--- A baixo, minhas (particulares) linhas de script para adicionar alguns exemplos de "veículo-anunciado".
+-- A baixo, minhas (particulares) linhas de script para adicionar alguns exemplos-TESTE de "veículo-anunciado" .
 
 
-INSERT INTO motor_vehicle (plate, model_year_id, year, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('ASD1234', '2dc1afe878514edc9b91a507c692483b', 2020, 100000.55, 99999.55, '2021-03-15', 0);
+INSERT INTO motor_vehicle (plate, model_year_id, year, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('ASD1234', '9d31e563-9d09-4ce8-8ab5-c5177f51d92f', 2020, 100000.55, 99999.55, '2021-03-15', 0);
 
 
-INSERT INTO motor_vehicle (plate, model_year_id, year, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('Z1X2C3V4', '6aa4d860f5a8439aab50fda16b45549c', 2021, 101000.55, 100000.55, '2021-03-15', 1); 
+INSERT INTO motor_vehicle (plate, model_year_id, year, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('Z1X2C3V4', 'b9824542-0d28-4e09-92df-53379e8b3b22', 2021, 101000.55, 100000.55, '2021-03-15', 1); 
 
 
 --

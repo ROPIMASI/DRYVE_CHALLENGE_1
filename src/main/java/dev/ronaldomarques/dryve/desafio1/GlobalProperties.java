@@ -25,7 +25,6 @@ import org.springframework.stereotype.Component;
 
 
 
-
 /**
  * @author   Ronaldo Marques.
  * @since    20210312.
@@ -33,40 +32,40 @@ import org.springframework.stereotype.Component;
  * @category Parameters.
  */
 @Component
-public final class PropriedadesGlobais {
+public final class GlobalProperties {
+	
 	@Value("${dryve.global.versao-maior}")
-	private byte versaoMaior;
+	private byte majorVersion;
 	
 	@Value("${dryve.global.versao-menor}")
-	private byte versaoMenor;
+	private byte minorVersion;
 	
 	@Value("${dryve.global.versao-correcao}")
-	private byte versaoCorrecao;
+	private byte patchVersion;
 	
 	@Value("${dryve.global.versao-estagio}")
-	private String versaoEstagio;
+	private String stageVersion;
 	
 	@Value("${dryve.global.nome-aplicacao}")
-	private String nomeAplicacao;
+	private String appName;
 	
 	/* Valor desta propriedade é determinado no static-constructor. */
-	private String versaoAplicacao;
+	private String appVersion;
 	
 	/* Valor desta propriedade é determinado no static-constructor. */
-	private String descricaoAplicacao;
+	private String appDescription;
 	
 	/* O Constructor Padrão (na JVM) é chamado ANTES da injeção de valor @Value, então constrói o MenagedBean no
-	 * SpringContainer com propriedades 0 e null, fica não-funcional. Sendo assim, farei um método para sincronizar
+	 * SpringContainer com propriedades 0 e null, valor não-funcional. Sendo assim, farei um método para sincronizar
 	 * os valores das propriedades da classe, até eu refatora-la num futuro próximo.
-	 * 
-	 * // FIXME: public PropriedadesGlobais() { } */
+	 * // FIXME: public GlobalProperties() { } */
 	
 	
 	
 	public void sinc() {
-		versaoAplicacao =
-				getVersaoMaior() + "." + getVersaoMenor() + "." + getVersaoCorrecao() + "-" + getVersaoEstagio();
-		descricaoAplicacao = "[" + getNomeAplicacao() + ", versão " + getVersaoAplicacao() + "] é uma "
+		
+		appVersion = getMajorVersion() + "." + getMinorVersion() + "." + getPatchVersion() + "-" + getStageVersion();
+		appDescription = "[" + getAppName() + ", versão " + getAppVersion() + "] é uma "
 				+ "aplicação-serviço-web de \n"
 				+ "cadastro de veículos com seus dados básicos e seu valor estimado na consulta da API da KBB.\n"
 				+ "\n"
@@ -81,6 +80,7 @@ public final class PropriedadesGlobais {
 				+ "\n"
 				+ "\n"
 				+ "Para sumário da API pública desta aplicação acesse URI \"/help\" .";
+		
 	}
 	
 	
@@ -94,29 +94,38 @@ public final class PropriedadesGlobais {
 	 * como a maioria dos projetos usam cálculos matemáticos de números inteiros na aplitude das variáveis 'int',
 	 * então na utilização destes métodos não precisa lembrar-se de converter o tipo da propriedade em toda linha de
 	 * comando que usá-la. */
-	public int getVersaoMaior() { return versaoMaior; }
+	public int getMajorVersion() { return majorVersion; }
 	
 	
 	
-	public int getVersaoMenor() { return versaoMenor; }
+	public int getMinorVersion() { return minorVersion; }
 	
 	
 	
-	public int getVersaoCorrecao() { return versaoCorrecao; }
+	public int getPatchVersion() { return patchVersion; }
 	
 	
 	
-	public String getVersaoEstagio() { return versaoEstagio; }
+	public String getStageVersion() { return stageVersion; }
 	
 	
 	
-	public String getVersaoAplicacao() { return versaoAplicacao; }
+	public String getAppName() { return appName; }
 	
 	
 	
-	public String getNomeAplicacao() { return nomeAplicacao; }
+	public String getAppVersion() { return appVersion; }
 	
 	
 	
-	public String getDescricaoAplicacao() { return descricaoAplicacao; }
+	public String getAppDescription() { return appDescription; }
+	
 }
+//
+//
+//
+//
+//
+//
+//
+//

@@ -29,9 +29,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import dev.ronaldomarques.dryve.desafio1.domain.model.EnunVehicleAdvertisingStatus;
-
 
 
 
@@ -84,13 +82,19 @@ public class MotorVehicle extends AbstractVehicle {
 	 * veículo anunciado, pois entendi na regra de negócio, que espera-se, que este veículo sejá vendido, logo seu
 	 * anúcio registrado precisa ser desativado para não ser anunciado erroneamente. */
 	@Column(name = "veh_adv_status", nullable = false)
-	private EnunVehicleAdvertisingStatus enunVehicleAdvertisingStatus = EnunVehicleAdvertisingStatus.ACTIVE;// AbstractVehicle Advertising Status = Estado de AnuncioVeículo.
+	private EnunVehicleAdvertisingStatus enunVehicleAdvertisingStatus = EnunVehicleAdvertisingStatus.ACTIVE;// AbstractVehicle
+																											// Advertising
+																											// Status =
+																											// Estado de
+																											// AnuncioVeículo.
 	/* Instancio o objeto com valor padrão para este atributo = ACTIVE, anúncio é criado ativo. */
 	
 	
 	
 	public MotorVehicle() {
+		
 		super();
+		
 	}
 	
 	
@@ -99,7 +103,9 @@ public class MotorVehicle extends AbstractVehicle {
 	
 	
 	
-	public void setPlate(String plate) { this.plate = plate; }
+	public void setPlate(String plate) { this.plate = plate.toUpperCase(); }
+	/* .setPlate() possui .upperCase() para garantir que toda placa mantenha seu padrão de grafia MAIÚSCULO, conforme
+	 * atual legislação Brasil-Mercosul, mesmo que usuário envie a representação JSON com plca em letras minúsculas. */
 	
 	
 	
@@ -153,6 +159,7 @@ public class MotorVehicle extends AbstractVehicle {
 	
 	@Override
 	public int hashCode() {
+		
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((modelYearId == null) ? 0 : modelYearId.hashCode());
@@ -160,15 +167,18 @@ public class MotorVehicle extends AbstractVehicle {
 		result = prime * result + ((priceAdv == null) ? 0 : priceAdv.hashCode());
 		result = prime * result + ((priceKBB == null) ? 0 : priceKBB.hashCode());
 		result = prime * result + ((registryDate == null) ? 0 : registryDate.hashCode());
-		result = prime * result + ((enunVehicleAdvertisingStatus == null) ? 0 : enunVehicleAdvertisingStatus.hashCode());
+		result = prime * result
+				+ ((enunVehicleAdvertisingStatus == null) ? 0 : enunVehicleAdvertisingStatus.hashCode());
 		result = prime * result + year;
 		return result;
+		
 	}
 	
 	
 	
 	@Override
 	public boolean equals(Object obj) {
+		
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
@@ -202,14 +212,19 @@ public class MotorVehicle extends AbstractVehicle {
 		if (enunVehicleAdvertisingStatus != other.enunVehicleAdvertisingStatus) return false;
 		if (year != other.year) return false;
 		return true;
+		
 	}
 	
 	
 	
 	@Override
 	public String toString() {
+		
 		return "MotorVehicle [plate=" + plate + ", modelYearId=" + modelYearId + ", year=" + year + ", priceAdv="
-				+ priceAdv + ", priceKBB=" + priceKBB + ", registryDate=" + registryDate + ", EnunVehicleAdvertisingStatus="
+				+ priceAdv + ", priceKBB=" + priceKBB + ", registryDate=" + registryDate
+				+ ", EnunVehicleAdvertisingStatus="
 				+ enunVehicleAdvertisingStatus + "]";
+		
 	}
+	
 }

@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/")
 public final class DryveDesafio1Controller {
 	@Autowired
-	private PropriedadesGlobais props;
+	private GlobalProperties props;
 	
 	
 	
@@ -48,20 +48,20 @@ public final class DryveDesafio1Controller {
 	@GetMapping("/hello")
 	@ResponseBody
 	public String hello() {
-		props.sinc(); // Vide PropriedadesGlobais.java na tag 'fixme'.
+		props.sinc(); // Vide GlobalProperties.java na tag 'fixme'.
 		
 		System.out.println("\n\nHello Dryve!\n"
 				+ "\n"
-				+ "Nome da aplicação:\t" + props.getNomeAplicacao() + "\n"
-				+ "Versão:\t\t\t" + props.getVersaoAplicacao() + "\n"
-				+ "Descrição:\t\t" + props.getDescricaoAplicacao() + "\n");
+				+ "Nome da aplicação:\t" + props.getAppName() + "\n"
+				+ "Versão:\t\t\t" + props.getAppVersion() + "\n"
+				+ "Descrição:\t\t" + props.getAppDescription() + "\n");
 		
 		return "<HTML>"
 				+ "<H1>Hello Dryve!</H1>"
 				+ "<BR/> <BR/>"
-				+ "<H4><B>Nome da aplicação: </B><I>" + props.getNomeAplicacao() + "</I></H4>"
-				+ "<H4><B>Versão: </B><I>" + props.getVersaoAplicacao() + "</I></H4>"
-				+ "<H4><B>Descrição: </B><I>" + props.getDescricaoAplicacao() + "</I></H4>"
+				+ "<H4><B>Nome da aplicação: </B><I>" + props.getAppName() + "</I></H4>"
+				+ "<H4><B>Versão: </B><I>" + props.getAppVersion() + "</I></H4>"
+				+ "<H4><B>Descrição: </B><I>" + props.getAppDescription() + "</I></H4>"
 				+ "</HTML>";
 	}
 	

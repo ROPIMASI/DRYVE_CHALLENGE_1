@@ -28,7 +28,6 @@ import javax.persistence.Table;
 
 
 
-
 /**
  * @author   Ronaldo Marques.
  * @since    20210314.
@@ -38,6 +37,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "brand")
 public class Brand {
+	
 	@Id
 	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
 	 * principalmente atrelando o código UUID à string do 'name' para que nunca se registre
@@ -55,7 +55,9 @@ public class Brand {
 	
 	
 	public Brand() {
+		
 		super();
+		
 	}
 	
 	
@@ -72,23 +74,28 @@ public class Brand {
 	
 	
 	
-	public void setName(String name) { this.name = name; }
+	public void setName(String name) { this.name = name.toUpperCase(); }
+	/* .setName() possui .upperCase() para garantir que todo nome-de-marca mantenha seu padrão de grafia MAIÚSCULO,
+	 * mesmo que usuário envie a representação JSON com nome em letras minúsculas. */
 	
 	
 	
 	@Override
 	public int hashCode() {
+		
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
+		
 	}
 	
 	
 	
 	@Override
 	public boolean equals(Object obj) {
+		
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
@@ -105,12 +112,16 @@ public class Brand {
 		else if (!name.equals(other.name)) return false;
 		
 		return true;
+		
 	}
 	
 	
 	
 	@Override
 	public String toString() {
+		
 		return "Brand [id=" + id + ", name=" + name + "]";
+		
 	}
+	
 }

@@ -24,11 +24,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import dev.ronaldomarques.dryve.desafio1.domain.model.entity.ModelYear;
 import dev.ronaldomarques.dryve.desafio1.domain.model.repository.ModelYearRepository;
-
 
 
 
@@ -44,7 +46,24 @@ import dev.ronaldomarques.dryve.desafio1.domain.model.repository.ModelYearReposi
 @RestController
 @RequestMapping(value = "/modelsyears", produces = "application/json;charset=UTF-8")
 public class ModelYearController {
-
+	
+	/* ######## ATENÇÃO: IMPORTANTE REFLEXÃO RELACIONADA AO TAMANHO/COMPLEXIDADE DO PROJETO ########
+	 * Dependendo da complexidade e objetivos de cada projeto, determina-se seus design-paterns e princípios de
+	 * programação, sem contar fatores culturais da equipe desenvolvedora e fatores relacionados aos recursos
+	 * tecnológicos disponíveis e curva-de-aprendizado.
+	 * -
+	 * Mesmo que este projeto seja pequeno e somente para uma avaliação, demonstrarei um modo de trabalho que criei, que
+	 * pode parecer mais complexo do que o simples projeto merece, mas, eu o entendo como bom para uma web-api com
+	 * grande longevidade, incrementos e manuteção relativamente frequentes, e desenvolvida por multiplo/as
+	 * desenvolvedores ou equipes.
+	 * -
+	 * Adoto, se é que existe, um design-pattern mesclado de MVC e DDD, deixando perceptível existência de partes
+	 * distintas da codificação, cada qual com seu foco/propósito: modelagem de objetos e processos; controladoria do
+	 * fluxo de trabalho e divisão xxx "FIXME:corrigir esta oração" de tarefas xxx; organização e disponibilização da
+	 * comunicação visual; processamento das informações da infraestrutura da aplicação ou de requisitos técnicos
+	 * separados do processamento das informações do domínio do negócio.
+	 * -
+	 * Por último, o mais interessante, tratamento de exceções por camadas: versão futura, talvez "v0.3.0-dev". */
 	@Autowired
 	private ModelYearRepository modelYearRepo;
 	
@@ -54,8 +73,34 @@ public class ModelYearController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<?> listar() {
 		
-		System.out.println("[DEBUG: "+ this.getClass().getName() +"]");
-	
+		System.out.println("[DEBUG: " + this.getClass().getName() + "]");
+		
 		return ResponseEntity.ok(modelYearRepo.findAll());
+		
 	}
+	
+	
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<?> adicionar(@RequestBody ModelYear modelYear) {
+		
+		System.out.println("[DEBUG: " + this.getClass().getName() + "]");
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(modelYearRepo.save(modelYear));
+		
+		/* TODO: AINDA POR TERMINAR...
+		 * FIXME: IMPLEMENTAR A CAMADA DE REGRAS DE NEGÓCIO "SERVICE" CONFORME ARQUITETURA DO PROJETO,
+		 * NO PACOTE 'dev.ronaldomarques.dryve.desafio1.domain.service'. */
+		
+	}
+	
 }
+//
+//
+//
+//
+//
+//
+//
+//
