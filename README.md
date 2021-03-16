@@ -4,7 +4,7 @@ Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor j
 &nbsp;  
   
 *Start 20210311 1830-0300*  
-*Last change 20210316 0610-0300*  
+*Last change 20210316 0810-0300*  
   
 &nbsp;  
   
@@ -144,6 +144,16 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
   - main/develop/feature/apelido-curto-da-feature: *Branch* criado exclusivamente para implementação da feature em questão. Após *feature* concluída e mesclada ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time de desenvolvedores;  
   - main/develop/bugfix/apelido-curto-do-bug-fix: *Branch* criado exclusivamente para correção do *bug* encontrado em fase de teste (ou equipe de Q&A). Após *bug* corrigido e mesclado ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time-desenvolvedor;  
 + main/hotfix/apelido-curto-do-hotfix: *Branch* exclusivamente para correção de *bugs* de prioridade máxima (encontrado na aplicação em produção ['em produção' = ativa, em funcionamento, produzindo para o cliente/contratante).  
+  
+&nbsp;  
+  
+## A Arquitetura do Projeto  
+### Pacotes
+T...  
+  
+  
+### Classes e seus propósitos
+T...  
   
 &nbsp;  
   
