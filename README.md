@@ -59,10 +59,10 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
   
 + Listagem de URIs  
   - Listagem comun de todos registros de cada URI. Retorna uma _**ResponseEntity**_ com uma **lista** vazia ou populada no _**body**_.
-  > *End-point* `/brands`, método-http `GET`;
-  > *End-point* `/models`, método-http `GET`;
-  > *End-point* `/modelsyears`, método-http `GET`;
-  > *End-point* `/motovehicles`, método-http `GET`;
+  > *End-point* `/brands`, método-http `GET`;  
+  > *End-point* `/models`, método-http `GET`;  
+  > *End-point* `/modelsyears`, método-http `GET`;  
+  > *End-point* `/motovehicles`, método-http `GET`;  
   
   - **Todos** os veículos cadastrados. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_;  
   > *End-point* `/motorvehicles`, método-http `GET`.  
