@@ -115,11 +115,11 @@ do web-service KBB, grava tais informações em seu banco de dados, e responde a
 + Cadastro de veículo-anunciado *(automotor)*
   - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
   > *End-point* `/motorvehicles`, método-http `POST`;  
-  >> Integrado `API KBB externa para armazenar o atributo `kbb_id`.  
+  >> Integrado API KBB externa para armazenar o atributo `kbb_id`.  
   > *End-point* `/motorvehicles`, método-http `PUT`;  
-  >> Integrado `API KBB externa para armazenar o atributo `kbb_id`.  
+  >> Integrado API KBB externa para armazenar o atributo `kbb_id`.  
   > *End-point* `/motorvehicles`, método-http `PATCH`;  
-  >> Integrado `API KBB externa para armazenar o atributo `kbb_id`.  
+  >> Integrado API KBB externa para armazenar o atributo `kbb_id`.  
   > *End-point* `/motorvehicles`, método-http `DELETE`.  
   
 + Consulta de **um** veículo-anunciado.
