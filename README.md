@@ -1,5 +1,6 @@
 # DRYVE-CHALLENGE-1  
 pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
+  
 en-US: Repository for the recruitment test for the junior java/kotlin job vacancy at [Dryve.com.br](https://dryve.com.br).  
   
 &nbsp;  
@@ -12,25 +13,28 @@ en-US: Repository for the recruitment test for the junior java/kotlin job vacanc
 ## O quê é / What it is
 pt-BR: Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo.    
 Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
+  
 en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales.
 This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
+  
+  > **Nota / Note: soon version this project is going to be implemented and documented in english only.**  
   
 &nbsp;  
   
 ## Versões / Versions  
   
 ### Versão atual / Current Version 0.2.0-dev
-+ Todas as funcionalidades da versão anteior, mais...
-+ Cadastro de marcas
++ Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...
++ Cadastro de marcas / Brands registry
   > *End-point* `/brands`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
   
-+ Cadastro de modelos  
++ Cadastro de modelos / Models registry
   > *End-point* `/models`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
   
-+ Cadastro de relações modelo-ano  
++ Cadastro de relações modelo-ano / Model-year relation registry
   > *End-point* `/modelsyears`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
   
-+ Cadastro de veículos-anunciados *(automotores)*  
++ Cadastro de veículos-anunciados *(automotores)* / Advertised vehicles registry (motor vehicles)
   > *End-point* `/motorvehicles`, http-method `POST`, corpo *(payload)* `objeto em JSON`;    
   
 &nbsp;
@@ -50,36 +54,40 @@ This API receives some basic data from a vehicle, retrieves an information (the 
   
 &nbsp;  
   
-## Roadmap / To-Do / Tasks  
-### Versão Objetivo / Objective version 1.0.0-release
+## Diretrizes Roteiro / Guideline Roadmap
+### Futura versão / Future version 0.3.0-beta
+&nbsp;  
 
-/* TODO: I ll continue from here. Translating and implementing... */
-
-+ Autoapresentação: Retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial.  
+### Futura versão / Future version 0.4.0-beta
+&nbsp;  
+  
+### Versão objetivo final / Objective final version 1.0.0-release
++ Autoapresentação: retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial. / Self-presentation: returns a smal text with application's version name, and an initial introduction.
   > *End-point* `/hello`, http-method `GET`.  
   
-+ Sumário de funcionalidades: Retorna uma **lista** de cada end-point disponível no projeto e uma breve descrição de sua função.  
++ Sumário de funcionalidades: retorna uma lista de cada end-point disponível no projeto e uma breve descrição de sua função. / Summary fo the features: returns a list of each avalable end-point in the project and a breif description of its fuction.
   > *End-point* `/help`, http-method `GET`.  
   
-+ Listagem de URIs  
-  - Listagem comun de todos registros de cada URI. Retorna uma _**ResponseEntity**_ com uma **lista** vazia ou populada no _**body**_.
++ Listagem de cada URI / Listing of each URI
+  - Listagem de todos os objetos registrados em seu respectivo URI. Retorna uma `ResponseEntity` com uma `List` vazia ou populada no `body` da `Response`. / List of all objects registered in their respective URI. Returns a `ResponseEntity` with an empty or populated `List` in `body` of the `Response`.
   > *End-point* `/brands`, http-method `GET`;  
   > *End-point* `/models`, http-method `GET`;  
   > *End-point* `/modelsyears`, http-method `GET`;  
   > *End-point* `/motovehicles`, http-method `GET`;  
   
-  - **Todos** os veículos cadastrados. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_;  
-  > *End-point* `/motorvehicles`, http-method `GET`.  
+  - Filtrando por uma determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma `ResponseEntity` com uma `list` vazia ou populada no `body` da `Response`. / Filtering for a particular 'plate' (or part of it) informed by the user. Returns a `ResponseEntity` with an empty or populated `List` in `body` of the `Response`.
+  > *End-point* `/motorvehicles/{some_value}`, http-method `GET`.  
   
-  - **Filtrando por uma** determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_.  
-  > *End-point* `/motorvehicles/{um_valor}`, http-method `GET`.  
++ Cadastro de marcas / Brands registry
+  - Retorna uma `ResponseEntity` com uma **instância** do objeto persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an **instance** of the persisted/excluded object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
+  > *End-point* `/brands`, http-method `POST`, payload `JASON`;  
+  > *End-point* `/brands`, método-http `PUT`, payload `JASON`;  
+  > *End-point* `/brands`, método-http `PATCH`, payload `JASON`;  
+  > *End-point* `/brands`, método-http `DELETE`, payload `JASON`.  
   
-+ Cadastro de marcas
-  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
-  > *End-point* `/brands`, http-method `POST`;  
-  > *End-point* `/brands`, método-http `PUT`;  
-  > *End-point* `/brands`, método-http `PATCH`;  
-  > *End-point* `/brands`, método-http `DELETE`.  
+  
+  /* TODO: I ll continue from this point: Translate entire README.md.  */ 
+  
   
 + Consulta de **uma** marca  
   - Por **um** 'id'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.    
