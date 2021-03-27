@@ -1,30 +1,33 @@
-# DRYVE-CHALLENGE-1  
+# DRYVE CHALLENGE 1  
 pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
   
 en-US: Repository for the recruitment test for the junior java/kotlin job vacancy at [Dryve.com.br](https://dryve.com.br).  
   
 &nbsp;  
-  
-*Start 202103111830-UTC/GMT/Z-time*  
-*Last change 202103271030-UTC/GMT/Z-time*  
-  
 &nbsp;  
   
-## O quê é / What it is
-pt-BR: Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo.    
-Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
+*Start 202103112130-UTC/GMT/Z-time*  
+*Last change 202103271508-UTC/GMT/Z-time*  
   
-en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales.
-This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
+&nbsp;  
+&nbsp;  
+  
+## O QUÊ É / WHAT IT IS
+pt-BR: Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo. Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
+pt-BR:  **Agora, projeto _refatorado_ em nova fase** de desenvolvimento volutário para posteridade e portfólio.  
+  
+en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales. This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
+en-US: **Now, _refactored_ project in a new phase** of voluntary development for posterity and portfolio.  
   
   > **Nota / Note: soon version this project is going to be implemented and documented in english only.**  
   
 &nbsp;  
+&nbsp;  
   
-## Versões / Versions  
+## VERSÕES / VERSIONS
   
 ### Versão atual / Current Version 0.2.0-dev
-+ Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...
+Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...
 + Cadastro de marcas / Brands registry
   > *End-point* `/brands`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
   
@@ -53,15 +56,25 @@ This API receives some basic data from a vehicle, retrieves an information (the 
   > *End-point* `/motorvehicles`, http-method `GET`;  
   
 &nbsp;  
+&nbsp;  
   
 ## Diretrizes Roteiro / Guideline Roadmap
-### Futura versão / Future version 0.3.0-beta
-&nbsp;  
-
-### Futura versão / Future version 0.4.0-beta
+### Futura versão / Future version 0.**3**.0-beta
++ Description..
+  
 &nbsp;  
   
-### Versão objetivo final / Objective final version 1.0.0-release
+### Futura versão / Future version 0.**4**.0-beta
++ Description..
+  
+&nbsp;  
+  
+### Futura versão / Future version 0.**5**.0-beta
++ Description..
+  
+&nbsp;  
+  
+### Versão objetivo final / Final objective version 1.0.0-release
 + Autoapresentação: retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial. / Self-presentation: returns a smal text with application's version name, and an initial introduction.
   > *End-point* `/hello`, http-method `GET`.  
   
@@ -138,37 +151,43 @@ This API receives some basic data from a vehicle, retrieves an information (the 
   - Por **uma** 'placa'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.
   > *End-point* `/motorvehicles/plate/{um_valor}`, método-http `GET`.  
   
-###### Mais detalhes sobre cada end-point, seus verbos, e suas funcionalidades, vide [documentação do projeto](documentation/ "Em breve...").  
+###### Mais detalhes sobre cada end-point, seus métodos, e suas funcionalidades, vide [documentação do projeto](documentation/ "Em breve...").  
   
 &nbsp;  
+&nbsp;  
   
-  
-## Tecnologia  
-+ Java, Spring Boot, Spring Web, Spring Data JPA - Hibernate, Maven, PostgreSQL, Apache-Tomcat, Postman;  
+## TECNOLOGIAS / TECHNOLOGIES  
++ Java, Spring Boot, Spring Web, Spring Data JPA (Hibernate), Maven, PostgreSQL, Apache-Tomcat, Postman;  
 + Build da aplicação autocontida em pacote `.jar` (o famoso *"fat-jar"*, que contém o servidor Tomcat embutido);
   
 &nbsp;  
-  
-## Influências de "GitFlow"  
-### Estrutura básica GitFlow deste projeto:  
-+ main: *Branch* primário, inicial, e principal para mesclar/entregar a aplicação para o teste final de utilização. Branch De onde se dá o *release*;  
-+ main/develop: *Branch* base para o desenvolvimento da aplicação, apesar de possível ocorrer implementação neste *branch*, evita-se, pois utiliza-se os *branches* específicos para a codificação, tais como citados logo abaixo. Este *branch* nunca deve ser excluído. Após cada *sprint* ou lista-de-metas serem concluídas e mescladas a este *branch* **develop** e devidamente testada, lança o *branch* **release-x.y.z** de acordo com a cultura de versionamento do time-de-desenvolvedores, neste caso sugiro o *SemVer - Semantic Versioning*;  
-  - main/develop/feature/apelido-curto-da-feature: *Branch* criado exclusivamente para implementação da feature em questão. Após *feature* concluída e mesclada ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time de desenvolvedores;  
-  - main/develop/bugfix/apelido-curto-do-bug-fix: *Branch* criado exclusivamente para correção do *bug* encontrado em fase de teste (ou equipe de Q&A). Após *bug* corrigido e mesclado ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time-desenvolvedor;  
-+ main/hotfix/apelido-curto-do-hotfix: *Branch* exclusivamente para correção de *bugs* de prioridade máxima (encontrado na aplicação em produção ['em produção' = ativa, em funcionamento, produzindo para o cliente/contratante).  
-  
 &nbsp;  
   
-## A Arquitetura do Projeto  
-### Pacotes
-T...  
-  
-  
-### Classes e seus propósitos
-T...  
+## INFLUÊNCIAS DE GITFLOW / GITFLOW INFLUENCES
+### Estrutura básica GitFlow deste projeto:
++ main:	é o *branch* primário, inicial, e principal para mesclar/entregar a aplicação para o teste final de utilização. Branch De onde se dá o *release*;  
++ main/develop: é o *branch* base para o desenvolvimento da aplicação, apesar de possível ocorrer implementação neste *branch*, evita-se, pois utiliza-se os *branches* específicos para a codificação, tais como citados logo abaixo. Este *branch* nunca deve ser excluído. Após cada *sprint* ou lista-de-metas serem concluídas e mescladas a este *branch* **develop** e devidamente testada, lança o *branch* **release-x.y.z** de acordo com a cultura de versionamento do time-de-desenvolvedores, neste caso sugiro o *SemVer - Semantic Versioning*;  
+  - main/develop/feature/apelido-curto-da-feature: é o *branch* criado exclusivamente para implementação da feature em questão. Após *feature* concluída e mesclada ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time de desenvolvedores;  
+  - main/develop/bugfix/apelido-curto-do-bug-fix: é o *branch* criado exclusivamente para correção do *bug* encontrado em fase de teste (ou equipe de Q&A). Após *bug* corrigido e mesclado ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time-desenvolvedor;  
++ main/hotfix/apelido-curto-do-hotfix: é o *branch* exclusivamente para correção de *bugs* de prioridade máxima (encontrado na aplicação em produção ['em produção' = ativa, em funcionamento, produzindo para o cliente/contratante).  
   
 &nbsp;  
+&nbsp;  
   
-Por Ronaldo Marques: [RonaldoMarques.dev](https://ronaldomarques.dev "Conheça meu portfólio").  
+## ARQUITETURA DO PROJETO / PROJECT ARCHITECTURE
+### Pacotes / Packages
+Description...  
+  
+  
+### Classes e seus propósitos / Classes and their purposes
+Description...  
+  
+&nbsp;  
+&nbsp;  
+  
+<a name="author"></a>
+## Att. Ronaldo Marques.
+###### | https://ronaldomarques.dev | [linkedin @ronaldo marques](https://linkedin.com/in/ropimasi/) | [twitter @ropimasi](https://twitter.com/ropimasi/) | [insta @ropimasi](https://instagram.com/ropimasi/) | ronaldomarques@email.com |  
+&nbsp;  
   
   
