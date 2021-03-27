@@ -91,69 +91,70 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   - Filtrando por uma determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma `ResponseEntity` com uma `list` vazia ou populada no `body` da `Response`. / Filtering for a particular 'plate' (or part of it) informed by the user. Returns a `ResponseEntity` with an empty or populated `List` in `body` of the `Response`.
   > *End-point* `/motorvehicles/{some_value}`, http-method `GET`.  
   
-+ Cadastro de marcas / Brands registry
-  - Retorna uma `ResponseEntity` com uma **instância** do objeto persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an **instance** of the persisted/excluded object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
++ Cadastro de marcas / Registry of brands
+  - Retorna uma `ResponseEntity` com uma instância do objeto persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
   > *End-point* `/brands`, http-method `POST`, payload `JASON`;  
-  > *End-point* `/brands`, método-http `PUT`, payload `JASON`;  
-  > *End-point* `/brands`, método-http `PATCH`, payload `JASON`;  
-  > *End-point* `/brands`, método-http `DELETE`, payload `JASON`.  
+  > *End-point* `/brands`, http-method `PUT`, payload `JASON`;  
+  > *End-point* `/brands`, http-method `PATCH`, payload `JASON`;  
+  > *End-point* `/brands`, http-method `DELETE`, payload `JASON`.  
   
++ Consulta de **uma** marca específica / Consultation of **a** specific brand
+  - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
+  > *End-point* `/brands/id/{some_value}`, http-method `GET`.  
   
-  /* TODO: I ll continue from this point: Translate entire README.md.  */ 
+  - Por **um** `nome` da marca. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **a** brand's `name`. Returns a `ResponseEntity` with an instance of the consulted object, or null in `body` of the `Response`.
+  > *End-point* `/brands/name/{some_value}`, http-method `GET`.  
   
++ Cadastro de modelos / Registry of models
+  - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
+  > *End-point* `/models`, http-method `POST`, payload `JASON`;  
+  > *End-point* `/models`, http-method `PUT`, payload `JASON`;  
+  > *End-point* `/models`, http-method `PATCH`, payload `JASON`;  
+  > *End-point* `/models`, http-method `DELETE`, payload `JASON`.  
   
-+ Consulta de **uma** marca  
-  - Por **um** 'id'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.    
-  > *End-point* `/brands/id/{um_valor}`, método-http `GET`.  
++ Consulta de **um** modelo / Consultation of a specific model
+  - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
+  > *End-point* `/models/id/{some_value}`, http-method `GET`.
   
-  - Por **um** 'nome-da-marca'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
-  > *End-point* `/brands/name/{um_valor}`, método-http `GET`.  
+  - Por **um** `nome` do modelo. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **a** model's `name`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
+  > *End-point* `/models/name/{some_value}`, http-method `GET`.  
   
-+ Cadastro de modelos  
-  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.
-  > *End-point* `/models`, método-http `POST`;  
-  > *End-point* `/models`, método-http `PUT`;  
-  > *End-point* `/models`, método-http `PATCH`;  
-  > *End-point* `/models`, método-http `DELETE`.  
++ Cadastro de relações modelo-ano / Registry of model-year relation
+  - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
+  > *End-point* `/modelsyears`, http-method `POST`, payload `JASON`;  
+  > *End-point* `/modelsyears`, http-method `PUT`, payload `JASON`;  
+  > *End-point* `/modelsyears`, http-method `PATCH`, payload `JASON`;  
+  > *End-point* `/modelsyears`, http-method `DELETE`, payload `JASON`.  
   
-+ Consulta de **um** modelo  
-  - Por **um** 'id'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
-  > *End-point* `/modelo/id/{um_valor}`, método-http `GET`.
++ Consulta de **uma ou mais** relação modelo-ano / Consultation of **one or more** model-year relation
+  - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
+  > *End-point* `/modelsyears/id/{some_value}`, http-method `GET`.
   
-  - Por **um** 'nome-do-modelo'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
-  > *End-point* `/modelo/name/{um_valor}`, método-http `GET`.  
+  - Por **um** `nome` do modelo. Retorna uma `ResponseEntity` com uma `list` populada ou vazia de instância do objedo consultado, no `body` da `Response`. By **a** model's `name`. Returns a `ResponseEntity` with an `list` populated or empty of instance of the consulted object, in `body` of the `Response`.
+  > *End-point* `/modelsyears/name/{some_value}`, http-method `GET`.
   
-+ Cadastro de relações modelo-ano  
-  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
-  > *End-point* `/modelsyears`, método-http `POST`;  
-  > *End-point* `/modelsyears`, método-http `PUT`;  
-  > *End-point* `/modelsyears`, método-http `PATCH`;  
-  > *End-point* `/modelsyears`, método-http `DELETE`.  
-  
-+ Consulta de **uma ou mais** relação modelo-ano  
-  - Por **um** 'id'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.  
-  > *End-point* `/modelsyears/id/{um_valor}`, método-http `GET`.
-  
-  - Por **um** 'nome-do-modelo'. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_;  
-  > *End-point* `/modelsyears/name/{um_valor}`, método-http `GET`.
-  
-+ Cadastro de veículo-anunciado *(automotor)*
-  - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
-  > *End-point* `/motorvehicles`, método-http `POST`;  
-  > *End-point* `/motorvehicles`, método-http `PUT`;  
-  > *End-point* `/motorvehicles`, método-http `PATCH`;  
++ Cadastro de veículo-anunciado (automotor) / Registry of advertised-vehicle (motor vehicles)
+  - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
+  > *End-point* `/motorvehicles`, http-method `POST`;  
+  > *End-point* `/motorvehicles`, http-method `PUT`;  
+  > *End-point* `/motorvehicles`, http-method `PATCH`;  
   >> Integrados API KBB externa para armazenar o atributo `kbb_id`.  
-  >
-  > *End-point* `/motorvehicles`, método-http `DELETE`.  
+  >  
+  > *End-point* `/motorvehicles`, http-method `DELETE`.  
   >   
   
-+ Consulta de **um** veículo-anunciado.
-  - Por **uma** 'placa'. Retorna uma _**ResponseEntity**_ com uma **instância** do objedo consultado ou nulo no _**body**_.
-  > *End-point* `/motorvehicles/plate/{um_valor}`, método-http `GET`.  
++ Consulta de **um** veículo-anunciado. / Consultation of a specific advertised vehicle (motor vehicle)
+  - Por **uma** `placa`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` Response. / By **a** `plate`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
+  > *End-point* `/motorvehicles/plate/{some_value}`, http-method `GET`.  
   
-###### Mais detalhes sobre cada end-point, seus métodos, e suas funcionalidades, vide [documentação do projeto](documentation/ "Em breve...").  
+###### More details about the end-points, their methods, and their features, see [project documentation](documentation/ "Soon...").
   
 &nbsp;  
+&nbsp;  
+&nbsp;  
+  
+######  /* Soon, I' ll continue translating this README.md from this point. */  
+  
 &nbsp;  
   
 ## TECNOLOGIAS / TECHNOLOGIES  
