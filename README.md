@@ -1,78 +1,82 @@
-# DRYVE-DESAFIO-1  
-Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
+# DRYVE-CHALLENGE-1  
+pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
+en-US: Repository for the recruitment test for the junior java/kotlin job vacancy at [Dryve.com.br](https://dryve.com.br).  
   
 &nbsp;  
   
-*Start 20210311 1830-0300*  
-*Last change 20210316 0810-0300*  
+*Start 202103111830-UTC/GMT/Z-time*  
+*Last change 202103271030-UTC/GMT/Z-time*  
   
 &nbsp;  
   
-## O quê é  
-Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo.  
-  
-Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública 
-do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
-  
-&nbsp;  
-  
-## Versões  
-  
-### Versão anterior 0.1.0-**beta** &nbsp; ::concluída
-+ Listagem de marcas
-    > *End-point* `/brands`, método-http `GET`;  
-  
-+ Listagem de modelo  
-  > *End-point* `/models`, método-http `GET`;  
-  
-+ Listagem de relações modelo-ano  
-  > *End-point* `/modelsyears`, método-http `GET`;  
-  
-+ Listagem de veículos-anunciados *(automotores)*
-  > *End-point* `/motorvehicles`, método-http `GET`;  
+## O quê é / What it is
+pt-BR: Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo.    
+Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
+en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales.
+This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
   
 &nbsp;  
   
-### Versão atual 0.2.0-**dev** &nbsp; ::em desenvolvimento
+## Versões / Versions  
+  
+### Versão atual / Current Version 0.2.0-dev
 + Todas as funcionalidades da versão anteior, mais...
 + Cadastro de marcas
-  > *End-point* `/brands`, método-http `POST`, corpo *(payload)* `objeto em JSON`;  
+  > *End-point* `/brands`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
   
 + Cadastro de modelos  
-  > *End-point* `/models`, método-http `POST`, corpo *(payload)* `objeto em JSON`;  
+  > *End-point* `/models`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
   
 + Cadastro de relações modelo-ano  
-  > *End-point* `/modelsyears`, método-http `POST`, corpo *(payload)* `objeto em JSON`;  
+  > *End-point* `/modelsyears`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
   
 + Cadastro de veículos-anunciados *(automotores)*  
-  > *End-point* `/motorvehicles`, método-http `POST`, corpo *(payload)* `objeto em JSON`;    
+  > *End-point* `/motorvehicles`, http-method `POST`, corpo *(payload)* `objeto em JSON`;    
   
 &nbsp;
   
+### Versão anterior / Last Version 0.1.0-beta
++ Listagem de marcas / Brands listing
+    > *End-point* `/brands`, http-method `GET`;  
+  
++ Listagem de modelo / Models listing
+  > *End-point* `/models`, http-method `GET`;  
+  
++ Listagem de relações modelo-ano / Model-year relation listing
+  > *End-point* `/modelsyears`, http-method `GET`;  
+  
++ Listagem de veículos-anunciados (automotores) / Advertised vehicles listing (motor vehicles)
+  > *End-point* `/motorvehicles`, http-method `GET`;  
+  
+&nbsp;  
+  
 ## Roadmap / To-Do / Tasks  
-### Versão Objetivo 1.0.0-**release**  
+### Versão Objetivo / Objective version 1.0.0-release
+
+/* TODO: I ll continue from here. Translating and implementing... */
+
 + Autoapresentação: Retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial.  
-  > *End-point* `/hello`, método-http `GET`.  
+  > *End-point* `/hello`, http-method `GET`.  
   
 + Sumário de funcionalidades: Retorna uma **lista** de cada end-point disponível no projeto e uma breve descrição de sua função.  
-  > *End-point* `/help`, método-http `GET`.  
+  > *End-point* `/help`, http-method `GET`.  
   
 + Listagem de URIs  
   - Listagem comun de todos registros de cada URI. Retorna uma _**ResponseEntity**_ com uma **lista** vazia ou populada no _**body**_.
-  > *End-point* `/brands`, método-http `GET`;  
-  > *End-point* `/models`, método-http `GET`;  
-  > *End-point* `/modelsyears`, método-http `GET`;  
-  > *End-point* `/motovehicles`, método-http `GET`;  
+  > *End-point* `/brands`, http-method `GET`;  
+  > *End-point* `/models`, http-method `GET`;  
+  > *End-point* `/modelsyears`, http-method `GET`;  
+  > *End-point* `/motovehicles`, http-method `GET`;  
   
   - **Todos** os veículos cadastrados. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_;  
-  > *End-point* `/motorvehicles`, método-http `GET`.  
+  > *End-point* `/motorvehicles`, http-method `GET`.  
   
   - **Filtrando por uma** determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma _**ResponseEntity**_ com uma lista **vazia** ou populada no _**body**_.  
-  > *End-point* `/motorvehicles/{um_valor}`, método-http `GET`.  
+  > *End-point* `/motorvehicles/{um_valor}`, http-method `GET`.  
   
 + Cadastro de marcas
   - Retorna uma _**ResponseEntity**_ com uma **instância** do objedo persistido ou nulo no _**body**_.  
-  > *End-point* `/brands`, método-http `POST`;  
+  > *End-point* `/brands`, http-method `POST`;  
   > *End-point* `/brands`, método-http `PUT`;  
   > *End-point* `/brands`, método-http `PATCH`;  
   > *End-point* `/brands`, método-http `DELETE`.  
