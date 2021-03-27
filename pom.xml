@@ -11,10 +11,10 @@
 	</parent>
 	
 	<groupId>dev.ronaldomarques.dryve</groupId>
-	<artifactId>desafio-1</artifactId>
+	<artifactId>challenge-1</artifactId>
 	<version>0.1.0-dev</version>
-	<name>DRYVE-DESAFIO-1</name>
-	<description>Demo for Java Web Spring Boot Maven Restful Project.</description>
+	<name>DRYVE_CHALLENGE_1</name>
+	<description>Projeto demonstrativo de habilidades em desenvolvimento de API RESTful com Java, Spring Boot, Maven, PostgreSQL</description>
 	
 	<properties>
 		<java.version>11</java.version>
