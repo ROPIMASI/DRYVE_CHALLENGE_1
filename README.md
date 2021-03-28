@@ -7,7 +7,7 @@ en-US: Repository for the recruitment test for the junior java/kotlin job vacanc
 &nbsp;  
   
 *Start 202103112130-UTC/GMT/Z-time*  
-*Last change 202103271920-UTC/GMT/Z-time*  
+*Last change 202103281321-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -19,7 +19,7 @@ pt-BR:  **Agora, projeto _refatorado_ em nova fase** de desenvolvimento volutár
 en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales. This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
 en-US: **Now, _refactored_ project in a new phase** of voluntary development for posterity and portfolio.  
   
-  > **Nota / Note: soon version this project is going to be implemented and documented in english only.**  
+  > **Nota / Note: next project's version is going to be implemented and documented in english only.**  
   
 &nbsp;  
 &nbsp;  
@@ -151,26 +151,26 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 &nbsp;  
 &nbsp;  
-&nbsp;  
-  
-######  /* Soon, I' ll continue translating this README.md from this point. */  
-  
-&nbsp;  
   
 ## TECNOLOGIAS / TECHNOLOGIES  
 + Java, Spring Boot, Spring Web, Spring Data JPA (Hibernate), Maven, PostgreSQL, Apache-Tomcat, Postman;  
-+ Build da aplicação autocontida em pacote `.jar` (o famoso *"fat-jar"*, que contém o servidor Tomcat embutido);
++ Built as a standalone/self-contained application with "file.jar" packaging (the famous "fat-jar", which contains the built-in Apache-Tomcat server);
   
 &nbsp;  
-&nbsp;  
+&nbsp;
+
+  /* parei aki
+   After each sprint ends goals list be reached and merged to this branch (develop) so properly tested, lança o *branch* **release-x.y.z** de acordo com a cultura de versionamento do time-de-desenvolvedores, neste caso sugiro o *SemVer - Semantic Versioning*
+ */
   
 ## INFLUÊNCIAS DE GITFLOW / GITFLOW INFLUENCES
-### Estrutura básica GitFlow deste projeto:
-+ main:	é o *branch* primário, inicial, e principal para mesclar/entregar a aplicação para o teste final de utilização. Branch De onde se dá o *release*;  
-+ main/develop: é o *branch* base para o desenvolvimento da aplicação, apesar de possível ocorrer implementação neste *branch*, evita-se, pois utiliza-se os *branches* específicos para a codificação, tais como citados logo abaixo. Este *branch* nunca deve ser excluído. Após cada *sprint* ou lista-de-metas serem concluídas e mescladas a este *branch* **develop** e devidamente testada, lança o *branch* **release-x.y.z** de acordo com a cultura de versionamento do time-de-desenvolvedores, neste caso sugiro o *SemVer - Semantic Versioning*;  
-  - main/develop/feature/apelido-curto-da-feature: é o *branch* criado exclusivamente para implementação da feature em questão. Após *feature* concluída e mesclada ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time de desenvolvedores;  
-  - main/develop/bugfix/apelido-curto-do-bug-fix: é o *branch* criado exclusivamente para correção do *bug* encontrado em fase de teste (ou equipe de Q&A). Após *bug* corrigido e mesclado ao *branch* superior(ou anterior) pode-se (ou não) excluir o *branch* de acordo com a cultura do time-desenvolvedor;  
-+ main/hotfix/apelido-curto-do-hotfix: é o *branch* exclusivamente para correção de *bugs* de prioridade máxima (encontrado na aplicação em produção ['em produção' = ativa, em funcionamento, produzindo para o cliente/contratante).  
+### *GITFLOW*'s Basic Structure In This Projeto
++ **_main_**: primary branch, the initial one, and the main one, which receive (merging) else branches, then to perform the full-test of the version before release. This is the branch from which the "release branch" occurs; This branch must never be deleted;
++ main/**_develop_**: the base-branch to the application development, although it is possible to occur some implementation in it, it is discouraged, as exists specifics branches to the features coding, such as the pointed ones below. This branch must never be deleted;
+  - main/develop/**_feature_**/**_shot_alias_**: this branch is created exclusively for feature implementation, a chosen feature according to the Project Backlog and Sprint Backlog, as it can be noticed through this feature's name. After the feature is completed and merged with the source branch, you can (or not) delete the branch according to the development team's culture and the needs of the project;  
+  - main/develop/**_bugfix_**/**_bug's_short_alias_**: this branch is created exclusively for currection of the bug (or else issues) mentioned at the branch's alias, which used to be found in test phase (or Q&A team). After the job on the bug/issue has been completed and merged with the source branch, you can (or not) delete the branch according to the development team's culture and the needs of the project;  
++ main/**_hotfix_**/**_hotfix's_short_alias_**: this branch is created exclusively for correction of the max priority bugs (or else issues) mentioned at the branch's alias, which are found in the prerelease test phase (or Q&A team) or more commonly found by the user, so reported after release.
+  
   
 &nbsp;  
 &nbsp;  
