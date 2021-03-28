@@ -24,6 +24,7 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -32,29 +33,41 @@ import javax.persistence.Table;
  * @author   Ronaldo Marques.
  * @since    20210314.
  * @version  20210315.
- * @category Modelagem do Negócio, classe concreta que representa as marcas existentes na aplicação.
+ * @category Modelagem do Negócio, classe concreta que representa a singularidade de cada registro importado da API-KBB,
+ *           permitindo um único preço para cada associação "modelo-ano".
  */
 @Entity
-@Table(name = "brand")
-public class Brand {
+@Table(name = "model_year")
+public class ModelYearEntity {
 	
 	@Id
 	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
-	 * principalmente atrelando o código UUID à string do 'name' para que nunca se registre
+	 * principalmente atrelando o código UUID à string do campo-derivado 'modelEntity.id'+'year' para que nunca se registre
 	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
 	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
 	 * POSTGRSQL. */
-	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_band_id")
+	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_model_year_id")
 	private UUID id = UUID.randomUUID();
 	/* PK at DB. Por agora ao instanciar o objeto já define-se seu 'id' com UUID-v4-random, posteriormente será valor da
 	 * chave UUID.function_v4() do PostgreSQL. */
 	
-	@Column(name = "name", nullable = false)
-	private String name;
+	@ManyToOne
+	// @Column(name = "model_id", nullable = false)
+	private ModelEntity modelEntity; // FK(ModelEntity.id) at DB.
+	
+	@Column(name = "year", nullable = false)
+	private short year = 0;
+	/* Inicia o atributo com valor ZERO para garantir um valor não nulo, esta aplicação considera zero como um valor
+	 * desconhecido, ou não informado, ou erro de informação pelo usuário. */
+	
+	@Column(name = "kbb_id", nullable = false)
+	private long kbbId = 0;
+	/* Inicia o atributo com valor ZERO para garantir um valor não nulo, já que a documentação da KBB-API afirma que não
+	 * existe registro com id=0 em seus registros. */
 	
 	
 	
-	public Brand() {
+	public ModelYearEntity() {
 		
 		super();
 		
@@ -64,19 +77,33 @@ public class Brand {
 	
 	public UUID getId() { return id; }
 	
-	// private void setId(UUID id) { this.id = id; }
-	/* Integridade: somente o BD gera o 'id' do objeto, e somente os Spring(Bean-Container) e Hibernate pode fazer o
-	 * 'bind' do valor ao atributo, por fim nem a codificação 'POJO' nem usuário devem ter acesso para alterar. */
+	
+	
+	public void setId(UUID id) { this.id = id; }
 	
 	
 	
-	public String getName() { return name; }
+	public ModelEntity getModel() { return modelEntity; }
 	
 	
 	
-	public void setName(String name) { this.name = name.toUpperCase(); }
-	/* .setName() possui .upperCase() para garantir que todo nome-de-marca mantenha seu padrão de grafia MAIÚSCULO,
-	 * mesmo que usuário envie a representação JSON com nome em letras minúsculas. */
+	public void setModelId(ModelEntity modelEntity) { this.modelEntity = modelEntity; }
+	
+	
+	
+	public short getYear() { return year; }
+	
+	
+	
+	public void setYear(short year) { this.year = year; }
+	
+	
+	
+	public long getKbbId() { return kbbId; }
+	
+	
+	
+	public void setKbbId(long kbbId) { this.kbbId = kbbId; }
 	
 	
 	
@@ -86,7 +113,9 @@ public class Brand {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (int) (kbbId ^ (kbbId >>> 32));
+		result = prime * result + ((modelEntity == null) ? 0 : modelEntity.hashCode());
+		result = prime * result + year;
 		return result;
 		
 	}
@@ -99,18 +128,21 @@ public class Brand {
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
-		Brand other = (Brand) obj;
+		ModelYearEntity other = (ModelYearEntity) obj;
 		
 		if (id == null) {
 			if (other.id != null) return false;
 		}
 		else if (!id.equals(other.id)) return false;
 		
-		if (name == null) {
-			if (other.name != null) return false;
-		}
-		else if (!name.equals(other.name)) return false;
+		if (kbbId != other.kbbId) return false;
 		
+		if (modelEntity == null) {
+			if (other.modelEntity != null) return false;
+		}
+		else if (!modelEntity.equals(other.modelEntity)) return false;
+		
+		if (year != other.year) return false;
 		return true;
 		
 	}
@@ -120,7 +152,7 @@ public class Brand {
 	@Override
 	public String toString() {
 		
-		return "Brand [id=" + id + ", name=" + name + "]";
+		return "ModelYearEntity [id=" + id + ", modelEntity=" + modelEntity + ", year=" + year + ", kbbId=" + kbbId + "]";
 		
 	}
 	

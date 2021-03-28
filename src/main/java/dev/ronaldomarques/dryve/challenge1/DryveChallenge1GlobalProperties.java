@@ -34,19 +34,19 @@ import org.springframework.stereotype.Component;
 @Component
 public final class DryveChallenge1GlobalProperties {
 	
-	@Value("${dryve.global.versao-maior}")
+	@Value("${dryve.global.major-version}")
 	private byte majorVersion;
 	
-	@Value("${dryve.global.versao-menor}")
+	@Value("${dryve.global.minor-version}")
 	private byte minorVersion;
 	
-	@Value("${dryve.global.versao-correcao}")
+	@Value("${dryve.global.patch-version}")
 	private byte patchVersion;
 	
-	@Value("${dryve.global.versao-estagio}")
+	@Value("${dryve.global.status-version}")
 	private String stageVersion;
 	
-	@Value("${dryve.global.nome-aplicacao}")
+	@Value("${dryve.global.application-name}")
 	private String appName;
 	
 	/* Valor desta propriedade é determinado no static-constructor. */

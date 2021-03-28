@@ -24,7 +24,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import dev.ronaldomarques.dryve.challenge1.domain.model.entity.Model;
+import dev.ronaldomarques.dryve.challenge1.domain.model.entity.ModelEntity;
 
 
 
@@ -40,6 +40,6 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.Model;
  *           processos padrões que já estão disponíveis no framework.
  */
 @Repository
-public interface ModelRepository extends JpaRepository<Model, UUID> {
+public interface ModelRepository extends JpaRepository<ModelEntity, UUID> {
 	
 }

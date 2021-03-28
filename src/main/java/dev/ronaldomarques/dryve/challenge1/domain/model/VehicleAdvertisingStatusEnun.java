@@ -28,7 +28,7 @@ package dev.ronaldomarques.dryve.challenge1.domain.model;
  * @Análise  Após veículo ser vendidoo anúncio precisa ser inativado para não incorrer em venda de veículo inexistente
  *           ou indisponível.
  */
-public enum EnunVehicleAdvertisingStatus {
+public enum VehicleAdvertisingStatusEnun {
 	ACTIVE,
 	INACTIVE;
 }

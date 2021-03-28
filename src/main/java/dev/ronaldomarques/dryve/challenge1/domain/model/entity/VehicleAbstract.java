@@ -34,7 +34,7 @@ import java.util.UUID;
  * @Análise  Esta abordagem possibilita implementação de diferentes tipos de veículos que precisarão do polimorfismo
  *           para terem diferentes tratamentos na aplicação e futura integração com NOSQL-DB.
  */
-public abstract class AbstractVehicle {
+public abstract class VehicleAbstract {
 	
 	protected String plate; // PK at DB.
 	protected UUID modelYearId; // FK(modelYear.id) at DB.
@@ -49,7 +49,7 @@ public abstract class AbstractVehicle {
 	
 	
 	
-	public AbstractVehicle() {
+	public VehicleAbstract() {
 		
 		super();
 		

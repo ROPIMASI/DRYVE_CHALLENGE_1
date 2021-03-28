@@ -23,9 +23,7 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.repository;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import dev.ronaldomarques.dryve.challenge1.domain.model.entity.Brand;
-
+import dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity;
 
 
 
@@ -40,6 +38,6 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.Brand;
  *           processos padrões que já estão disponíveis no framework.
  */
 @Repository
-public interface BrandRepository extends JpaRepository<Brand, UUID> {
+public interface BrandRepository extends JpaRepository<BrandEntity, UUID> {
 	
 }

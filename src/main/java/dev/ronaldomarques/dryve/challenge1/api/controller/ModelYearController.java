@@ -29,20 +29,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import dev.ronaldomarques.dryve.challenge1.domain.model.entity.ModelYear;
+import dev.ronaldomarques.dryve.challenge1.domain.model.entity.ModelYearEntity;
 import dev.ronaldomarques.dryve.challenge1.domain.model.repository.ModelYearRepository;
+import dev.ronaldomarques.myutility.debugger.DP;
 
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210315.
- * @version  20210315.
- * @category Controladora: Classa especializada em receber as requisições de clientes, processar dados preliminares
- *           (mínimo possível seguindo pricípios de "SOLID"), delegar o processamento principal às respectivas classes
- *           de regras de negócio do domínio, e ou de serviços, e então enviar respostas ao cliente-requisitante.
- * @Análise  ...
+ * @author      Ronaldo Marques.
+ * @since       20210315.
+ * @last_change 20210328.
+ * @version     0.2.0.
+ * @category    Controladora: Classa especializada em receber as requisições de clientes, processar dados preliminares
+ *              (mínimo possível seguindo pricípios de "SOLID"), delegar o processamento principal às respectivas
+ *              classes de regras de negócio do domínio, e ou de serviços, e então enviar respostas ao
+ *              cliente-requisitante.
+ * @Análise     ...
  */
 @RestController
 @RequestMapping(value = "/modelsyears", produces = "application/json;charset=UTF-8")
@@ -74,7 +76,7 @@ public class ModelYearController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<?> listar() {
 		
-		System.out.println("[DEBUG: " + this.getClass().getName() + "]");
+		DP.pdln(this.getClass().getName() + ".listar();"); // Simple debug printing, using my personal LIB.
 		
 		return ResponseEntity.ok(modelYearRepo.findAll());
 		
@@ -84,16 +86,15 @@ public class ModelYearController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<?> adicionar(@RequestBody ModelYear modelYear) {
+	public ResponseEntity<?> adicionar(@RequestBody ModelYearEntity modelYearEntity) {
 		
-		System.out.println("[DEBUG: " + this.getClass().getName() + "]");
+		DP.pdln(this.getClass().getName() + ".adicionar();"); // Simple debug printing, using my personal LIB.
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(modelYearRepo.save(modelYear));
+		return ResponseEntity.status(HttpStatus.CREATED).body(modelYearRepo.save(modelYearEntity));
 		
-		/* TODO: AINDA POR TERMINAR...
+		/* FURTHER: AINDA POR TERMINAR...
 		 * FIXME: IMPLEMENTAR A CAMADA DE REGRAS DE NEGÓCIO "SERVICE" CONFORME ARQUITETURA DO PROJETO,
 		 * NO PACOTE 'dev.ronaldomarques.dryve.challenge1.domain.service'. */
-		
 	}
 	
 }

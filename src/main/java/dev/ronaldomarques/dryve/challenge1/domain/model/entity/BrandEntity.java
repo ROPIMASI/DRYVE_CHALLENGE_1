@@ -24,7 +24,6 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -33,19 +32,19 @@ import javax.persistence.Table;
  * @author   Ronaldo Marques.
  * @since    20210314.
  * @version  20210315.
- * @category Modelagem do Negócio, classe concreta que representa os modelos existentes na aplicação.
+ * @category Modelagem do Negócio, classe concreta que representa as marcas existentes na aplicação.
  */
 @Entity
-@Table(name = "model")
-public class Model {
+@Table(name = "brand")
+public class BrandEntity {
 	
 	@Id
 	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
-	 * principalmente atrelando o código UUID à string do campo 'brand.id' para que nunca se registre
+	 * principalmente atrelando o código UUID à string do 'name' para que nunca se registre
 	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
 	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
 	 * POSTGRSQL. */
-	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_model_id")
+	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_band_id")
 	private UUID id = UUID.randomUUID();
 	/* PK at DB. Por agora ao instanciar o objeto já define-se seu 'id' com UUID-v4-random, posteriormente será valor da
 	 * chave UUID.function_v4() do PostgreSQL. */
@@ -53,13 +52,9 @@ public class Model {
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	@ManyToOne
-	// @Column(name = "brand_id", nullable = false)
-	private Brand brand; // FK(Brand.id) at DB.
 	
 	
-	
-	public Model() {
+	public BrandEntity() {
 		
 		super();
 		
@@ -69,9 +64,9 @@ public class Model {
 	
 	public UUID getId() { return id; }
 	
-	
-	
-	public void setId(UUID id) { this.id = id; }
+	// private void setId(UUID id) { this.id = id; }
+	/* Integridade: somente o BD gera o 'id' do objeto, e somente os Spring(Bean-Container) e Hibernate pode fazer o
+	 * 'bind' do valor ao atributo, por fim nem a codificação 'POJO' nem usuário devem ter acesso para alterar. */
 	
 	
 	
@@ -80,16 +75,8 @@ public class Model {
 	
 	
 	public void setName(String name) { this.name = name.toUpperCase(); }
-	/* .setName() possui .upperCase() para garantir que todo nome-de-modelo mantenha seu padrão de grafia MAIÚSCULO,
+	/* .setName() possui .upperCase() para garantir que todo nome-de-marca mantenha seu padrão de grafia MAIÚSCULO,
 	 * mesmo que usuário envie a representação JSON com nome em letras minúsculas. */
-	
-	
-	
-	public Brand getBrand() { return brand; }
-	
-	
-	
-	public void setBrand(Brand brand) { this.brand = brand; }
 	
 	
 	
@@ -98,7 +85,6 @@ public class Model {
 		
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
@@ -113,12 +99,7 @@ public class Model {
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
-		Model other = (Model) obj;
-		
-		if (brand == null) {
-			if (other.brand != null) return false;
-		}
-		else if (!brand.equals(other.brand)) return false;
+		BrandEntity other = (BrandEntity) obj;
 		
 		if (id == null) {
 			if (other.id != null) return false;
@@ -139,7 +120,7 @@ public class Model {
 	@Override
 	public String toString() {
 		
-		return "Model [id=" + id + ", name=" + name + ", brand=" + brand + "]";
+		return "BrandEntity [id=" + id + ", name=" + name + "]";
 		
 	}
 	

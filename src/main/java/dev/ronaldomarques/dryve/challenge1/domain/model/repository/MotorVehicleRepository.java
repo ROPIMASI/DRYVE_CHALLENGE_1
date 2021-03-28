@@ -23,7 +23,7 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicle;
+import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntity;
 
 
 
@@ -39,6 +39,6 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicle;
  *           processos padrões que já estão disponíveis no framework.
  */
 @Repository
-public interface MotorVehicleRepository extends JpaRepository<MotorVehicle, String> {
+public interface MotorVehicleRepository extends JpaRepository<MotorVehicleEntity, String> {
 	
 }

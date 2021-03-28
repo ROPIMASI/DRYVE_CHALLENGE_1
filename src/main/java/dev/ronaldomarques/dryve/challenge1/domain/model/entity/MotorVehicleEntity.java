@@ -30,7 +30,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import dev.ronaldomarques.dryve.challenge1.domain.model.EnunVehicleAdvertisingStatus;
+import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatusEnun;
 
 
 
@@ -50,7 +50,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.EnunVehicleAdvertisingSt
  */
 @Entity
 @Table(name = "motor_vehicle")
-public class MotorVehicle extends AbstractVehicle {
+public class MotorVehicleEntity extends VehicleAbstract {
 	
 	/* Overriding os atributos originais da classe abstrata para Modelarem-Objeto-Relacional do HIBERNATE. */
 	@Id
@@ -59,7 +59,7 @@ public class MotorVehicle extends AbstractVehicle {
 	
 	@ManyToOne
 	@JoinColumn(name = "model_year_id", nullable = false)
-	private ModelYear modelYear; // FK(modelYear.id) at DB.
+	private ModelYearEntity modelYearEntity; // FK(modelYearEntity.id) at DB.
 	
 	@Column(name = "year", nullable = false)
 	private short year;
@@ -83,7 +83,7 @@ public class MotorVehicle extends AbstractVehicle {
 	 * veículo anunciado, pois entendi na regra de negócio, que espera-se, que este veículo sejá vendido, logo seu
 	 * anúcio registrado precisa ser desativado para não ser anunciado erroneamente. */
 	@Column(name = "veh_adv_status", nullable = false)
-	private EnunVehicleAdvertisingStatus enunVehicleAdvertisingStatus = EnunVehicleAdvertisingStatus.ACTIVE;// AbstractVehicle
+	private VehicleAdvertisingStatusEnun vehicleAdvertisingStatusEnun = VehicleAdvertisingStatusEnun.ACTIVE;// VehicleAbstract
 																											// Advertising
 																											// Status =
 																											// Estado de
@@ -92,7 +92,7 @@ public class MotorVehicle extends AbstractVehicle {
 	
 	
 	
-	public MotorVehicle() {
+	public MotorVehicleEntity() {
 		
 		super();
 		
@@ -150,11 +150,11 @@ public class MotorVehicle extends AbstractVehicle {
 	
 	
 	
-	public EnunVehicleAdvertisingStatus getVeAdvStatus() { return enunVehicleAdvertisingStatus; }
+	public VehicleAdvertisingStatusEnun getVeAdvStatus() { return vehicleAdvertisingStatusEnun; }
 	
 	
 	
-	public void setVeAdvStatus(EnunVehicleAdvertisingStatus status) { this.enunVehicleAdvertisingStatus = status; }
+	public void setVeAdvStatus(VehicleAdvertisingStatusEnun status) { this.vehicleAdvertisingStatusEnun = status; }
 	
 	
 	
@@ -169,7 +169,7 @@ public class MotorVehicle extends AbstractVehicle {
 		result = prime * result + ((priceKBB == null) ? 0 : priceKBB.hashCode());
 		result = prime * result + ((registryDate == null) ? 0 : registryDate.hashCode());
 		result = prime * result
-				+ ((enunVehicleAdvertisingStatus == null) ? 0 : enunVehicleAdvertisingStatus.hashCode());
+				+ ((vehicleAdvertisingStatusEnun == null) ? 0 : vehicleAdvertisingStatusEnun.hashCode());
 		result = prime * result + year;
 		return result;
 		
@@ -183,7 +183,7 @@ public class MotorVehicle extends AbstractVehicle {
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
-		MotorVehicle other = (MotorVehicle) obj;
+		MotorVehicleEntity other = (MotorVehicleEntity) obj;
 		
 		if (modelYearId == null) {
 			if (other.modelYearId != null) return false;
@@ -210,7 +210,7 @@ public class MotorVehicle extends AbstractVehicle {
 		}
 		else if (!registryDate.equals(other.registryDate)) return false;
 		
-		if (enunVehicleAdvertisingStatus != other.enunVehicleAdvertisingStatus) return false;
+		if (vehicleAdvertisingStatusEnun != other.vehicleAdvertisingStatusEnun) return false;
 		if (year != other.year) return false;
 		return true;
 		
@@ -221,10 +221,10 @@ public class MotorVehicle extends AbstractVehicle {
 	@Override
 	public String toString() {
 		
-		return "MotorVehicle [plate=" + plate + ", modelYearId=" + modelYearId + ", year=" + year + ", priceAdv="
+		return "MotorVehicleEntity [plate=" + plate + ", modelYearId=" + modelYearId + ", year=" + year + ", priceAdv="
 				+ priceAdv + ", priceKBB=" + priceKBB + ", registryDate=" + registryDate
-				+ ", EnunVehicleAdvertisingStatus="
-				+ enunVehicleAdvertisingStatus + "]";
+				+ ", VehicleAdvertisingStatusEnun="
+				+ vehicleAdvertisingStatusEnun + "]";
 		
 	}
 	
