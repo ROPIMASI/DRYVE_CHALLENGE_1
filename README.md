@@ -7,7 +7,7 @@ en-US: Repository for the recruitment test for the junior java/kotlin job vacanc
 &nbsp;  
   
 *Start 202103112130-UTC/GMT/Z-time*  
-*Last change 202103281724-UTC/GMT/Z-time*  
+*Last change 202103291450-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -24,9 +24,41 @@ en-US: **Now, _refactored_ project in a new phase** of voluntary development for
 &nbsp;  
 &nbsp;  
   
+<a name="versions"></a>
 ## VERSÕES / VERSIONS
+<a name="versioning"></a>
+### VERSIONING GUIDELINES
+In a team project, it is very important to know and follow the specifications of the project version. Although at the moment **DRYVE_CHALLENGE_1**'s status is under early development (as it has not its first stable version [1.0.0-released] released yet) its project already is designed under [**_SemVer_** (Semantic Versioning Specification)](http://semver.org/).  
+Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** is a specification (set of rules) that tells (or dictates) us how to use the numbers (and some letters) on the _versioning-expression_ (**_VerExpr_**). More specifically, **DRYVE_CHALLENGE_1** uses the following standardization: **_Major.Minor.Patch-ReleaseStatus+Build_**, where:
+* The standard values of **_Major_**, **_Minor_**, and **_Patch_** for the _VerExpr_ are as follows:
+  + Positive integer decimal numbers, without zero remaining on the left;
+  + **_Major_** version represents wider changes in the project, which affects the main structure of the project, or its main objectives, or the last user API released;
+  + **_Minor_** version represents smaller changes in the project, which don't affect above itens, but affect the amount of the application fuatrures with a new one or more, or remove an existing feature previouslly released;
+  + **_Patch_** version represents specific changes which goals to fix or improve some feature, or undesired behavior in the application.  
+* The standard flags of **_ReleaseStatus_** for the **_VerExpr_** are as follows:
+  + **_dev_**: in early development, being coding, structuring, refatoring, has no all expected methods, usage not encouraged;
+  + **_alpha_**: in development, first test phase, it's encouraged usage for **test only** by people involved with software development, at self-own risk;
+  + **_beta_**: in pre-release version, general public usage is acceptable, however, **only for test**, usage is a choice at self-own risk;
+  + **_released_**: it is a relatively stable version, stable in proportion to the effectiveness of the tests; bugs are possible to appear, so it would come back to a _hotfix-branch_ if needed.
+* The standard values of **_Build_** for the _VerExpr_ are as follows:
+  + A 12-digit numeric sequence, positive integer decimal digits, formatted somewhat similar to PostgreSQL DateTime YYYYMMDDhhmm;
+  + The initial 4 digits (YYYY) represent the year;
+  + The next 2 digits (MM) represent the month;
+  + The next 2 digits (DD) represent the day;
+  + The next 2 digits (hh) represent the hour;
+  + The following 2 digits (mm) represent the minutes;
+  + All referring to the moment when the developer builds/exports the application container. (* 1)  
   
-### Versão atual / Current Version 0.2.0-dev
+> Example of **_Build_**: "202103250231".  
+  
+> (* 1) The numerical sequence _Build_ necessarily refers to Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC), or "Z time" or "Zulu time".  
+  
+> Full example of **_Versioning-Expression_**: `1.2.3-released+202107301409`, meaning `1`._ ._ version fully implemented according to the project and its backlog; added by _ .`2`._ additionals features to the main version, according to the project backlog and its issues priorities in the **_SCRUM life cycle_**; added by _ ._ .`3` patches fixed in this mentioned lastest version following the **_GITFLOW life cycle_**, that means, it is a released version after passed by the tests in **_alpha_** and **_beta_** pre-releases; and finally, it was/would specifically build at the year 2021 month 07 (July) day 30 at 14:09h at UTC/GMT/Z-time/Zulu-time (14hours and 09minutes equal 2pm and 09minutes in some idioms).  
+  
+&nbsp;
+    
+<a name="current"></a>  
+### Versão atual / Current Version 0.2.0-**alpha**
 Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...
 + Cadastro de marcas / Brands registry
   > *End-point* `/brands`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
@@ -42,7 +74,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 &nbsp;
   
-### Versão anterior / Last Version 0.1.0-beta
+### Versão anterior / Last Version 0.1.0-**beta**
 + Listagem de marcas / Brands listing
     > *End-point* `/brands`, http-method `GET`;  
   
@@ -60,10 +92,12 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 ## Diretrizes Roteiro / Guideline Roadmap
 ### Futura versão / Future version 0.**3**.0-beta
-+ Description..
+All features from last version, plus...
++ Integration with KBB public API: consulting the price for `price_KBB` object's atribute related to the relation represented by `model_year` object's atribute;    
+  > *Internal* `dev.ronaldomarques.dryve.challenge1.domain.**service**.ModelsYearsRegistryService`, new method `.fetchKBBId();`;
   
-&nbsp;  
-  
+&nbsp;
+    
 ### Futura versão / Future version 0.**4**.0-beta
 + Description..
   
@@ -74,7 +108,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 &nbsp;  
   
-### Versão objetivo final / Final objective version 1.0.0-release
+### Versão objetivo final / Final objective version 1.0.0-released
 + Autoapresentação: retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial. / Self-presentation: returns a smal text with application's version name, and an initial introduction.
   > *End-point* `/hello`, http-method `GET`.  
   
@@ -158,18 +192,14 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 &nbsp;  
 &nbsp;
-
-  /* parei aki
-   After each sprint ends goals list be reached and merged to this branch (develop) so properly tested, lança o *branch* **release-x.y.z** de acordo com a cultura de versionamento do time-de-desenvolvedores, neste caso sugiro o *SemVer - Semantic Versioning*
- */
   
 ## INFLUÊNCIAS DE GITFLOW / GITFLOW INFLUENCES
 ### *GITFLOW*'s Basic Structure In This Projeto
-+ **_main_**: primary branch, the initial one, and the main one, which receive (merging) else branches, then to perform the full-test of the version before release. This is the branch from which the "release branch" occurs; This branch must never be deleted;
++ **_main_**: primary branch, the initial one, and the main one, which receive (merging) else branches, then to perform the full-test of the version before to release it. This is the branch from which the "release branch" occurs; This branch must never be deleted;
 + main/**_develop_**: the base-branch to the application development, although it is possible to occur some implementation in it, it is discouraged, as exists specifics branches to the features coding, such as the pointed ones below. This branch must never be deleted;
   - main/develop/**_feature_**/**_shot_alias_**: this branch is created exclusively for feature implementation, a chosen feature according to the Project Backlog and Sprint Backlog, as it can be noticed through this feature's name. After the feature is completed and merged with the source branch, you can (or not) delete the branch according to the development team's culture and the needs of the project;  
   - main/develop/**_bugfix_**/**_bug's_short_alias_**: this branch is created exclusively for currection of the bug (or else issues) mentioned at the branch's alias, which used to be found in test phase (or Q&A team). After the job on the bug/issue has been completed and merged with the source branch, you can (or not) delete the branch according to the development team's culture and the needs of the project;  
-+ main/**_hotfix_**/**_hotfix's_short_alias_**: this branch is created exclusively for correction of the max priority bugs (or else issues) mentioned at the branch's alias, which are found in the prerelease test phase (or Q&A team) or more commonly found by the user, so reported after release.
++ main/**_hotfix_**/**_hotfix's_short_alias_**: this branch is created exclusively for correction of the max priority bugs (or else issues) mentioned at the branch's alias, which are found in the prerelease test phase (or Q&A team) or more commonly found by the user, so reported after released.
   
   
 &nbsp;  

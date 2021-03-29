@@ -40,11 +40,10 @@ import dev.ronaldomarques.myutility.debugger.DP;
  * @since       20210315.
  * @last_change 20210328.
  * @version     0.2.0.
- * @category    Controladora: Classa especializada em receber as requisições de clientes, processar dados preliminares
- *              (mínimo possível seguindo pricípios de "SOLID"), delegar o processamento principal às respectivas
- *              classes de regras de negócio do domínio, e ou de serviços, e então enviar respostas ao
- *              cliente-requisitante.
- * @Análise     ...
+ * @category    Controladora: Classa especializada em receber as requisições de clientes.
+ * @analysis    Processar dados preliminares, mínimo possível seguindo pricípios de "SOLID", delegar o processamento
+ *              principal às respectivas classes de regras de negócio do domínio, e ou de serviços, e então enviar
+ *              respostas ao cliente-requisitante.
  */
 @RestController
 @RequestMapping(value = "/motorvehicles", produces = "application/json;charset=UTF-8")
@@ -62,9 +61,9 @@ public class MotorVehicleController {
 	 * -
 	 * Adoto, se é que existe, um design-pattern mesclado de MVC e DDD, deixando perceptível existência de partes
 	 * distintas da codificação, cada qual com seu foco/propósito: modelagem de objetos e processos; controladoria do
-	 * fluxo de trabalho e divisão xxx "FIXME:corrigir esta oração" de tarefas xxx; organização e disponibilização da
-	 * comunicação visual; processamento das informações da infraestrutura da aplicação ou de requisitos técnicos
-	 * separados do processamento das informações do domínio do negócio.
+	 * fluxo de trabalho e divisão de tarefas priorizando a COESÃO e o DESACOPLAMENTO das classes; organização e
+	 * disponibilização da comunicação visual; processamento das informações da infraestrutura da aplicação ou de
+	 * requisitos técnicos separados do processamento das informações do domínio do negócio.
 	 * -
 	 * Por último, o mais interessante, tratamento de exceções por camadas: versão futura, talvez "v0.3.0-dev". */
 	@Autowired
@@ -92,8 +91,8 @@ public class MotorVehicleController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(motorVehicleRepo.save(motorVehicleEntity));
 		
-		/* FURTHER: AINDA POR TERMINAR...
-		 * FIXME: IMPLEMENTAR A CAMADA DE REGRAS DE NEGÓCIO "SERVICE" CONFORME ARQUITETURA DO PROJETO,
+		/* TODO: AINDA POR TERMINAR...
+		 * IMPLEMENTAR A CAMADA DE REGRAS DE NEGÓCIO "SERVICE" CONFORME ARQUITETURA DO PROJETO,
 		 * NO PACOTE 'dev.ronaldomarques.dryve.challenge1.domain.service'. */
 	}
 	

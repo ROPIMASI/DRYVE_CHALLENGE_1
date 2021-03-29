@@ -30,19 +30,21 @@ import javax.persistence.Table;
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210314.
- * @version  20210315.
- * @category Modelagem do Negócio, classe concreta que representa os modelos existentes na aplicação.
+ * @author      Ronaldo Marques.
+ * @since       20210314.
+ * @last_change 20210329.
+ * @version     0.2.0.
+ * @category    Modelagem do Negócio, classe concreta.
+ * @analysis    Representa os modelos existentes na aplicação.
  */
 @Entity
 @Table(name = "model")
 public class ModelEntity {
 	
 	@Id
-	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
-	 * principalmente atrelando o código UUID à string do campo 'brandEntity.id' para que nunca se registre
-	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
+	/* FURTHER: Futura versão: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
+	 * principalmente atrelando o código UUID à string do campo 'brand.id' para que nunca se registre
+	 * duas tuplas(reg no bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
 	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
 	 * POSTGRSQL. */
 	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_model_id")
@@ -55,7 +57,7 @@ public class ModelEntity {
 	
 	@ManyToOne
 	// @Column(name = "brand_id", nullable = false)
-	private BrandEntity brandEntity; // FK(BrandEntity.id) at DB.
+	private BrandEntity brand; // FK(BrandEntity.id) at DB.
 	
 	
 	
@@ -85,11 +87,11 @@ public class ModelEntity {
 	
 	
 	
-	public BrandEntity getBrand() { return brandEntity; }
+	public BrandEntity getBrand() { return brand; }
 	
 	
 	
-	public void setBrand(BrandEntity brandEntity) { this.brandEntity = brandEntity; }
+	public void setBrand(BrandEntity brand) { this.brand = brand; }
 	
 	
 	
@@ -98,7 +100,7 @@ public class ModelEntity {
 		
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((brandEntity == null) ? 0 : brandEntity.hashCode());
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
@@ -115,10 +117,10 @@ public class ModelEntity {
 		if (getClass() != obj.getClass()) return false;
 		ModelEntity other = (ModelEntity) obj;
 		
-		if (brandEntity == null) {
-			if (other.brandEntity != null) return false;
+		if (brand == null) {
+			if (other.brand != null) return false;
 		}
-		else if (!brandEntity.equals(other.brandEntity)) return false;
+		else if (!brand.equals(other.brand)) return false;
 		
 		if (id == null) {
 			if (other.id != null) return false;
@@ -139,7 +141,7 @@ public class ModelEntity {
 	@Override
 	public String toString() {
 		
-		return "ModelEntity [id=" + id + ", name=" + name + ", brandEntity=" + brandEntity + "]";
+		return "ModelEntity [id=" + id + ", name=" + name + ", brand=" + brand + "]";
 		
 	}
 	

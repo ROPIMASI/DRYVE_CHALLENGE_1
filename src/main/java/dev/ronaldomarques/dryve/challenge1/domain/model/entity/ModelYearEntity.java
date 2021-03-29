@@ -30,11 +30,13 @@ import javax.persistence.Table;
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210314.
- * @version  20210315.
- * @category Modelagem do Negócio, classe concreta que representa a singularidade de cada registro importado da API-KBB,
- *           permitindo um único preço para cada associação "modelo-ano".
+ * @author      Ronaldo Marques.
+ * @since       20210314.
+ * @last_change 20210329.
+ * @version     0.2.0.
+ * @category    Modelagem do Negócio, classe concreta;
+ * @analysis    Representa a singularidade de cada registro importado da API-KBB, permitindo um único preço para cada
+ *              associação "modelo-ano".
  */
 @Entity
 @Table(name = "model_year")
@@ -42,7 +44,7 @@ public class ModelYearEntity {
 	
 	@Id
 	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
-	 * principalmente atrelando o código UUID à string do campo-derivado 'modelEntity.id'+'year' para que nunca se registre
+	 * principalmente atrelando o código UUID à string do campo-derivado 'model.id'+'year' para que nunca se registre
 	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
 	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
 	 * POSTGRSQL. */
@@ -53,7 +55,7 @@ public class ModelYearEntity {
 	
 	@ManyToOne
 	// @Column(name = "model_id", nullable = false)
-	private ModelEntity modelEntity; // FK(ModelEntity.id) at DB.
+	private ModelEntity model; // FK(ModelEntity.id) at DB.
 	
 	@Column(name = "year", nullable = false)
 	private short year = 0;
@@ -83,11 +85,11 @@ public class ModelYearEntity {
 	
 	
 	
-	public ModelEntity getModel() { return modelEntity; }
+	public ModelEntity getModel() { return model; }
 	
 	
 	
-	public void setModelId(ModelEntity modelEntity) { this.modelEntity = modelEntity; }
+	public void setModel(ModelEntity model) { this.model = model; }
 	
 	
 	
@@ -105,6 +107,8 @@ public class ModelYearEntity {
 	
 	public void setKbbId(long kbbId) { this.kbbId = kbbId; }
 	
+	/* FURTHER: 0.3.0 fetch kbb id from kbb public api */
+	
 	
 	
 	@Override
@@ -114,7 +118,7 @@ public class ModelYearEntity {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (int) (kbbId ^ (kbbId >>> 32));
-		result = prime * result + ((modelEntity == null) ? 0 : modelEntity.hashCode());
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		result = prime * result + year;
 		return result;
 		
@@ -137,10 +141,10 @@ public class ModelYearEntity {
 		
 		if (kbbId != other.kbbId) return false;
 		
-		if (modelEntity == null) {
-			if (other.modelEntity != null) return false;
+		if (model == null) {
+			if (other.model != null) return false;
 		}
-		else if (!modelEntity.equals(other.modelEntity)) return false;
+		else if (!model.equals(other.model)) return false;
 		
 		if (year != other.year) return false;
 		return true;
@@ -152,7 +156,7 @@ public class ModelYearEntity {
 	@Override
 	public String toString() {
 		
-		return "ModelYearEntity [id=" + id + ", modelEntity=" + modelEntity + ", year=" + year + ", kbbId=" + kbbId + "]";
+		return "ModelYearEntity [id=" + id + ", model=" + model + ", year=" + year + ", kbbId=" + kbbId + "]";
 		
 	}
 	

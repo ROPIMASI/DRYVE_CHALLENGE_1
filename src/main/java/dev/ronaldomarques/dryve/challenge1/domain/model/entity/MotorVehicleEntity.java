@@ -29,37 +29,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatusEnun;
 
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210314.
- * @version  20210315.
- * @category Modelagem do Negócio, classe concreta que representa diferentes veículos automotores.
- * @Análise  para o "Time DEV": os quais se assemelham e são registrados da mesma forma (com os mesmo atributos) no
- *           banco de dados. Esta abordagem permite futura modelagem de outras classes que representarão outros tipos de
- *           veículos que serão registrados de forma diferente destes (com diferentes atributos) deixando a aplicação
- *           mais flexível/desacoplada, possível de integrar com banco de dados relacional e principalmente
- *           Não-Relacional (NOSQL) se o presente projeto tiver tal evolução. Mesmo que tal hipótese futura não venha a
- *           acontecer, esta abordagem não causa nenhum prejuizo considerável para a applicação nem seu desenvolvimento.
- *           Ex: carros e pickups com atributo um 'short emissaoCO2;' e bikes com um atributo 'boolean
- *           eletricamenteAssistida;'.
+ * @author      Ronaldo Marques.
+ * @since       20210314.
+ * @last_change 20210329.
+ * @version     0.2.0.
+ * @category    Modelagem do Negócio, classe concreta que representa diferentes veículos automotores.
+ * @analysis    para o "Time DEV": os quais se assemelham e são registrados da mesma forma (com os mesmo atributos) no
+ *              banco de dados. Esta abordagem permite futura modelagem de outras classes que representarão outros tipos
+ *              de veículos que serão registrados de forma diferente destes (com diferentes atributos) deixando a
+ *              aplicação mais flexível/desacoplada, possível de integrar com banco de dados relacional e principalmente
+ *              Não-Relacional (NOSQL) se o presente projeto tiver tal evolução. Mesmo que tal hipótese futura não venha
+ *              a acontecer, esta abordagem não causa nenhum prejuizo considerável para a applicação nem seu
+ *              desenvolvimento. Ex: carros e pickups com atributo um 'short emissaoCO2;' e bikes com um atributo
+ *              'boolean eletricamenteAssistida;'.
  */
 @Entity
 @Table(name = "motor_vehicle")
 public class MotorVehicleEntity extends VehicleAbstract {
 	
-	/* Overriding os atributos originais da classe abstrata para Modelarem-Objeto-Relacional do HIBERNATE. */
+	/* Overriding os atributos originais da classe abstrata para Modelagem-Objeto-Relacional do HIBERNATE. */
 	@Id
 	@Column(name = "plate")
 	private String plate; // PK at DB.
 	
 	@ManyToOne
 	@JoinColumn(name = "model_year_id", nullable = false)
-	private ModelYearEntity modelYearEntity; // FK(modelYearEntity.id) at DB.
+	private ModelYearEntity modelYear; // FK(modelYearEntity.id) at DB.
 	
 	@Column(name = "year", nullable = false)
 	private short year;
@@ -73,6 +73,7 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	@Column(name = "price_kbb", nullable = false)
 	private BigDecimal priceKBB; // "preço na API KBB".
 	/* BigDecimal: prove a melhor precisão e alcance dos valores monetários esperados para o uso nesta aplicação. */
+	/* TODO: integragir esta aplicação com a API pública da KBB para estrair um valor $ para este modelo-ano. */
 	
 	@Column(name = "registry_date", nullable = false)
 	private Date registryDate;
@@ -83,11 +84,8 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	 * veículo anunciado, pois entendi na regra de negócio, que espera-se, que este veículo sejá vendido, logo seu
 	 * anúcio registrado precisa ser desativado para não ser anunciado erroneamente. */
 	@Column(name = "veh_adv_status", nullable = false)
-	private VehicleAdvertisingStatusEnun vehicleAdvertisingStatusEnun = VehicleAdvertisingStatusEnun.ACTIVE;// VehicleAbstract
-																											// Advertising
-																											// Status =
-																											// Estado de
-																											// AnuncioVeículo.
+	private VehicleAdvertisingStatusEnun vehicleAdvertisingStatus = VehicleAdvertisingStatusEnun.ACTIVE;
+	/* VehicleAbstractAdvertisingStatus = Estado de AnuncioVeículo. */
 	/* Instancio o objeto com valor padrão para este atributo = ACTIVE, anúncio é criado ativo. */
 	
 	
@@ -150,11 +148,11 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	
 	
 	
-	public VehicleAdvertisingStatusEnun getVeAdvStatus() { return vehicleAdvertisingStatusEnun; }
+	public VehicleAdvertisingStatusEnun getVeAdvStatus() { return vehicleAdvertisingStatus; }
 	
 	
 	
-	public void setVeAdvStatus(VehicleAdvertisingStatusEnun status) { this.vehicleAdvertisingStatusEnun = status; }
+	public void setVeAdvStatus(VehicleAdvertisingStatusEnun status) { this.vehicleAdvertisingStatus = status; }
 	
 	
 	
@@ -169,7 +167,7 @@ public class MotorVehicleEntity extends VehicleAbstract {
 		result = prime * result + ((priceKBB == null) ? 0 : priceKBB.hashCode());
 		result = prime * result + ((registryDate == null) ? 0 : registryDate.hashCode());
 		result = prime * result
-				+ ((vehicleAdvertisingStatusEnun == null) ? 0 : vehicleAdvertisingStatusEnun.hashCode());
+				+ ((vehicleAdvertisingStatus == null) ? 0 : vehicleAdvertisingStatus.hashCode());
 		result = prime * result + year;
 		return result;
 		
@@ -210,7 +208,7 @@ public class MotorVehicleEntity extends VehicleAbstract {
 		}
 		else if (!registryDate.equals(other.registryDate)) return false;
 		
-		if (vehicleAdvertisingStatusEnun != other.vehicleAdvertisingStatusEnun) return false;
+		if (vehicleAdvertisingStatus != other.vehicleAdvertisingStatus) return false;
 		if (year != other.year) return false;
 		return true;
 		
@@ -224,7 +222,7 @@ public class MotorVehicleEntity extends VehicleAbstract {
 		return "MotorVehicleEntity [plate=" + plate + ", modelYearId=" + modelYearId + ", year=" + year + ", priceAdv="
 				+ priceAdv + ", priceKBB=" + priceKBB + ", registryDate=" + registryDate
 				+ ", VehicleAdvertisingStatusEnun="
-				+ vehicleAdvertisingStatusEnun + "]";
+				+ vehicleAdvertisingStatus + "]";
 		
 	}
 	

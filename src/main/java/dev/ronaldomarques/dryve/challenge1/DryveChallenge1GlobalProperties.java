@@ -26,10 +26,12 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210312.
- * @version  20210313.
- * @category Parameters.
+ * @author      Ronaldo Marques.
+ * @since       20210312.
+ * @last_change 20210329.
+ * @version     0.2.0.
+ * @category    Parameters Handling.
+ * @analysis    Inicia em forma de serviço no servidor Tomcat.
  */
 @Component
 public final class DryveChallenge1GlobalProperties {
@@ -58,7 +60,7 @@ public final class DryveChallenge1GlobalProperties {
 	/* O Constructor Padrão (na JVM) é chamado ANTES da injeção de valor @Value, então constrói o MenagedBean no
 	 * SpringContainer com propriedades 0 e null, valor não-funcional. Sendo assim, farei um método para sincronizar
 	 * os valores das propriedades da classe, até eu refatora-la num futuro próximo.
-	 * // FIXME: public DryveChallenge1GlobalProperties() { } */
+	 * // FURTHER: public DryveChallenge1GlobalProperties() { } */
 	
 	
 	
