@@ -1,0 +1,126 @@
+DRYVE CHALLENGE 1 TESTS;
+VERSION: 0.2.0-alpha;
+DATA: 202103291705 UTC;
+TYPE: USING SIMULATION;
+TOOL: POSTMAN;
+
+
+/* -------- Mappings for BrandEntity -------- */
+
+request
+  get /brands
+response
+  [ populated list ]
+# 200 ok. passed.
+
+
+request
+  post /brands
+  body
+    {
+      "name": "Peugeot"
+    }
+response
+  {
+      "id": "c58bc3ee-1544-4c34-a3ac-603dc39bb08c",
+      "name": "PEUGEOT"
+  }
+# 201 created. passed.
+
+
+/* -------- Mappings for ModelsEntity -------- */
+
+request
+  get /models
+response
+  [ populated list ]
+# 200 ok. passsed.
+
+request
+  post /models
+  body
+    {
+      "name": "e-Legend",
+      "brand": {
+        "id": "c58bc3ee-1544-4c34-a3ac-603dc39bb08c"
+      }
+    }
+response
+{
+  "id": "816ab56e-b49a-4e62-8d1d-2471f1b69368",
+  "name": "E-LEGEND",
+  "brand": {
+    "id": "c58bc3ee-1544-4c34-a3ac-603dc39bb08c",
+    "name": "PEUGEOT"
+  }
+}
+# 201 created. passed.
+
+
+/* -------- Mappings for ModelsYearsEntity -------- */
+
+request
+  get /modelsyears
+response
+  [ populated list ]
+# 200 ok. passed.
+
+request
+  post /modelsyears
+  body
+  {
+    "model": {
+      "id": "816ab56e-b49a-4e62-8d1d-2471f1b69368",
+    },
+    "year": 2030,
+    "kbbId": 101
+  }
+response
+{
+    "id": "731dd7d7-7c97-4767-88fe-fcc3cfdad38d",
+    "model": {
+        "id": "816ab56e-b49a-4e62-8d1d-2471f1b69368",
+        "name": "E-LEGEND",
+        "brand": {
+            "id": "c58bc3ee-1544-4c34-a3ac-603dc39bb08c",
+            "name": "PEUGEOT"
+        }
+    },
+    "year": 2030,
+    "kbbId": 101
+}
+# 201 created. passed.
+
+
+/* -------- Mappings for MotorVehicles -------- */
+
+request
+  get /motorvehicles
+response
+  [ populated list ]
+# 200 ok. passed.
+
+request
+  post /modelsyears
+  body
+  {
+    "plate": "9999ZZZZ",
+    "modelYearId": "731dd7d7-7c97-4767-88fe-fcc3cfdad38d",
+    "year": 2021,
+    "priceAdv": 101000.55,
+    "priceKBB": 100000.55,
+    "registryDate": "2021-03-29",
+    "veAdvStatus": 1
+  }
+response
+{
+  "id": "215fd53b-be39-4d19-8809-497b3d371b2f",
+  "model": null,  /* I stopd HERE:
+  "year": 2021,   /* as business rules must not save an year given from user in advertising MotorVehiclesEntity, it must come from ModelsYearsEntity. */
+  "kbbId": 0      /* the KBB API integration will works on v0.3.0*/
+}
+# 201 created. fail. false passed. because i found a bugs commented above.
+
+
+
+/* -------- EoF -------- */

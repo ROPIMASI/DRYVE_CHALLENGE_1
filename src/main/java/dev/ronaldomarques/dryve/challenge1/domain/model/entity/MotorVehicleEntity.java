@@ -48,6 +48,16 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatus
  *              desenvolvimento. Ex: carros e pickups com atributo um 'short emissaoCO2;' e bikes com um atributo
  *              'boolean eletricamenteAssistida;'.
  */
+
+
+/* HERE: I stoped HERE, creating a solution for test FAIL, see documentation/tests-results/:
+ * DRYVE CHALLENGE 1 TESTS;
+ * VERSION: 0.2.0-alpha;
+ * DATA: 202103291705 UTC;
+ * TYPE: USING SIMULATION;
+ * TOOL: POSTMAN; */
+
+
 @Entity
 @Table(name = "motor_vehicle")
 public class MotorVehicleEntity extends VehicleAbstract {
@@ -63,7 +73,7 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	
 	@Column(name = "year", nullable = false)
 	private short year;
-	/* short: pois, ocupar apenas 2 bytes de armazenamento contra 4 bybtes se forsse String[4], por conda de operações
+	/* short: pois, ocupar apenas 2 bytes de armazenamento contra 4 bybtes se fosse String[4], por conda de operações
 	 * lógicas e matemáticas com tipos primitivos (números tais como byte, short, int, long...) tem MENOR custo de
 	 * processamento que operações lógicas e matemáticas com String. */
 	
