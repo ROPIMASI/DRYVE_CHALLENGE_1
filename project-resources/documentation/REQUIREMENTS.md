@@ -8,17 +8,18 @@
 <a name="recruitment-requirements"></a>
 ## RECRUITMENT REQUIREMENTS
 * Spring Boot with Java or Kotlin; ![Passed](../images/brush-right-16-16.png "Passed")
-  + It's used STS-EclipseIDE (Spring Tool Suite), which has SpringBootStarter embedded;
-  + It's imported from SpringInitializr (https://start.spring.io/) the needed packages.
+  + It's used STS-EclipseIDE (Spring Tool Suite), which has Spring Boot Starter embedded;
+  + It's imported from Spring Initializr (https://start.spring.io/) the needed packages.
 * Maven or Gradle; ![Passed](../images/brush-right-16-16.png "Passed")
-  + It's a Maven Spring type from STS-EclipseIDE;
-  + It's used Maven Dependencies managed by Apache-Maven and pom.xml.
+  + It's a Maven Spring type project from STS-EclipseIDE;
+  + It's used Maven Dependencies managed by Apache-Maven and `pom.xml`.
 * Relational database; ![Passed](../images/brush-right-16-16.png "Passed")
   + It's used PostgreSQL, specifically, I am trying PostgreSQL v12.2 and v13.2. Both work sucessefully;
-* REST APIs for registration and searching. ![Passed](../images/brush-right-16-16.png "Passed")
-  + It's beeing implemented using REST concepts ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
-  + Its goal is **Leve 3**.
+* REST APIs for registration and searching of data. ![Passed](../images/brush-right-16-16.png "Passed")
+  + It's beeing implemented using REST concepts; ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
+  + Its goal is **Level 3**.
   > ![REST Maturity Scale](../images/rest-api-maturity-en-US.png "REST Maturity Scale")  
+
 &nbsp;  
 &nbsp;  
 &nbsp;  
@@ -38,11 +39,13 @@
   + Future process of learning...
 * Publication of registration events using RabbitMQ. ![Fail](../images/brush-wrong-16-16.png "Fail")
   + Soon process of learning...  
+
 &nbsp;  
 &nbsp;  
 &nbsp;  
 <a name="business-requirements"></a>
 ## BUSINESS REQUIREMENTS
+
 &nbsp;  
 <a name="bus-req-api-receive"></a>
 ### API receives information to registration
@@ -58,6 +61,7 @@
 * **Vehicle Year**
   + Vehicle Year's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric values;
   + Vehicle Year's value must have, as asked in the [Business Requirements (Model-Year-Relation as Mandatory)](#bus-req-model-year-rel), a referencer record in **Model-Year-Relation**.  
+
 &nbsp;  
 <a name="bus-req-model-year-rel"></a>  
 ### The Application Uses a Model-Year-Relation as Mandatory Condition
@@ -69,6 +73,7 @@
   + Vehicle Year's value will be evaluated, as asked in [Business Requirements (API Receives)](#bus-req-api-receive), using numeric values.
 * **KBB Id**
   + KBB Id's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric values.  
+
 &nbsp;  
 <a name="bus-req-general-listing"></a>
 ### The Application Provides General Listing
@@ -89,6 +94,7 @@
   + **Model Id (_foreign key_)**
   + **Vehicle Year**
   + **KBB Id**  
+
 &nbsp;  
 <a name="bus-req-general-listing"></a>
 ### The Application Provides Specific Searching
@@ -109,6 +115,7 @@
   + **Price in Advertising**;
   + **Price in KBB API**;
   + **Registry Date**.  
+
 &nbsp;  
 &nbsp;  
 &nbsp;  
@@ -123,20 +130,20 @@
   + must be unique, that is, it can exist only one record with each **plate value**, it cannot be duplicated;
   - `plate` will be an `String` attribute of `VehicleEntity` class in Java code, and `plate` will be an `character varing` attribute of `vehicle` table on DB.
   > Analysis:
-  >  + `VehicleEntity` will be an *entity class* in Java code, and `vehicle` will be an *entity table* on DB.
-  
+  >  + `VehicleEntity` will be an *entity class* in Java code, and `vehicle` will be an *entity table* on DB.  
+
 * **Advertising Price** must be a montary value;
   > Analysis:
   >  + Advertising Price's value, obviously, need to be grater than "0.00";
-  >  + `priceAdv` will be an `BigDecimal` attribute of `VehicleEntity` class in Java code, and `price_adv` will be an `numeric(12,2)` attribute of `vehicle` table on DB.
+  >  + `priceAdv` will be an `BigDecimal` attribute of `VehicleEntity` class in Java code, and `price_adv` will be an `numeric(12,2)` attribute of `vehicle` table on DB.  
 
 * **Model-Year-Relation** 
-  > FK on APP.DB.modelyear table, according APP's verification below.
+  > FK on APP.DB.modelyear table, according APP's verification below.  
   + ModelId (ex: ‘5bc16064-d3ee-4aed-a264-a914233d0c4f’)
-    > APP verify if exists this model and below year together on APP.DB.modelyear table so get.modelyear.model_id.
+    > APP verify if exists this model and below year together on APP.DB.modelyear table so get.modelyear.model_id.  
   + VehicleYear
-    > APP verify if exists this year and above model together on APP.DB.modelyear table so get.modelyear.year.
-  
+    > APP verify if exists this year and above model together on APP.DB.modelyear table so get.modelyear.year.  
+
 &nbsp;  
 &nbsp;  
 &nbsp;  
@@ -147,18 +154,18 @@
   >  + `BrandEntity` will be an *entity class* in Java code, and `brand` will be an *entity table* on DB;
   >  + Although would be possible making an attribute `name` as the identifier and primary key in this entity, basing on the concept all vehicle brands have their names uniques to order to copyrights rules, this project it will be adopting a different attribute as object/record-identifier, up-to-now, allowing 2 or more brands with the same name, maybe to attempt external-client applications' needs:
   >    - `id` will be an `UUID` attribute of `BrandEntity` class in Java code, and `id` will be an `uuid`, primary key, attribute of `brand` table on DB;
-  >    - `id` will be used to object-association to `ModelEntity` class in Java code, and `id` will be foreign key to `model` table on DB.
+  >    - `id` will be used to object-association to `ModelEntity` class in Java code, and `id` will be foreign key to `model` table on DB.  
+
 * **Model** must have an `id` attribute preferably typed as `UUID` (ex: "ca43ec74-5bb0-4288-ab11-5df094ca4dc4");
   > Analysis:
   >  + `ModelEntity` will be an *entity class* in Java code, and `model` will be an *entity table* on DB;
   >  + `id` will be an `UUID` attribute of `BrandEntity` class in Java code, and  `id` will be an `uuid`, primary key, attribute of `models` table on DB;
-  >  + `id` will be used to object-association to `ModelYearEntity` in Java code, and to `models` on DB.
-  
+  >  + `id` will be used to object-association to `ModelYearEntity` in Java code, and to `models` on DB.  
+
 &nbsp;  
 ### API performs external search
-Get the vehicle's price on KBB table https://6048bdf1fb5dcc0017968e3f.mockapi.io/api/v1/kbb{/.../...}
-Ex: https://6048bdf1fb5dcc0017968e3f.mockapi.io/api/v1/kbb/prices/1
-  
+Get the vehicle's price on KBB table https://6048bdf1fb5dcc0017968e3f.mockapi.io/api/v1/kbb{/.../...} Ex: https://6048bdf1fb5dcc0017968e3f.mockapi.io/api/v1/kbb/prices/1  
+
 &nbsp;  
 ### APP saves every vehicle data on relational DB
   Plate			/* given from user */
