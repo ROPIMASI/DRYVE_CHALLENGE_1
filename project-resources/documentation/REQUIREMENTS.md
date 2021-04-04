@@ -1,46 +1,49 @@
-# REQUIREMENTS - DRYVE CHALLENGE 1  
-  
+# REQUIREMENTS - DRYVE CHALLENGE 1
+&nbsp;  
+&nbsp;  
 *Start 202103301948-UTC/GMT/Z-time*  
-*Last change 202103311230-UTC/GMT/Z-time*  
-  
-  
+*Last change 2021004041950-UTC/GMT/Z-time*  
+&nbsp;  
+&nbsp;  
 <a name="recruitment-requirements"></a>
 ## RECRUITMENT REQUIREMENTS
-* Spring Boot with Java or Kotlin; ![Passed](../images/brush-right-64-64.png "Passed")
+* Spring Boot with Java or Kotlin; ![Passed](../images/brush-right-16-16.png "Passed")
   + It's used STS-EclipseIDE (Spring Tool Suite), which has SpringBootStarter embedded;
   + It's imported from SpringInitializr (https://start.spring.io/) the needed packages.
-* Maven or Gradle; ![Passed](../images/brush-right-64-64.png "Passed")
+* Maven or Gradle; ![Passed](../images/brush-right-16-16.png "Passed")
   + It's a Maven Spring type from STS-EclipseIDE;
   + It's used Maven Dependencies managed by Apache-Maven and pom.xml.
-* Relational database; ![Passed](../images/brush-right-64-64.png "Passed")
+* Relational database; ![Passed](../images/brush-right-16-16.png "Passed")
   + It's used PostgreSQL, specifically, I am trying PostgreSQL v12.2 and v13.2. Both work sucessefully;
-* REST APIs for registration and searching. ![Passed](../images/brush-right-64-64.png "Passed")
-  + It's beeing implemented using REST concepts ![In Progress](../images/flat-inprogress-64-64.png "In Progress")
+* REST APIs for registration and searching. ![Passed](../images/brush-right-16-16.png "Passed")
+  + It's beeing implemented using REST concepts ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
   + Its goal is **Leve 3**.
   > ![REST Maturity Scale](../images/rest-api-maturity-en-US.png "REST Maturity Scale")  
-  
-  
+&nbsp;  
+&nbsp;  
+&nbsp;  
 <a name="plus-recruitment-requirements"></a>
 ## PLUS RECRUITMENT REQUIREMENTS
-* `UUID` typed atributes (**U**niversally **U**nique **ID**entifier) for some classes; ![Passed](../images/brush-right-64-64.png "Passed")
+* `UUID` typed atributes (**U**niversally **U**nique **ID**entifier) for some classes; ![Passed](../images/brush-right-16-16.png "Passed")
   + Using `UUID` on (**table**._column_) `model_year.id`, `model.id`, and `brand.id`, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation").
-* Unitary tests; ![Fail](../images/brush-wrong-64-64.png "Fail")
+* Unitary tests; ![Fail](../images/brush-wrong-16-16.png "Fail")
   + Still in the process of learning...
-* Integration tests; ![Passed](../images/brush-right-64-64.png "Passed")
+* Integration tests; ![Passed](../images/brush-right-16-16.png "Passed")
   + It's used **_POSTMAN_** and **_Chrome Browser_** as the testing tools. 
-* Database versioning (flyway or liquibase); ![In Progress](../images/flat-inprogress-64-64.png "In Progress")
+* Database versioning (flyway or liquibase); ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
   + It's used **_FlyWay_** as a Maven Depedency... /* TODO: review this discribing... */
-* Dockerfile for project's container; ![Fail](../images/brush-wrong-64-64.png "Fail")
+* Dockerfile for project's container; ![Fail](../images/brush-wrong-16-16.png "Fail")
   + Future process of learning...
-* Docker compose for project's dependencies; ![Fail](../images/brush-wrong-64-64.png "Fail")
+* Docker compose for project's dependencies; ![Fail](../images/brush-wrong-16-16.png "Fail")
   + Future process of learning...
-* Publication of registration events using RabbitMQ. ![Fail](../images/brush-wrong-64-64.png "Fail")
-  + Soon process of learning...
-  
-  
+* Publication of registration events using RabbitMQ. ![Fail](../images/brush-wrong-16-16.png "Fail")
+  + Soon process of learning...  
+&nbsp;  
+&nbsp;  
+&nbsp;  
 <a name="business-requirements"></a>
 ## BUSINESS REQUIREMENTS
-  
+&nbsp;  
 <a name="bus-req-api-receive"></a>
 ### API receives information to registration
 * **Plate**
@@ -54,8 +57,8 @@
   + Price in Advertising's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using monetary values.
 * **Vehicle Year**
   + Vehicle Year's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric values;
-  + Vehicle Year's value must have, as asked in the [Business Requirements (Model-Year-Relation as Mandatory)](#bus-req-model-year-rel), a referencer record in **Model-Year-Relation**.
-   
+  + Vehicle Year's value must have, as asked in the [Business Requirements (Model-Year-Relation as Mandatory)](#bus-req-model-year-rel), a referencer record in **Model-Year-Relation**.  
+&nbsp;  
 <a name="bus-req-model-year-rel"></a>  
 ### The Application Uses a Model-Year-Relation as Mandatory Condition
 * **Model Year Relation Id**
@@ -65,9 +68,9 @@
 * **Vehicle Year**
   + Vehicle Year's value will be evaluated, as asked in [Business Requirements (API Receives)](#bus-req-api-receive), using numeric values.
 * **KBB Id**
-  + KBB Id's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric values.
-  
-<a name="bus-req-general-listing"></a>  
+  + KBB Id's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric values.  
+&nbsp;  
+<a name="bus-req-general-listing"></a>
 ### The Application Provides General Listing
 * **Listing basic vehicle data** reponsensing following data:
   + **Vehicle Id**
@@ -85,8 +88,8 @@
   + **Model-Year-Relation Id**
   + **Model Id (_foreign key_)**
   + **Vehicle Year**
-  + **KBB Id**
-  
+  + **KBB Id**  
+&nbsp;  
 <a name="bus-req-general-listing"></a>
 ### The Application Provides Specific Searching
 * **Searching by vehicle plate** reponsensing following data:
@@ -105,9 +108,10 @@
     - Vehicle Year.
   + **Price in Advertising**;
   + **Price in KBB API**;
-  + **Registry Date**.
-  
-  
+  + **Registry Date**.  
+&nbsp;  
+&nbsp;  
+&nbsp;  
 <a name="technical-requirements"></a>
 ## TECHNICAL REQUIREMENTS
   
@@ -133,7 +137,9 @@
   + VehicleYear
     > APP verify if exists this year and above model together on APP.DB.modelyear table so get.modelyear.year.
   
-  
+&nbsp;  
+&nbsp;  
+&nbsp;  
 <a name="technical-requirements"></a>
 ## TECHNICAL REQUIREMENTS
 * **Brand** must have an `id` attribute preferably typed as `UUID` (ex: "ca43ec74-5bb0-4288-ab11-5df094ca4dc4");
@@ -148,12 +154,12 @@
   >  + `id` will be an `UUID` attribute of `BrandEntity` class in Java code, and  `id` will be an `uuid`, primary key, attribute of `models` table on DB;
   >  + `id` will be used to object-association to `ModelYearEntity` in Java code, and to `models` on DB.
   
-  
+&nbsp;  
 ### API performs external search
 Get the vehicle's price on KBB table https://6048bdf1fb5dcc0017968e3f.mockapi.io/api/v1/kbb{/.../...}
 Ex: https://6048bdf1fb5dcc0017968e3f.mockapi.io/api/v1/kbb/prices/1
   
-  
+&nbsp;  
 ### APP saves every vehicle data on relational DB
   Plate			/* given from user */
   AdvertisingPrice	/* given from user */
@@ -163,7 +169,7 @@ Ex: https://6048bdf1fb5dcc0017968e3f.mockapi.io/api/v1/kbb/prices/1
   KBBPrice		/* gotten from external api */
   RegistryDate		/* gotten form system */
   
-  
+&nbsp;  
 ### Brands, Models, and Vehicles (at least) must have a FK chain between them.
 Ex: I'll do Brands, Models, modelyear-Relation and Vehicles.
   
