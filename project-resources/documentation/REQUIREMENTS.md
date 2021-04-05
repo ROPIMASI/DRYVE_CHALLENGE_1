@@ -17,7 +17,7 @@
   + It's used PostgreSQL, specifically, I am trying PostgreSQL v12.2 and v13.2. Both work sucessefully;
 * REST APIs for registration and searching of data. ![Passed](../images/brush-right-16-16.png "Passed")
   + It's beeing implemented using REST concepts; ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
-  + Its goal is **Level 3**.
+  + Its goal is **Level 3**. ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
   > ![REST Maturity Scale](../images/rest-api-maturity-en-US.png "REST Maturity Scale")  
 
 &nbsp;  
@@ -26,7 +26,7 @@
 <a name="plus-recruitment-requirements"></a>
 ## PLUS RECRUITMENT REQUIREMENTS
 * `UUID` typed atributes (**U**niversally **U**nique **ID**entifier) for some classes; ![Passed](../images/brush-right-16-16.png "Passed")
-  + Using `UUID` on (**table**._column_) `model_year.id`, `model.id`, and `brand.id`, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation").
+  + Using `UUID` on (**table**._column_) `model_year.id`, `model.id`, and `brand.id`, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation, page 3)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation").
 * Unitary tests; ![Fail](../images/brush-wrong-16-16.png "Fail")
   + Still in the process of learning...
 * Integration tests; ![Passed](../images/brush-right-16-16.png "Passed")
@@ -50,71 +50,73 @@
 <a name="bus-req-api-receive"></a>
 ### API receives information to registration
 * **Plate**
-  + Plate's value will be evaluated, according to current Mercosul's regulations, with a 8 characters combination of letters and numbers;
+  + Plate's value will be evaluated, according to current Mercosul's regulations, with an 8 characters combination of letters and numbers;
+  + Plate's value must be unique, it can not be duplicated.
 * **Brand Id**
-  + Brand Id's value will be evaluated, as asked in [Plus Recruitment Requirements](#plus-recruitment-requirements), with `UUID` version 4.
+  + Brand Id's value will be evaluated, as requested in [Plus Recruitment Requirements](#plus-recruitment-requirements), with `UUID` version 4.
 * **Model Id**
-  + Model Id's value will be evaluated, as asked in [Plus Recruitment Requirements](#plus-recruitment-requirements), with `UUID` version 4;
-  + Model Id's value must have, as asked in the [Business Requirements (Model-Year-Relation as Mandatory)](#bus-req-model-year-rel), a referencer record in **Model-Year-Relation**.
+  + Model Id's value will be evaluated, as requested in [Plus Recruitment Requirements](#plus-recruitment-requirements), with `UUID` version 4;
+  + Model Id's value must have, as requested in the [Business Requirements (Model-Year-Relation as Mandatory)](#bus-req-model-year-rel), a referencer record in **Model-Year-Relation**.
 * **Price in Advertising**
-  + Price in Advertising's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using monetary values.
+  + Price in Advertising's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation, page 3)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using monetary values.
 * **Vehicle Year**
-  + Vehicle Year's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric values;
-  + Vehicle Year's value must have, as asked in the [Business Requirements (Model-Year-Relation as Mandatory)](#bus-req-model-year-rel), a referencer record in **Model-Year-Relation**.  
+  + Vehicle Year's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation, page 3)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric positive integer values;
+  + Vehicle Year's value must have, as requested in the [Business Requirements (Model-Year-Relation as Mandatory)](#bus-req-model-year-rel), a referencer record in **Model-Year-Relation**.  
 
 &nbsp;  
 <a name="bus-req-model-year-rel"></a>  
-### The Application Uses a Model-Year-Relation as Mandatory Condition
-* **Model Year Relation Id**
-  + Model Year Relation Id's value will be, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), evaluated using `UUID` version 4.
-* **Model Id** as _Foreign Key_
-  + Model Id's value will be a _foreign key_, as asked in [Tchnical Requirements](#technical-requirements), from **model entity's** _primary key_.
-* **Vehicle Year**
-  + Vehicle Year's value will be evaluated, as asked in [Business Requirements (API Receives)](#bus-req-api-receive), using numeric values.
-* **KBB Id**
-  + KBB Id's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric values.  
+### The Application Uses a Model-Year-Relation as Mandatory Condition for Vehicles Registry
+Considering the input data in the application, only vehicles which match/reference into **Model Year Relation** can be recorded.
+* **Model Year Relation** must have **Id** as _Primary Key_;
+  + Model Year Relation Id's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation, page 3)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using `UUID` version 4.
+* **Model Year Relation** must have **Model Id** as _Foreign Key_;
+  + Model Id's value will be evaluated, as requested in [Tchnical Requirements](#technical-requirements), by a _foreign key_ from **model entity's** _primary key_.
+* **Model Year Relation** must have **Vehicle Year**;
+  + Vehicle Year's value will be evaluated, as requested in [Business Requirements (API Receives)](#bus-req-api-receive), using numeric positive integer values.
+* **Model Year Relation** must have **KBB Id**;
+  + KBB Id's value will be evaluated, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation, page 3)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), using numeric positive integer values.  
 
 &nbsp;  
 <a name="bus-req-general-listing"></a>
 ### The Application Provides General Listing
-* **Listing basic vehicle data** reponsensing following data:
-  + **Vehicle Id**
-  + **Vehicle Plate**
-  + **Vehicle Brand**
-  + **Vehicle Model**
-* **Aditional listings: brands data** reponsensing following data:
-  + **Brand Id**
-  + **Brand Name**
-* **Aditional listings: models data** reponsensing following data:
-  + **Model Id**
-  + **Model Name**
-  + **Brand Id (_foreign key_)**
-* **Aditional listings: model-year-relation data** reponsensing following data:
-  + **Model-Year-Relation Id**
-  + **Model Id (_foreign key_)**
-  + **Vehicle Year**
-  + **KBB Id**  
+* **Full-records** listing: basic **vehicles** data;
+  + Vehicle Id;
+  + Vehicle Plate;
+  + Vehicle Brand;
+  + Vehicle Model.
+* **Full-records** listing: **brands** data;
+  + Brand Id;
+  + Brand Name.
+* **Full-records** listing: **models** data;
+  + Model Id;
+  + Model Name;
+  + Brand Id (_foreign key_).
+* **Full-records** listing: **model-year-relation** data.
+  + Model-Year-Relation Id;
+  + Model Id (_foreign key_);
+  + Vehicle Year;
+  + KBB Id.  
 
 &nbsp;  
-<a name="bus-req-general-listing"></a>
+<a name="bus-req-specific-listing"></a>
 ### The Application Provides Specific Searching
-* **Searching by vehicle plate** reponsensing following data:
-  + **Vehicle Id**
-  + **Vehicle Plate**
-  + **Vehicle Brand**
-  + **Vehicle Model**
-* **Searching by vehicle id** reponsensing all data:
-  + **Vehicle Id**;
-  + **Vehicle Plate**;
-  + **Model Year Relation Id**;
+* Searching by **vehicle's plate** listing: basic **vehicles** data;
+  + Vehicle Id;
+  + Vehicle Plate;
+  + Vehicle Brand;
+  + Vehicle Model.
+* Searching by **vehicle's id** listing: complete-detailed **vehicles** data.
+  + Vehicle Id;
+  + Vehicle Plate;
+  + Model Year Relation Id;
     - Model Id;
       - Model Name;
       - Brand Id.
         - Brand Name.
     - Vehicle Year.
-  + **Price in Advertising**;
-  + **Price in KBB API**;
-  + **Registry Date**.  
+  + Price in Advertising;
+  + Price in KBB API;
+  + Registry Date.  
 
 &nbsp;  
 &nbsp;  
@@ -122,12 +124,13 @@
 <a name="technical-requirements"></a>
 ## TECHNICAL REQUIREMENTS
   
-  /* TODO: continue here.  */
-  
-<a name="tec-req-"></a>
-### Abc...
-* **Xyz...**
-  + must be unique, that is, it can exist only one record with each **plate value**, it cannot be duplicated;
+&nbsp;  
+<a name="tec-req-chain-of-keys"></a>
+### Relational Integrity of Data
+The entity representing the **Advertised Vehicle** to being persisted on the database will carry a **chain-of-keys** about **Brands**,
+**Models**, and **Vehicles** as requested in the **DRYVE invitation's description** [(see the original file in project's documentation,
+page 2)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation"), in a so-called 'model_year_id' attribute. Analyzing ...
+
   - `plate` will be an `String` attribute of `VehicleEntity` class in Java code, and `plate` will be an `character varing` attribute of `vehicle` table on DB.
   > Analysis:
   >  + `VehicleEntity` will be an *entity class* in Java code, and `vehicle` will be an *entity table* on DB.  
