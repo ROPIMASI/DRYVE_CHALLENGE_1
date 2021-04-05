@@ -8,7 +8,7 @@ import dev.ronaldomarques.myutility.debugger.DP;
 
 
 
-public final class MeuTeste {
+public final class MyPersonalTests {
 	
 	public static void main(String[] args) {
 		

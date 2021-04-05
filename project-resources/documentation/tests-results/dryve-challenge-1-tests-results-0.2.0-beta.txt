@@ -1,0 +1,13 @@
+DRYVE CHALLENGE 1 TESTS;
+VERSION: 0.2.0-beta;
+DATA: 20210406____ UTC;
+TYPE: USING SIMULATION;
+TOOL: POSTMAN;
+
+*** NOTE: STILL IN IMPLEMENTATION/DEVELOPEMNT...
+
+
+/* -------- A section -------- */
+
+
+/* -------- EoF -------- */

@@ -12,7 +12,7 @@
 	
 	<groupId>dev.ronaldomarques.dryve</groupId>
 	<artifactId>challenge-1</artifactId>
-	<version>0.2.0-dev</version>
+	<version>0.2.0-beta</version>
 	<name>DRYVE_CHALLENGE_1</name>
 	<description>Demo project of API RESTful development skills using Java, Spring Boot, Maven, PostgreSQL</description>
 	

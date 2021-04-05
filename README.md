@@ -7,7 +7,7 @@ en-US: Repository for the recruitment test for the junior java/kotlin job vacanc
 &nbsp;  
   
 *Start 202103112130-UTC/GMT/Z-time*  
-*Last change 202103291450-UTC/GMT/Z-time*  
+*Last change 202104051140-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -15,11 +15,29 @@ en-US: Repository for the recruitment test for the junior java/kotlin job vacanc
 ## O QUÊ É / WHAT IT IS
 pt-BR: Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo. Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
 pt-BR:  **Agora, projeto _refatorado_ em nova fase** de desenvolvimento volutário para posteridade e portfólio.  
+  > **Nota: a próxima versão do projeto será implementada e documentada apenas em inglês.**  
   
 en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales. This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
 en-US: **Now, _refactored_ project in a new phase** of voluntary development for posterity and portfolio.  
   
-  > **Nota / Note: next project's version is going to be implemented and documented in english only.**  
+&nbsp;  
+&nbsp;  
+  
+  
+## LIST OF CONTENT
+* [A](#)
+  + [B](#)
+    - [C](#)
+    - [D](#)
+  + [E](#)
+    - [F](#)
+    - [G](#)
+* [H](#)
+  + [I](#)
+  + [J](#)
+    - [K](#)  
+
+  
   
 &nbsp;  
 &nbsp;  
@@ -58,7 +76,7 @@ Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** i
 &nbsp;
     
 <a name="current"></a>  
-### Versão atual / Current Version 0.2.0-**alpha**
+### Versão atual / Current Version 0.2.0-**beta**
 Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...
 + Cadastro de marcas / Brands registry
   > *End-point* `/brands`, http-method `POST`, corpo *(payload)* `objeto em JSON`;  
@@ -91,19 +109,19 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
 &nbsp;  
   
 ## Diretrizes Roteiro / Guideline Roadmap
-### Futura versão / Future version 0.**3**.0-beta
+### Futura versão / Future version 0.3.0-beta
 All features from last version, plus...
 + Integration with KBB public API: consulting the price for `price_KBB` object's atribute related to the relation represented by `model_year` object's atribute;    
   > *Internal* `dev.ronaldomarques.dryve.challenge1.domain.**service**.ModelsYearsRegistryService`, new method `.fetchKBBId();`;
   
 &nbsp;
     
-### Futura versão / Future version 0.**4**.0-beta
+### Futura versão / Future version 0.4.0-beta
 + Description..
   
 &nbsp;  
   
-### Futura versão / Future version 0.**5**.0-beta
+### Futura versão / Future version 0.5.0-beta
 + Description..
   
 &nbsp;  
@@ -127,10 +145,10 @@ All features from last version, plus...
   
 + Cadastro de marcas / Registry of brands
   - Retorna uma `ResponseEntity` com uma instância do objeto persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
-  > *End-point* `/brands`, http-method `POST`, payload `JASON`;  
-  > *End-point* `/brands`, http-method `PUT`, payload `JASON`;  
-  > *End-point* `/brands`, http-method `PATCH`, payload `JASON`;  
-  > *End-point* `/brands`, http-method `DELETE`, payload `JASON`.  
+  > *End-point* `/brands`, http-method `POST`, payload `JSON`;  
+  > *End-point* `/brands`, http-method `PUT`, payload `JSON`;  
+  > *End-point* `/brands`, http-method `PATCH`, payload `JSON`;  
+  > *End-point* `/brands`, http-method `DELETE`, payload `JSON`.  
   
 + Consulta de **uma** marca específica / Consultation of **a** specific brand
   - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
@@ -141,10 +159,10 @@ All features from last version, plus...
   
 + Cadastro de modelos / Registry of models
   - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
-  > *End-point* `/models`, http-method `POST`, payload `JASON`;  
-  > *End-point* `/models`, http-method `PUT`, payload `JASON`;  
-  > *End-point* `/models`, http-method `PATCH`, payload `JASON`;  
-  > *End-point* `/models`, http-method `DELETE`, payload `JASON`.  
+  > *End-point* `/models`, http-method `POST`, payload `JSON`;  
+  > *End-point* `/models`, http-method `PUT`, payload `JSON`;  
+  > *End-point* `/models`, http-method `PATCH`, payload `JSON`;  
+  > *End-point* `/models`, http-method `DELETE`, payload `JSON`.  
   
 + Consulta de **um** modelo / Consultation of a specific model
   - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
@@ -155,10 +173,10 @@ All features from last version, plus...
   
 + Cadastro de relações modelo-ano / Registry of model-year relation
   - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
-  > *End-point* `/modelsyears`, http-method `POST`, payload `JASON`;  
-  > *End-point* `/modelsyears`, http-method `PUT`, payload `JASON`;  
-  > *End-point* `/modelsyears`, http-method `PATCH`, payload `JASON`;  
-  > *End-point* `/modelsyears`, http-method `DELETE`, payload `JASON`.  
+  > *End-point* `/modelsyears`, http-method `POST`, payload `JSON`;  
+  > *End-point* `/modelsyears`, http-method `PUT`, payload `JSON`;  
+  > *End-point* `/modelsyears`, http-method `PATCH`, payload `JSON`;  
+  > *End-point* `/modelsyears`, http-method `DELETE`, payload `JSON`.  
   
 + Consulta de **uma ou mais** relação modelo-ano / Consultation of **one or more** model-year relation
   - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
@@ -206,8 +224,56 @@ All features from last version, plus...
 &nbsp;  
   
 ## ARQUITETURA DO PROJETO / PROJECT ARCHITECTURE
-### Pacotes / Packages
 Description...  
+  
+### Pacotes / Packages
+**[root]  
+/**
+* src/
+  + main/
+    + java/
+      - **dev.ronaldomarques.dryve.challenge1/**
+        - api/
+          - controller/
+          - exception/
+          - **packages...it ll be continued...**
+        - domain/
+          - model
+            - entity
+            - repository
+          - service
+          - **packages...it ll be continued...**
+        - **`files`...it ll be continued...**
+    + resources
+      - libs/
+        - `my-java-utility-pack-0.4.0-beta+202103250350.jar`
+      - `application.properties`
+      - `import.sql`
+  + test/
+    + java/
+      - **dev.ronaldomarques.dryve.challenge1/**
+        - `DryveChallenge1ApplicationTests.java`
+        - `MyPersonalTests.java`
+* project-resources/
+  + documentation/
+    - screenshots/
+      - `several files`
+    - test-results/
+      - `several files`
+    - `CHANGELOG.md`
+    - `CONTRIBUTORS.md`
+    - `REQUIREMENTS.md`
+    - `ROADMAP.md`
+    - `Dryve-Challenge-1-Backend-Invitation.pdf`
+  + images/
+    - icons/
+      - `several files`
+    - logos/
+      -  `several brand-folders/`
+    - `several files`
+/`README.md`
+/`pom.xml`
+  
   
   
 ### Classes e seus propósitos / Classes and their purposes
