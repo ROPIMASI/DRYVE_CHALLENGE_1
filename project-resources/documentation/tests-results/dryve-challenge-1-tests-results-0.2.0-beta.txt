@@ -1,13 +1,290 @@
-DRYVE CHALLENGE 1 TESTS;
-VERSION: 0.2.0-beta;
-DATA: 20210406____ UTC;
-TYPE: USING SIMULATION;
-TOOL: POSTMAN;
+TITLE:			DRYVE CHALLENGE 1 TESTS;
+VERSION:		0.2.0-beta;
+SINCE:			202103301112;
+LAST_CHANGE:	202104081535;
+TYPE:			SIMULATION OF USAGE;
+TOOLS:			POSTMAN, AND CHROMIUM BROWSER;
 
-*** NOTE: STILL IN IMPLEMENTATION/DEVELOPEMNT...
 
 
-/* -------- A section -------- */
+/* *** NOTE: STILL IN IMPLEMENTATION/DEVELOPEMNT... *** */
+
+
+
+/* -------- Mappings for BrandEntity -------- */
+
+request
+  get /brands
+
+response
+	[ /* A populated list. */
+    	{
+        	"id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+        	"name": "FIAT"
+    	},
+    	{
+        	"id": "c0225595-e293-477b-8758-384872470f00",
+        	"name": "FORD"
+    	},
+    	{
+       		"id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a",
+        	"name": "PEUGEOT"
+    	}
+	]
+# 200 ok. passed.
+
+
+
+request
+  post /brands
+  body
+    {
+    	"name": "Peugeot"
+    }
+
+response
+	{ /* An object representation. */
+		"id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a",
+		"name": "PEUGEOT"
+	}
+# 201 created. passed.
+
+
+
+/* -------- Mappings for ModelsEntity -------- */
+
+request
+  get /models
+response
+	[ /* A populated list. */
+    	{
+        	"id": "5bc16064-d3ee-4aed-a264-a914233d0c4f",
+        	"name": "TORO 2.0 DIESEL",
+        	"brand": {
+	            "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+    	        "name": "FIAT"
+        	}
+    	},
+    	{
+        	"id": "e16e9ed4-43c6-4882-9f2f-12ca5aad6e7e",
+        	"name": "ARGO 1.0 Flex",
+        	"brand": {
+            	"id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+            	"name": "FIAT"
+        	}
+    	},
+    	{
+        	"id": "c08f77df-c6e0-4e73-a378-42bb83361266",
+        	"name": "Onix 1.0 Turbo Flex",
+        	"brand": {
+	            "id": "c0225595-e293-477b-8758-384872470f00",
+    	        "name": "FORD"
+        	}
+    	},
+    	{
+        	"id": "deaf80e7-600c-4a35-af52-1fc7f1e967a8",
+        	"name": "EcoSport 1.6 Flex",
+        	"brand": {
+            	"id": "c0225595-e293-477b-8758-384872470f00",
+            	"name": "FORD"
+        	}
+    	}
+	]
+# 200 ok. passsed.
+
+request
+  post /models
+  body
+    {
+      "name": "e-Legend",
+      "brand": {
+        "id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a"
+      }
+    }
+
+response
+	{ /* An object representation. */
+    	"id": "09783680-893e-4736-9e59-353e196d345c",
+    	"name": "E-LEGEND",
+    	"brand": {
+        	"id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a",
+        	"name": "PEUGEOT"
+    	}
+	}
+# 201 created. passed.
+
+
+
+/* -------- Mappings for ModelsYearsEntity -------- */
+
+request
+  get /modelsyears
+response
+[ /* A populated list. */
+    {
+        "id": "9d31e563-9d09-4ce8-8ab5-c5177f51d92f",
+        "model": {
+            "id": "5bc16064-d3ee-4aed-a264-a914233d0c4f",
+            "name": "TORO 2.0 DIESEL",
+            "brand": {
+                "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+                "name": "FIAT"
+            }
+        },
+        "year": 2020,
+        "kbbId": 1
+    },
+    {
+        "id": "b9824542-0d28-4e09-92df-53379e8b3b22",
+        "model": {
+            "id": "5bc16064-d3ee-4aed-a264-a914233d0c4f",
+            "name": "TORO 2.0 DIESEL",
+            "brand": {
+                "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+                "name": "FIAT"
+            }
+        },
+        "year": 2021,
+        "kbbId": 2
+    },
+    {
+        "id": "f78e6d41-c620-4a76-a0a4-eb19f45c623e",
+        "model": {
+            "id": "e16e9ed4-43c6-4882-9f2f-12ca5aad6e7e",
+            "name": "ARGO 1.0 Flex",
+            "brand": {
+                "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+                "name": "FIAT"
+            }
+        },
+        "year": 2020,
+        "kbbId": 3
+    },
+    {
+        "id": "609c2dbf-c563-486a-8660-f4a17fe63818",
+        "model": {
+            "id": "e16e9ed4-43c6-4882-9f2f-12ca5aad6e7e",
+            "name": "ARGO 1.0 Flex",
+            "brand": {
+                "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+                "name": "FIAT"
+            }
+        },
+        "year": 2021,
+        "kbbId": 4
+    },
+    {
+        "id": "88748742-ed8c-467c-8990-963bfd617a0e",
+        "model": {
+            "id": "c08f77df-c6e0-4e73-a378-42bb83361266",
+            "name": "Onix 1.0 Turbo Flex",
+            "brand": {
+                "id": "c0225595-e293-477b-8758-384872470f00",
+                "name": "FORD"
+            }
+        },
+        "year": 2020,
+        "kbbId": 5
+    },
+    {
+        "id": "d9f4ec9e-35db-4ec2-9cab-1bf6a0011557",
+        "model": {
+            "id": "c08f77df-c6e0-4e73-a378-42bb83361266",
+            "name": "Onix 1.0 Turbo Flex",
+            "brand": {
+                "id": "c0225595-e293-477b-8758-384872470f00",
+                "name": "FORD"
+            }
+        },
+        "year": 2021,
+        "kbbId": 6
+    },
+    {
+        "id": "2dc1afe8-7851-4edc-9b91-a507c692483b",
+        "model": {
+            "id": "deaf80e7-600c-4a35-af52-1fc7f1e967a8",
+            "name": "EcoSport 1.6 Flex",
+            "brand": {
+                "id": "c0225595-e293-477b-8758-384872470f00",
+                "name": "FORD"
+            }
+        },
+        "year": 2020,
+        "kbbId": 7
+    },
+    {
+        "id": "6aa4d860-f5a8-439a-ab50-fda16b45549c",
+        "model": {
+            "id": "deaf80e7-600c-4a35-af52-1fc7f1e967a8",
+            "name": "EcoSport 1.6 Flex",
+            "brand": {
+                "id": "c0225595-e293-477b-8758-384872470f00",
+                "name": "FORD"
+            }
+        },
+        "year": 2021,
+        "kbbId": 8
+    }
+]
+# 200 ok. passed.
+
+request
+  post /modelsyears
+  body
+	{
+    	"model": {
+        	"id": "09783680-893e-4736-9e59-353e196d345c"
+	    },
+	    "year": 2030,
+	    "kbbId": 101
+	}
+  
+response
+{  /* An object representation. */
+    "id": "",
+    "model": {
+        "id": "",
+        "name": "",
+        "brand": {
+            "id": "",
+            "name": ""
+        }
+    },
+    "year": 2030,
+    "kbbId": 101
+}
+# 201 created. passed.
+
+
+
+/* -------- Mappings for MotorVehicles -------- */
+
+request
+  get /motorvehicles
+response
+  [ populated list ]
+# 200 ok. passed.
+
+request
+  post /motorvehicles
+  body
+  {
+    "plate": "9999ZZZZ",
+    "brandId": "",
+    "modelId": "",
+    "year": 2030,
+    "priceAdv": 111111.55,
+  }
+
+response
+{
+  "id": "",
+  "model": null,  /* I stoped HERE: it can not be null. */
+  "year": 2021,   /* As business rules must not save an year given from user in advertising MotorVehiclesEntity, it must come from ModelsYearsEntity. */
+  "kbbId": 0      /* The KBB API integration will works on v0.3.0 . */
+}
+# 201 created. fail. false passed. because i found a bugs commented above.
+
 
 
 /* -------- EoF -------- */

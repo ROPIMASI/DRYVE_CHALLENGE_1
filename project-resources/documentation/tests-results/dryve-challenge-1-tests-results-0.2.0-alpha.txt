@@ -115,7 +115,7 @@ request
 response
 {
   "id": "215fd53b-be39-4d19-8809-497b3d371b2f",
-  "model": null,  /* I stopd HERE:
+  "model": null,  /* I stoped HERE:
   "year": 2021,   /* as business rules must not save an year given from user in advertising MotorVehiclesEntity, it must come from ModelsYearsEntity. */
   "kbbId": 0      /* the KBB API integration will works on v0.3.0*/
 }

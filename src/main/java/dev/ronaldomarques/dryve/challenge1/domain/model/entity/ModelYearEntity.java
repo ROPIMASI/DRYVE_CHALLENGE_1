@@ -21,6 +21,7 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.entity;
 
 
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ import javax.persistence.Table;
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210329.
+ * @last_change 20210406.
  * @version     0.2.0.
  * @category    Modelagem do Negócio, classe concreta;
  * @analysis    Representa a singularidade de cada registro importado da API-KBB, permitindo um único preço para cada
@@ -42,19 +43,21 @@ import javax.persistence.Table;
 @Table(name = "model_year")
 public class ModelYearEntity {
 	
-	@Id
 	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
 	 * principalmente atrelando o código UUID à string do campo-derivado 'model.id'+'year' para que nunca se registre
 	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
 	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
 	 * POSTGRSQL. */
 	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_model_year_id")
+	@Id
+	@Column(name = "id", nullable = false)
 	private UUID id = UUID.randomUUID();
 	/* PK at DB. Por agora ao instanciar o objeto já define-se seu 'id' com UUID-v4-random, posteriormente será valor da
 	 * chave UUID.function_v4() do PostgreSQL. */
 	
-	@ManyToOne
 	// @Column(name = "model_id", nullable = false)
+	// @JoinColumn(name = "id", nullable = false)
+	@ManyToOne(cascade = CascadeType.ALL) // FIXME: this cascade is not working at DB, it isn't declaring "actions" for the constraint.
 	private ModelEntity model; // FK(ModelEntity.id) at DB.
 	
 	@Column(name = "year", nullable = false)

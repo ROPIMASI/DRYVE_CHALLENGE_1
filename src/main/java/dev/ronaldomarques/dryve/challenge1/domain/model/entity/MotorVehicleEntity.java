@@ -23,10 +23,10 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.entity;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatusEnun;
@@ -36,7 +36,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatus
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210329.
+ * @last_change 20210406.
  * @version     0.2.0.
  * @category    Modelagem do Negócio, classe concreta que representa diferentes veículos automotores.
  * @analysis    para o "Time DEV": os quais se assemelham e são registrados da mesma forma (com os mesmo atributos) no
@@ -49,7 +49,6 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatus
  *              'boolean eletricamenteAssistida;'.
  */
 
-
 /* HERE: I stoped HERE, creating a solution for test FAIL, see documentation/tests-results/:
  * DRYVE CHALLENGE 1 TESTS;
  * VERSION: 0.2.0-alpha;
@@ -57,25 +56,24 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatus
  * TYPE: USING SIMULATION;
  * TOOL: POSTMAN; */
 
-
 @Entity
 @Table(name = "motor_vehicle")
 public class MotorVehicleEntity extends VehicleAbstract {
 	
 	/* Overriding os atributos originais da classe abstrata para Modelagem-Objeto-Relacional do HIBERNATE. */
 	@Id
-	@Column(name = "plate")
+	@Column(name = "plate", length = 8, nullable = false)
 	private String plate; // PK at DB.
 	
-	@ManyToOne
-	@JoinColumn(name = "model_year_id", nullable = false)
+	// @Column(name = "model_year_id", nullable = false)
+	// @JoinColumn(name = "id", nullable = false)
+	@ManyToOne(cascade = CascadeType.ALL) // FIXME: this cascade is not working at DB, it isn't declaring "actions" for the constraint.
 	private ModelYearEntity modelYear; // FK(modelYearEntity.id) at DB.
 	
-	@Column(name = "year", nullable = false)
-	private short year;
-	/* short: pois, ocupar apenas 2 bytes de armazenamento contra 4 bybtes se fosse String[4], por conda de operações
-	 * lógicas e matemáticas com tipos primitivos (números tais como byte, short, int, long...) tem MENOR custo de
-	 * processamento que operações lógicas e matemáticas com String. */
+	/* @Column(name = "year", nullable = false)
+	 * private short year; */
+	/* This attributi and column on DB is not needed inside this entity, once it exists inside the ModelYearEntity and
+	 * model_year table. */
 	
 	@Column(name = "price_adv", nullable = false)
 	private BigDecimal priceAdv; // "preço no anúncio".

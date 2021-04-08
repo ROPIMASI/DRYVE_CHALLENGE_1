@@ -18,13 +18,13 @@
 -- ---
 -- @author		Ronaldo Marques.
 -- @since		20210317.
--- @last_change	20210329.
+-- @last_change	20210406.
 -- @version		0.2.0.
 -- @category	DML, DDL, SQL Script for data generation and data imports, para feed applications's tables during tests phase.
 
 
 
--- A baixo, alimentação básica inicial das tabelas
+-- A baixo, alimentação básica inicial das tabelas:
 
 INSERT INTO brand (id, name) VALUES ('ca43ec74-5bb0-4288-ab11-5df094ca4dc4', 'FIAT');
 
@@ -37,6 +37,8 @@ INSERT INTO model (id, name, brand_id) VALUES ('e16e9ed4-43c6-4882-9f2f-12ca5aad
 INSERT INTO model (id, name, brand_id) VALUES ('c08f77df-c6e0-4e73-a378-42bb83361266', 'Onix 1.0 Turbo Flex', 'c0225595-e293-477b-8758-384872470f00');
 
 INSERT INTO model (id, name, brand_id) VALUES ('deaf80e7-600c-4a35-af52-1fc7f1e967a8', 'EcoSport 1.6 Flex', 'c0225595-e293-477b-8758-384872470f00');
+
+
 
 INSERT INTO model_year (id, model_id, year, kbb_id) VALUES ('9d31e563-9d09-4ce8-8ab5-c5177f51d92f', '5bc16064-d3ee-4aed-a264-a914233d0c4f', 2020, 1);
 
@@ -56,10 +58,18 @@ INSERT INTO model_year (id, model_id, year, kbb_id) VALUES ('6aa4d860-f5a8-439a-
 
 
 
--- A baixo, minhas (particulares) linhas de script para adicionar alguns exemplos-TESTE de "veículo-anunciado" .
-INSERT INTO motor_vehicle (plate, model_year_id, year, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('ASD1234', '9d31e563-9d09-4ce8-8ab5-c5177f51d92f', 2020, 100000.55, 99999.55, '2021-03-15', 0);
-INSERT INTO motor_vehicle (plate, model_year_id, year, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('Z1X2C3V4', 'b9824542-0d28-4e09-92df-53379e8b3b22', 2021, 101000.55, 100000.55, '2021-03-15', 1); 
+-- A baixo, minhas (particulares) linhas de script para adicionar alguns exemplos-TESTE de "veículo-anunciado":
 
+-- Soon 'price_kbb' must not be inset, it should come from BKK API consulting.
+-- On de application 'registry_date' is set by the system.
+ 
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('ASD1234', '9d31e563-9d09-4ce8-8ab5-c5177f51d92f', 100000.55, 99999.55, '2021-03-15', 0);
+
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('Z1X2C3V4', 'b9824542-0d28-4e09-92df-53379e8b3b22', 100002.55, 100001.55, '2021-03-15', 1);
+
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('Q3W2E1R0', 'f78e6d41-c620-4a76-a0a4-eb19f45c623e', 100004.55, 100003.55, '2021-03-20', 1);
+
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, veh_adv_status) VALUES ('DSA654', '2dc1afe8-7851-4edc-9b91-a507c692483b', 100006.55, 100005.55, '2021-03-25', 1);
 
 
 --

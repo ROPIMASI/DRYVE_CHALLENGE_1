@@ -31,25 +31,26 @@ import javax.persistence.Table;
 /**
  * @author   Ronaldo Marques.
  * @since    20210314.
- * @version  20210315.
+ * @version  20210406.
  * @category Modelagem do Negócio, classe concreta que representa as marcas existentes na aplicação.
  */
 @Entity
 @Table(name = "brand")
 public class BrandEntity {
 	
-	@Id
 	/* Futuras versões: por segurança da informação, integridade (diminuindo a probabilidade de código repetido e
 	 * principalmente atrelando o código UUID à string do 'name' para que nunca se registre
 	 * duas tuplas(reg do bd) com mesmos valores, sem ter que fazer esta conferência em código-fonte, mas sim na geração
 	 * da chave primaria diretamente dentro do BD, então transferir responsabilidade do gerador de UUID para o
 	 * POSTGRSQL. */
 	// @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_band_id")
+	@Id
+	@Column(name = "id", nullable = false)
 	private UUID id = UUID.randomUUID();
 	/* PK at DB. Por agora ao instanciar o objeto já define-se seu 'id' com UUID-v4-random, posteriormente será valor da
 	 * chave UUID.function_v4() do PostgreSQL. */
 	
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", length = 255, nullable = false)
 	private String name;
 	
 	

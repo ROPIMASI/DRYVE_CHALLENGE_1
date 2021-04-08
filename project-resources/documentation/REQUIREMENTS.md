@@ -1,10 +1,13 @@
-# REQUIREMENTS - DRYVE CHALLENGE 1
+# REQUIREMENTS TO "DRYVE CHALLENGE 1"
+List of all requirements classified by type.  
+  
+*Started 202103301948-UTC/GMT/Z-time*  
+*Last change 202104081535-UTC/GMT/Z-time*  
+  
 &nbsp;  
 &nbsp;  
-*Start 202103301948-UTC/GMT/Z-time*  
-*Last change 2021004041950-UTC/GMT/Z-time*  
-&nbsp;  
-&nbsp;  
+&nbsp;
+  
 <a name="recruitment-requirements"></a>
 ## RECRUITMENT REQUIREMENTS
 * Spring Boot with Java or Kotlin; ![Passed](../images/brush-right-16-16.png "Passed")
@@ -200,5 +203,16 @@ Ex: I'll do Brands, Models, modelyear-Relation and Vehicles.
   "Brand": "FIAT",
   "Model": "UNO"
 }  
+  
+&nbsp;  
+&nbsp;  
+&nbsp;
+  
+<a name="author"></a>
+## AUTHOR
+### Ronaldo Marques.
+###### | https://ronaldomarques.dev | [linkedin @ronaldo marques](https://linkedin.com/in/ropimasi/) | [twitter @ropimasi](https://twitter.com/ropimasi/) | [insta @ropimasi](https://instagram.com/ropimasi/) | ronaldomarques@email.com |
+### Thank you _/\_ .  
+&nbsp;  
   
   
