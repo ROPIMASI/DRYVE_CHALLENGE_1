@@ -10,17 +10,17 @@ List of all requirements classified by type.
   
 <a name="recruitment-requirements"></a>
 ## RECRUITMENT REQUIREMENTS
-* Spring Boot with Java or Kotlin; ![Passed](../images/brush-right-16-16.png "Passed")
+* Spring Boot with Java or Kotlin; ![Passed](../images/icons/brush-right-16-16.png "Passed")
   + It's used STS-EclipseIDE (Spring Tool Suite), which has Spring Boot Starter embedded;
   + It's imported from Spring Initializr (https://start.spring.io/) the needed packages.
-* Maven or Gradle; ![Passed](../images/brush-right-16-16.png "Passed")
+* Maven or Gradle; ![Passed](../images/icons/brush-right-16-16.png "Passed")
   + It's a Maven Spring type project from STS-EclipseIDE;
   + It's used Maven Dependencies managed by Apache-Maven and `pom.xml`.
-* Relational database; ![Passed](../images/brush-right-16-16.png "Passed")
+* Relational database; ![Passed](../images/icons/brush-right-16-16.png "Passed")
   + It's used PostgreSQL, specifically, I am trying PostgreSQL v12.2 and v13.2. Both work sucessefully;
-* REST APIs for registration and searching of data. ![Passed](../images/brush-right-16-16.png "Passed")
-  + It's beeing implemented using REST concepts; ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
-  + Its goal is **Level 3**. ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
+* REST APIs for registration and searching of data. ![Passed](../images/icons/brush-right-16-16.png "Passed")
+  + It's beeing implemented using REST concepts; ![In Progress](../images/icons/flat-inprogress-16-16.png "In Progress")
+  + Its goal is **Level 3**. ![In Progress](../images/icons/flat-inprogress-16-16.png "In Progress")
   > ![REST Maturity Scale](../images/rest-api-maturity-en-US.png "REST Maturity Scale")  
 
 &nbsp;  
@@ -28,19 +28,19 @@ List of all requirements classified by type.
 &nbsp;  
 <a name="plus-recruitment-requirements"></a>
 ## PLUS RECRUITMENT REQUIREMENTS
-* `UUID` typed atributes (**U**niversally **U**nique **ID**entifier) for some classes; ![Passed](../images/brush-right-16-16.png "Passed")
+* `UUID` typed atributes (**U**niversally **U**nique **ID**entifier) for some classes; ![Passed](../images/icons/brush-right-16-16.png "Passed")
   + Using `UUID` on (**table**._column_) `model_year.id`, `model.id`, and `brand.id`, as mentioned in the **DRYVE invitation's SQL-script** [(see the original file in project's documentation, page 3)](Dryve-Challenge-1-Backend-Invitation.pdf "DRYVE invitation").
-* Unitary tests; ![Fail](../images/brush-wrong-16-16.png "Fail")
+* Unitary tests; ![Fail](../images/icons/brush-wrong-16-16.png "Fail")
   + Still in the process of learning...
-* Integration tests; ![Passed](../images/brush-right-16-16.png "Passed")
+* Integration tests; ![Passed](../images/icons/brush-right-16-16.png "Passed")
   + It's used **_POSTMAN_** and **_Chrome Browser_** as the testing tools. 
-* Database versioning (flyway or liquibase); ![In Progress](../images/flat-inprogress-16-16.png "In Progress")
+* Database versioning (flyway or liquibase); ![In Progress](../images/icons/flat-inprogress-16-16.png "In Progress")
   + It's used **_FlyWay_** as a Maven Depedency... /* TODO: review this discribing... */
-* Dockerfile for project's container; ![Fail](../images/brush-wrong-16-16.png "Fail")
+* Dockerfile for project's container; ![Fail](../images/icons/brush-wrong-16-16.png "Fail")
   + Future process of learning...
-* Docker compose for project's dependencies; ![Fail](../images/brush-wrong-16-16.png "Fail")
+* Docker compose for project's dependencies; ![Fail](../images/icons/brush-wrong-16-16.png "Fail")
   + Future process of learning...
-* Publication of registration events using RabbitMQ. ![Fail](../images/brush-wrong-16-16.png "Fail")
+* Publication of registration events using RabbitMQ. ![Fail](../images/icons/brush-wrong-16-16.png "Fail")
   + Soon process of learning...  
 
 &nbsp;  
