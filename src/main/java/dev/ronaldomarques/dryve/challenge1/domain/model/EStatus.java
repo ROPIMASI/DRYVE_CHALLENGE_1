@@ -21,14 +21,15 @@ package dev.ronaldomarques.dryve.challenge1.domain.model;
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210314.
- * @version  20210314.
- * @category Auxiliar de Modelagem do Negócio, ENUN que representa estado atual do anúncio do veículo.
- * @Análise  Após veículo ser vendidoo anúncio precisa ser inativado para não incorrer em venda de veículo inexistente
- *           ou indisponível.
+ * @author      Ronaldo Marques.
+ * @since       20210314.
+ * @last_change 20210410.
+ * @version     0.2.0-beta.
+ * @category    ENUMERATOR, auxiliar de modelagem do 'negócio', representa estado atual do anúncio do veículo.
+ * @analysis    Após veículo ser vendido anúncio precisa ser inativado para não incorrer em venda de veículo inexistente
+ *              ou indisponível.
  */
-public enum VehicleAdvertisingStatusEnun {
+public enum EStatus {
 	ACTIVE,
 	INACTIVE;
 }

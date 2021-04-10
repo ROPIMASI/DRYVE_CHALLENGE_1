@@ -21,10 +21,10 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.entity;
 
 
 import java.util.UUID;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,8 +33,8 @@ import javax.persistence.Table;
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210406.
- * @version     0.2.0.
+ * @last_change 20210409.
+ * @version     0.2.0-beta.
  * @category    Modelagem do Negócio, classe concreta.
  * @analysis    Representa os modelos existentes na aplicação.
  */
@@ -55,11 +55,12 @@ public class ModelEntity {
 	 * chave UUID.function_v4() do PostgreSQL. */
 	
 	@Column(name = "name", length = 255, nullable = false)
-	private String name;
+	private String name; // Apesar de raríssimo, 'modelos' podem ser homônimos: por enquanto não será UNIQUE no BD.
 	
 	// @Column(name = "brand_id", nullable = false)
-	// @JoinColumn(name = "id", nullable = false)
-	@ManyToOne(cascade = CascadeType.ALL) // FIXME: this cascade is not working at DB, it isn't declaring "actions" for the constraint.
+	@ManyToOne // (cascade? set null? delete?) FIXME: this cascade is not working at DB, it isn't declaring "actions"
+	@JoinColumn(name = "brand_id", nullable = false)
+	// for the constraint.
 	private BrandEntity brand; // FK(BrandEntity.id) at DB.
 	
 	
@@ -103,9 +104,9 @@ public class ModelEntity {
 		
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((this.brand == null) ? 0 : this.brand.hashCode());
+		result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
+		result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
 		return result;
 		
 	}
@@ -116,35 +117,25 @@ public class ModelEntity {
 	public boolean equals(Object obj) {
 		
 		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (!(obj instanceof ModelEntity)) return false;
 		ModelEntity other = (ModelEntity) obj;
 		
-		if (brand == null) {
+		if (this.brand == null) {
 			if (other.brand != null) return false;
 		}
-		else if (!brand.equals(other.brand)) return false;
+		else if (!this.brand.equals(other.brand)) return false;
 		
-		if (id == null) {
+		if (this.id == null) {
 			if (other.id != null) return false;
 		}
-		else if (!id.equals(other.id)) return false;
+		else if (!this.id.equals(other.id)) return false;
 		
-		if (name == null) {
+		if (this.name == null) {
 			if (other.name != null) return false;
 		}
-		else if (!name.equals(other.name)) return false;
+		else if (!this.name.equals(other.name)) return false;
 		
 		return true;
-		
-	}
-	
-	
-	
-	@Override
-	public String toString() {
-		
-		return "ModelEntity [id=" + id + ", name=" + name + ", brand=" + brand + "]";
 		
 	}
 	

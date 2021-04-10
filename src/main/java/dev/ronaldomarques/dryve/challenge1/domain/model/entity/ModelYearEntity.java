@@ -21,10 +21,10 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.entity;
 
 
 import java.util.UUID;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,8 +33,8 @@ import javax.persistence.Table;
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210406.
- * @version     0.2.0.
+ * @last_change 20210409.
+ * @version     0.2.0-beta.
  * @category    Modelagem do Negócio, classe concreta;
  * @analysis    Representa a singularidade de cada registro importado da API-KBB, permitindo um único preço para cada
  *              associação "modelo-ano".
@@ -56,8 +56,9 @@ public class ModelYearEntity {
 	 * chave UUID.function_v4() do PostgreSQL. */
 	
 	// @Column(name = "model_id", nullable = false)
-	// @JoinColumn(name = "id", nullable = false)
-	@ManyToOne(cascade = CascadeType.ALL) // FIXME: this cascade is not working at DB, it isn't declaring "actions" for the constraint.
+	@ManyToOne // (cascade = CascadeType.ALL? delete? set null?) FIXME: this cascade is not working at DB, it isn't
+				// declaring "actions" for the constraint.
+	@JoinColumn(name = "model_id", nullable = false)
 	private ModelEntity model; // FK(ModelEntity.id) at DB.
 	
 	@Column(name = "year", nullable = false)
@@ -109,7 +110,6 @@ public class ModelYearEntity {
 	
 	
 	public void setKbbId(long kbbId) { this.kbbId = kbbId; }
-	
 	/* FURTHER: 0.3.0 fetch kbb id from kbb public api */
 	
 	
@@ -119,10 +119,10 @@ public class ModelYearEntity {
 		
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + (int) (kbbId ^ (kbbId >>> 32));
-		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		result = prime * result + year;
+		result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
+		result = prime * result + (int) (this.kbbId ^ (this.kbbId >>> 32));
+		result = prime * result + ((this.model == null) ? 0 : this.model.hashCode());
+		result = prime * result + this.year;
 		return result;
 		
 	}
@@ -133,33 +133,23 @@ public class ModelYearEntity {
 	public boolean equals(Object obj) {
 		
 		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (!(obj instanceof ModelYearEntity)) return false;
 		ModelYearEntity other = (ModelYearEntity) obj;
 		
-		if (id == null) {
+		if (this.id == null) {
 			if (other.id != null) return false;
 		}
-		else if (!id.equals(other.id)) return false;
+		else if (!this.id.equals(other.id)) return false;
 		
-		if (kbbId != other.kbbId) return false;
+		if (this.kbbId != other.kbbId) return false;
 		
-		if (model == null) {
+		if (this.model == null) {
 			if (other.model != null) return false;
 		}
-		else if (!model.equals(other.model)) return false;
+		else if (!this.model.equals(other.model)) return false;
 		
-		if (year != other.year) return false;
+		if (this.year != other.year) return false;
 		return true;
-		
-	}
-	
-	
-	
-	@Override
-	public String toString() {
-		
-		return "ModelYearEntity [id=" + id + ", model=" + model + ", year=" + year + ", kbbId=" + kbbId + "]";
 		
 	}
 	

@@ -22,22 +22,21 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.entity;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.UUID;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatusEnun;
+import dev.ronaldomarques.dryve.challenge1.domain.model.EStatus;
 
 
 
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210406.
- * @version     0.2.0.
+ * @last_change 20210409.
+ * @version     0.2.0-beta.
  * @category    Modelagem do Negócio, classe concreta que representa diferentes veículos automotores.
  * @analysis    para o "Time DEV": os quais se assemelham e são registrados da mesma forma (com os mesmo atributos) no
  *              banco de dados. Esta abordagem permite futura modelagem de outras classes que representarão outros tipos
@@ -49,25 +48,19 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.VehicleAdvertisingStatus
  *              'boolean eletricamenteAssistida;'.
  */
 
-/* HERE: I stoped HERE, creating a solution for test FAIL, see documentation/tests-results/:
- * DRYVE CHALLENGE 1 TESTS;
- * VERSION: 0.2.0-alpha;
- * DATA: 202103291705 UTC;
- * TYPE: USING SIMULATION;
- * TOOL: POSTMAN; */
-
 @Entity
 @Table(name = "motor_vehicle")
-public class MotorVehicleEntity extends VehicleAbstract {
+public class MotorVehicleEntity extends AVehicle {
 	
 	/* Overriding os atributos originais da classe abstrata para Modelagem-Objeto-Relacional do HIBERNATE. */
 	@Id
-	@Column(name = "plate", length = 8, nullable = false)
+	@Column(name = "plate", length = 7, nullable = false)
 	private String plate; // PK at DB.
 	
 	// @Column(name = "model_year_id", nullable = false)
-	// @JoinColumn(name = "id", nullable = false)
-	@ManyToOne(cascade = CascadeType.ALL) // FIXME: this cascade is not working at DB, it isn't declaring "actions" for the constraint.
+	@ManyToOne // (cascade = CascadeType.ALL? delete? set null?) FIXME: this cascade is not working at DB, it isn't
+				// declaring "actions" for the constraint.
+	@JoinColumn(name = "model_year_id", nullable = false)
 	private ModelYearEntity modelYear; // FK(modelYearEntity.id) at DB.
 	
 	/* @Column(name = "year", nullable = false)
@@ -75,10 +68,10 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	/* This attributi and column on DB is not needed inside this entity, once it exists inside the ModelYearEntity and
 	 * model_year table. */
 	
-	@Column(name = "price_adv", nullable = false)
+	@Column(name = "price_adv", nullable = false, precision = 12, scale = 2)
 	private BigDecimal priceAdv; // "preço no anúncio".
 	
-	@Column(name = "price_kbb", nullable = false)
+	@Column(name = "price_kbb", nullable = false, precision = 12, scale = 2)
 	private BigDecimal priceKBB; // "preço na API KBB".
 	/* BigDecimal: prove a melhor precisão e alcance dos valores monetários esperados para o uso nesta aplicação. */
 	/* TODO: integragir esta aplicação com a API pública da KBB para estrair um valor $ para este modelo-ano. */
@@ -91,9 +84,8 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	 * Adicionei este campo/atributo à tabela e classe para dar a possibilidade à aplicação de ativar e desativar cada
 	 * veículo anunciado, pois entendi na regra de negócio, que espera-se, que este veículo sejá vendido, logo seu
 	 * anúcio registrado precisa ser desativado para não ser anunciado erroneamente. */
-	@Column(name = "veh_adv_status", nullable = false)
-	private VehicleAdvertisingStatusEnun vehicleAdvertisingStatus = VehicleAdvertisingStatusEnun.ACTIVE;
-	/* VehicleAbstractAdvertisingStatus = Estado de AnuncioVeículo. */
+	@Column(name = "status", nullable = false)
+	private EStatus status = EStatus.ACTIVE;
 	/* Instancio o objeto com valor padrão para este atributo = ACTIVE, anúncio é criado ativo. */
 	
 	
@@ -106,61 +98,23 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	
 	
 	
+	@Override
 	public String getPlate() { return plate; }
 	
 	
 	
+	@Override
 	public void setPlate(String plate) { this.plate = plate.toUpperCase(); }
 	/* .setPlate() possui .upperCase() para garantir que toda placa mantenha seu padrão de grafia MAIÚSCULO, conforme
 	 * atual legislação Brasil-Mercosul, mesmo que usuário envie a representação JSON com plca em letras minúsculas. */
 	
 	
 	
-	public UUID getModelYearId() { return modelYearId; }
+	public EStatus getVeAdvStatus() { return status; }
 	
 	
 	
-	public void setModelYearId(UUID modelYearId) { this.modelYearId = modelYearId; }
-	
-	
-	
-	public short getYear() { return year; }
-	
-	
-	
-	public void setYear(short year) { this.year = year; }
-	
-	
-	
-	public BigDecimal getPriceAdv() { return priceAdv; }
-	
-	
-	
-	public void setPriceAdv(BigDecimal priceAdv) { this.priceAdv = priceAdv; }
-	
-	
-	
-	public BigDecimal getPriceKBB() { return priceKBB; }
-	
-	
-	
-	public void setPriceKBB(BigDecimal priceKBB) { this.priceKBB = priceKBB; }
-	
-	
-	
-	public Date getRegistryDate() { return registryDate; }
-	
-	
-	
-	public void setRegistryDate(Date registryDate) { this.registryDate = registryDate; }
-	
-	
-	
-	public VehicleAdvertisingStatusEnun getVeAdvStatus() { return vehicleAdvertisingStatus; }
-	
-	
-	
-	public void setVeAdvStatus(VehicleAdvertisingStatusEnun status) { this.vehicleAdvertisingStatus = status; }
+	public void setVeAdvStatus(EStatus status) { this.status = status; }
 	
 	
 	
@@ -169,14 +123,13 @@ public class MotorVehicleEntity extends VehicleAbstract {
 		
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((modelYearId == null) ? 0 : modelYearId.hashCode());
-		result = prime * result + ((plate == null) ? 0 : plate.hashCode());
-		result = prime * result + ((priceAdv == null) ? 0 : priceAdv.hashCode());
-		result = prime * result + ((priceKBB == null) ? 0 : priceKBB.hashCode());
-		result = prime * result + ((registryDate == null) ? 0 : registryDate.hashCode());
+		result = prime * result + ((this.modelYear == null) ? 0 : this.modelYear.hashCode());
+		result = prime * result + ((this.plate == null) ? 0 : this.plate.hashCode());
+		result = prime * result + ((this.priceAdv == null) ? 0 : this.priceAdv.hashCode());
+		result = prime * result + ((this.priceKBB == null) ? 0 : this.priceKBB.hashCode());
+		result = prime * result + ((this.registryDate == null) ? 0 : this.registryDate.hashCode());
 		result = prime * result
-				+ ((vehicleAdvertisingStatus == null) ? 0 : vehicleAdvertisingStatus.hashCode());
-		result = prime * result + year;
+				+ ((this.status == null) ? 0 : this.status.hashCode());
 		return result;
 		
 	}
@@ -187,50 +140,36 @@ public class MotorVehicleEntity extends VehicleAbstract {
 	public boolean equals(Object obj) {
 		
 		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (!(obj instanceof MotorVehicleEntity)) return false;
 		MotorVehicleEntity other = (MotorVehicleEntity) obj;
 		
-		if (modelYearId == null) {
-			if (other.modelYearId != null) return false;
+		if (this.modelYear == null) {
+			if (other.modelYear != null) return false;
 		}
-		else if (!modelYearId.equals(other.modelYearId)) return false;
+		else if (!this.modelYear.equals(other.modelYear)) return false;
 		
-		if (plate == null) {
+		if (this.plate == null) {
 			if (other.plate != null) return false;
 		}
-		else if (!plate.equals(other.plate)) return false;
+		else if (!this.plate.equals(other.plate)) return false;
 		
-		if (priceAdv == null) {
+		if (this.priceAdv == null) {
 			if (other.priceAdv != null) return false;
 		}
-		else if (!priceAdv.equals(other.priceAdv)) return false;
+		else if (!this.priceAdv.equals(other.priceAdv)) return false;
 		
-		if (priceKBB == null) {
+		if (this.priceKBB == null) {
 			if (other.priceKBB != null) return false;
 		}
-		else if (!priceKBB.equals(other.priceKBB)) return false;
+		else if (!this.priceKBB.equals(other.priceKBB)) return false;
 		
-		if (registryDate == null) {
+		if (this.registryDate == null) {
 			if (other.registryDate != null) return false;
 		}
-		else if (!registryDate.equals(other.registryDate)) return false;
+		else if (!this.registryDate.equals(other.registryDate)) return false;
 		
-		if (vehicleAdvertisingStatus != other.vehicleAdvertisingStatus) return false;
-		if (year != other.year) return false;
+		if (this.status != other.status) return false;
 		return true;
-		
-	}
-	
-	
-	
-	@Override
-	public String toString() {
-		
-		return "MotorVehicleEntity [plate=" + plate + ", modelYearId=" + modelYearId + ", year=" + year + ", priceAdv="
-				+ priceAdv + ", priceKBB=" + priceKBB + ", registryDate=" + registryDate
-				+ ", VehicleAdvertisingStatusEnun="
-				+ vehicleAdvertisingStatus + "]";
 		
 	}
 	

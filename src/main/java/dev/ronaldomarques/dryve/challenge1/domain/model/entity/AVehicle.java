@@ -22,26 +22,22 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.entity;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.UUID;
 
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210314.
- * @version  20210314.
- * @category Modelagem do Negócio, classe abstrata que prove características em comum para as classes heredeiras.
- * @Análise  Esta abordagem possibilita implementação de diferentes tipos de veículos que precisarão do polimorfismo
- *           para terem diferentes tratamentos na aplicação e futura integração com NOSQL-DB.
+ * @author      Ronaldo Marques.
+ * @since       20210314.
+ * @last_change 20210409.
+ * @version     0.2.0-beta.
+ * @category    Modelagem do Negócio, classe abstrata que prove características em comum para as classes heredeiras.
+ * @analysis    Esta abordagem possibilita implementação de diferentes tipos de veículos que precisarão do polimorfismo
+ *              para terem diferentes tratamentos na aplicação e futura integração com NOSQL-DB.
  */
-public abstract class VehicleAbstract {
+public abstract class AVehicle {
 	
 	protected String plate; // PK at DB.
-	protected UUID modelYearId; // FK(modelYear.id) at DB.
-	protected short year;
-	/* short: pois, ocupar apenas 2 bytes de armazenamento contra 4 bybtes se forsse String[4], por conda de operações
-	 * lógicas e matemáticas com tipos primitivos (números tais como byte, short, int, long...) tem MENOR custo de
-	 * processamento que operações lógicas e matemáticas com String. */
+	protected ModelYearEntity modelYear; // FK(modelYear.id) at DB.
 	protected BigDecimal priceAdv; // "preço no anúncio".
 	protected BigDecimal priceKBB; // "preço na API KBB".
 	/* BigDecimal: prove a melhor precisão e alcance dos valores monetários esperados para o uso nesta aplicação. */
@@ -49,7 +45,7 @@ public abstract class VehicleAbstract {
 	
 	
 	
-	public VehicleAbstract() {
+	public AVehicle() {
 		
 		super();
 		
@@ -65,19 +61,11 @@ public abstract class VehicleAbstract {
 	
 	
 	
-	public UUID getModelYearId() { return modelYearId; }
+	public ModelYearEntity getModelYear() { return modelYear; }
 	
 	
 	
-	public void setModelYearId(UUID modelYearId) { this.modelYearId = modelYearId; }
-	
-	
-	
-	public short getYear() { return year; }
-	
-	
-	
-	public void setYear(short year) { this.year = year; }
+	public void setModelYear(ModelYearEntity modelYear) { this.modelYear = modelYear; }
 	
 	
 	

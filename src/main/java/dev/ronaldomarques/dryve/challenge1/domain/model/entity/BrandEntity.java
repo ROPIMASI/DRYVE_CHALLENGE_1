@@ -29,10 +29,12 @@ import javax.persistence.Table;
 
 
 /**
- * @author   Ronaldo Marques.
- * @since    20210314.
- * @version  20210406.
- * @category Modelagem do Negócio, classe concreta que representa as marcas existentes na aplicação.
+ * @author      Ronaldo Marques.
+ * @since       20210314.
+ * @last_change 20210409.
+ * @version     0.2.0-beta.
+ * @category    Modelagem do Negócio, classe concreta que representa as marcas existentes na aplicação.
+ * @analysis    Representa os modelos existentes na aplicação.
  */
 @Entity
 @Table(name = "brand")
@@ -50,7 +52,7 @@ public class BrandEntity {
 	/* PK at DB. Por agora ao instanciar o objeto já define-se seu 'id' com UUID-v4-random, posteriormente será valor da
 	 * chave UUID.function_v4() do PostgreSQL. */
 	
-	@Column(name = "name", length = 255, nullable = false)
+	@Column(name = "name", length = 255, unique = true, nullable = false)
 	private String name;
 	
 	
@@ -86,8 +88,8 @@ public class BrandEntity {
 		
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
+		result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
 		return result;
 		
 	}
@@ -98,30 +100,20 @@ public class BrandEntity {
 	public boolean equals(Object obj) {
 		
 		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (!(obj instanceof BrandEntity)) return false;
 		BrandEntity other = (BrandEntity) obj;
 		
-		if (id == null) {
+		if (this.id == null) {
 			if (other.id != null) return false;
 		}
-		else if (!id.equals(other.id)) return false;
+		else if (!this.id.equals(other.id)) return false;
 		
-		if (name == null) {
+		if (this.name == null) {
 			if (other.name != null) return false;
 		}
-		else if (!name.equals(other.name)) return false;
+		else if (!this.name.equals(other.name)) return false;
 		
 		return true;
-		
-	}
-	
-	
-	
-	@Override
-	public String toString() {
-		
-		return "BrandEntity [id=" + id + ", name=" + name + "]";
 		
 	}
 	

@@ -1,7 +1,7 @@
 TITLE:			DRYVE CHALLENGE 1 TESTS;
 VERSION:		0.2.0-beta;
 SINCE:			202103301112;
-LAST_CHANGE:	202104081535;
+LAST_CHANGE:		202104081535;
 TYPE:			SIMULATION OF USAGE;
 TOOLS:			POSTMAN, AND CHROMIUM BROWSER;
 
@@ -15,39 +15,33 @@ TOOLS:			POSTMAN, AND CHROMIUM BROWSER;
 
 request
   get /brands
-
 response
-	[ /* A populated list. */
-    	{
-        	"id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
-        	"name": "FIAT"
-    	},
-    	{
-        	"id": "c0225595-e293-477b-8758-384872470f00",
-        	"name": "FORD"
-    	},
-    	{
-       		"id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a",
-        	"name": "PEUGEOT"
-    	}
-	]
-# 200 ok. passed.
+[
+    {
+        "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+        "name": "FIAT"
+    },
+    {
+        "id": "c0225595-e293-477b-8758-384872470f00",
+        "name": "FORD"
+    }
+]
+# 200 ok, with populated list, passed.
 
-
+---
 
 request
   post /brands
   body
-    {
-    	"name": "Peugeot"
-    }
-
+{
+    "name": "Peugeot"
+}
 response
-	{ /* An object representation. */
-		"id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a",
-		"name": "PEUGEOT"
-	}
-# 201 created. passed.
+{
+    "id": "f320f5b8-df76-4a54-9538-0d8a310939a2",
+    "name": "PEUGEOT"
+}
+# 201 created, with object representation, passed.
 
 
 
@@ -56,61 +50,82 @@ response
 request
   get /models
 response
-	[ /* A populated list. */
-    	{
-        	"id": "5bc16064-d3ee-4aed-a264-a914233d0c4f",
-        	"name": "TORO 2.0 DIESEL",
-        	"brand": {
-	            "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
-    	        "name": "FIAT"
-        	}
-    	},
-    	{
-        	"id": "e16e9ed4-43c6-4882-9f2f-12ca5aad6e7e",
-        	"name": "ARGO 1.0 Flex",
-        	"brand": {
-            	"id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
-            	"name": "FIAT"
-        	}
-    	},
-    	{
-        	"id": "c08f77df-c6e0-4e73-a378-42bb83361266",
-        	"name": "Onix 1.0 Turbo Flex",
-        	"brand": {
-	            "id": "c0225595-e293-477b-8758-384872470f00",
-    	        "name": "FORD"
-        	}
-    	},
-    	{
-        	"id": "deaf80e7-600c-4a35-af52-1fc7f1e967a8",
-        	"name": "EcoSport 1.6 Flex",
-        	"brand": {
-            	"id": "c0225595-e293-477b-8758-384872470f00",
-            	"name": "FORD"
-        	}
-    	}
-	]
-# 200 ok. passsed.
+[
+    {
+        "id": "5bc16064-d3ee-4aed-a264-a914233d0c4f",
+        "name": "TORO 2.0 DIESEL",
+        "brand": {
+            "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+            "name": "FIAT"
+        }
+    },
+    {
+        "id": "e16e9ed4-43c6-4882-9f2f-12ca5aad6e7e",
+        "name": "ARGO 1.0 Flex",
+        "brand": {
+            "id": "ca43ec74-5bb0-4288-ab11-5df094ca4dc4",
+            "name": "FIAT"
+        }
+    },
+    {
+        "id": "c08f77df-c6e0-4e73-a378-42bb83361266",
+        "name": "Onix 1.0 Turbo Flex",
+        "brand": {
+            "id": "c0225595-e293-477b-8758-384872470f00",
+            "name": "FORD"
+        }
+    },
+    {
+        "id": "deaf80e7-600c-4a35-af52-1fc7f1e967a8",
+        "name": "EcoSport 1.6 Flex",
+        "brand": {
+            "id": "c0225595-e293-477b-8758-384872470f00",
+            "name": "FORD"
+        }
+    }
+]
+# 200 ok, with populated list, passsed.
+
+---
 
 request
   post /models
   body
-    {
-      "name": "e-Legend",
-      "brand": {
-        "id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a"
-      }
+{
+    "name": "e-Legend",
+    "brand": {
+        "id": "f320f5b8-df76-4a54-9538-0d8a310939a2"
     }
-
+}
 response
-	{ /* An object representation. */
-    	"id": "09783680-893e-4736-9e59-353e196d345c",
-    	"name": "E-LEGEND",
-    	"brand": {
-        	"id": "a19001c3-d2ad-4d07-a6c4-d54a62a7c62a",
-        	"name": "PEUGEOT"
-    	}
-	}
+{
+	"trace": "org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name\r\n\tat org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:294)\r\n\tat org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:233)\r\n\tat org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:566)\r\n\tat org.springframework.transaction.support...",
+	"message": "not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name",
+	"path": "/models"
+}
+# 500 internal server error, failed.
+
+---
+
+request
+  post /models
+  body
+{
+    "name": "e-Legend",
+    "brand": {
+        "id": "f320f5b8-df76-4a54-9538-0d8a310939a2",
+        "name": ""					/* Com este atributo vazio. */
+    }
+}
+response
+{
+    "id": "246bd943-f602-421d-8934-e105054ca6db",
+    "name": "E-LEGEND",
+    "brand": {
+        "id": "f320f5b8-df76-4a54-9538-0d8a310939a2",
+        "name": ""
+    }
+}
 # 201 created. passed.
 
 
@@ -119,8 +134,9 @@ response
 
 request
   get /modelsyears
+
 response
-[ /* A populated list. */
+[
     {
         "id": "9d31e563-9d09-4ce8-8ab5-c5177f51d92f",
         "model": {
@@ -226,7 +242,9 @@ response
         "kbbId": 8
     }
 ]
-# 200 ok. passed.
+# 200 ok, with populated list, passed.
+
+
 
 request
   post /modelsyears
@@ -261,9 +279,49 @@ response
 
 request
   get /motorvehicles
+
 response
-  [ populated list ]
-# 200 ok. passed.
+[
+    {
+        "plate": "ASD1234",
+        "modelYearId": null,
+        "year": 0,
+        "priceAdv": 100000.55,
+        "priceKBB": 99999.55,
+        "registryDate": "2021-03-15",
+        "veAdvStatus": "ACTIVE"
+    },
+    {
+        "plate": "Z1X2C3V4",
+        "modelYearId": null,
+        "year": 0,
+        "priceAdv": 100002.55,
+        "priceKBB": 100001.55,
+        "registryDate": "2021-03-15",
+        "veAdvStatus": "INACTIVE"
+    },
+    {
+        "plate": "Q3W2E1R0",
+        "modelYearId": null,
+        "year": 0,
+        "priceAdv": 100004.55,
+        "priceKBB": 100003.55,
+        "registryDate": "2021-03-20",
+        "veAdvStatus": "INACTIVE"
+    },
+    {
+        "plate": "DSA654",
+        "modelYearId": null,
+        "year": 0,
+        "priceAdv": 100006.55,
+        "priceKBB": 100005.55,
+        "registryDate": "2021-03-25",
+        "veAdvStatus": "INACTIVE"
+    }
+]
+# 200 ok, with populated list, passed.
+
+
 
 request
   post /motorvehicles
