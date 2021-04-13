@@ -32,15 +32,41 @@ import java.math.BigDecimal;
  * @category
  *              @analysis
  */
-public class AMotorVehicleDTO {
+public class AMotorVehicleDto {
 	
+	/* This is the Abs-DTO has: */
+	/*
+	private String plate;
+	private BigDecimal priceAdv;
+	private short year;
+	*/
+
+	/* This is the DTO Inlet has: */
+	/*
+	private String plate;			// Abs
+	private short year;				// Abs
+	private BigDecimal priceAdv;	// Abs
+	private UUID brandId;
+	private UUID modelId;
+	*/
+	
+	/* This is the DTO Outlet has: */
+	/*
+	private String plate;			// Abs
+	private short year;				// Abs
+	private BigDecimal priceAdv;	// Abs
+	private String brandName;
+	private String modelName;
+	private BigDecimal priceKBB;
+	private Date registryDate;
+	*/	
+
 	private String plate;
 	private BigDecimal priceAdv;
 	private short year;
 	
 	
-	
-	public AMotorVehicleDTO() {
+	public AMotorVehicleDto() {
 		
 		super();
 		

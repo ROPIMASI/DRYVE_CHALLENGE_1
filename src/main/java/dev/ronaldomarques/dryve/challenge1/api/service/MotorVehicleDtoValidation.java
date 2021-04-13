@@ -20,10 +20,9 @@
 package dev.ronaldomarques.dryve.challenge1.api.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import dev.ronaldomarques.dryve.challenge1.api.dto.AMotorVehicleDTO;
-import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntity;
+
+import dev.ronaldomarques.dryve.challenge1.api.dto.AMotorVehicleDto;
 
 
 
@@ -32,32 +31,24 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntit
  * @since       20210410.
  * @last_change 20210410.
  * @version     0.2.0-beta.
- * @category    Factory Service: class specialized in factoring a specific type object from converting a given objetct.
- * @analysis    ... TODO: this description: something about OVERLOAD two types of MotorVehicleDTO:
+ * @category    Service: Specialized class to verify whether the objetct is spected type and valid content.
+ * @analysis    ... TODO: this description: something about two types of MotorVehicleDTO:
  *              - MotorVehicle-ENTRY-DTO, and
  *              - MotorVehicle-OUTLET-DTO.
  */
 @Service
-public class MotorVehicleDTOConversion {
+public class MotorVehicleDtoValidation {
 	
-	/* This service class needs to know some details about a business(domain)-class: MotorVehicleEntity. */
-	@Autowired
-	MotorVehicleEntity mveFactoring;
+	/* FURTHER: Soon... */
+	
+	public static boolean isEntry(AMotorVehicleDto mvdto) { return true; }
 	
 	
 	
-	public MotorVehicleEntity toEntity(AMotorVehicleDTO aDTO) {
-		
-		/* TODO: real procedures to evaluate that properties below. */
-		mveFactoring.setPlate(null);
-		mveFactoring.setModelYear(null);
-		mveFactoring.setPriceAdv(null);
-		mveFactoring.setPriceKBB(null);
-		mveFactoring.setRegistryDate(null);
-		mveFactoring.setVeAdvStatus(null);
-		
-		return mveFactoring;
-		
-	}
+	public static boolean isOutlet(AMotorVehicleDto mvdto) { return true; }
+	
+	
+	
+	public static boolean isValid(AMotorVehicleDto mvdto) { return true; }
 	
 }

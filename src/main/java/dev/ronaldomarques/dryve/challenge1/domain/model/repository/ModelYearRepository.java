@@ -23,9 +23,7 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.repository;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import dev.ronaldomarques.dryve.challenge1.domain.model.entity.ModelYearEntity;
-
 
 
 
@@ -41,5 +39,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.ModelYearEntity;
  */
 @Repository
 public interface ModelYearRepository extends JpaRepository<ModelYearEntity, UUID> {
+	
+	ModelYearEntity findByModelIdAndYear(UUID modelId, int year);
 	
 }

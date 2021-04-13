@@ -33,7 +33,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import dev.ronaldomarques.myutility.debugger.DP;
 
 
-
 @SpringBootApplication
 public class DryveChallenge1Application {
 	
@@ -44,6 +43,10 @@ public class DryveChallenge1Application {
 		
 		/* Iniciar a aplicação API propriamente dita. */
 		SpringApplication.run(DryveChallenge1Application.class, args);
+		//SpringApplication.run(DryveChallenge1ApplicationTests.class, args);
+		
+		
+		
 		
 	}
 	

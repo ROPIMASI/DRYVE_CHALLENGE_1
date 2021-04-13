@@ -21,7 +21,7 @@ package dev.ronaldomarques.dryve.challenge1.domain.model.entity;
 
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 
 

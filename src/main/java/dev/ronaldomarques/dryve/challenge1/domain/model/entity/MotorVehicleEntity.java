@@ -28,6 +28,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.stereotype.Component;
 import dev.ronaldomarques.dryve.challenge1.domain.model.EStatus;
 
 
@@ -47,7 +48,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.EStatus;
  *              desenvolvimento. Ex: carros e pickups com atributo um 'short emissaoCO2;' e bikes com um atributo
  *              'boolean eletricamenteAssistida;'.
  */
-
+@Component
 @Entity
 @Table(name = "motor_vehicle")
 public class MotorVehicleEntity extends AVehicle {
@@ -60,7 +61,7 @@ public class MotorVehicleEntity extends AVehicle {
 	// @Column(name = "model_year_id", nullable = false)
 	@ManyToOne // (cascade = CascadeType.ALL? delete? set null?) FIXME: this cascade is not working at DB, it isn't
 				// declaring "actions" for the constraint.
-	@JoinColumn(name = "model_year_id", nullable = false)
+	@JoinColumn(name = "model_year_id", nullable = true) // fixme: to false, temporarilly true.
 	private ModelYearEntity modelYear; // FK(modelYearEntity.id) at DB.
 	
 	/* @Column(name = "year", nullable = false)
@@ -71,10 +72,9 @@ public class MotorVehicleEntity extends AVehicle {
 	@Column(name = "price_adv", nullable = false, precision = 12, scale = 2)
 	private BigDecimal priceAdv; // "preço no anúncio".
 	
-	@Column(name = "price_kbb", nullable = false, precision = 12, scale = 2)
+	@Column(name = "price_kbb", nullable = true, precision = 12, scale = 2) // fixme: null to false, temporarilly true.
 	private BigDecimal priceKBB; // "preço na API KBB".
 	/* BigDecimal: prove a melhor precisão e alcance dos valores monetários esperados para o uso nesta aplicação. */
-	/* TODO: integragir esta aplicação com a API pública da KBB para estrair um valor $ para este modelo-ano. */
 	
 	@Column(name = "registry_date", nullable = false)
 	private Date registryDate;
@@ -110,11 +110,11 @@ public class MotorVehicleEntity extends AVehicle {
 	
 	
 	
-	public EStatus getVeAdvStatus() { return status; }
+	public EStatus getStatus() { return status; }
 	
 	
 	
-	public void setVeAdvStatus(EStatus status) { this.status = status; }
+	public void setStatus(EStatus status) { this.status = status; }
 	
 	
 	

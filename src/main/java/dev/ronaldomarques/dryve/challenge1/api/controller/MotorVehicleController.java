@@ -20,6 +20,8 @@
 package dev.ronaldomarques.dryve.challenge1.api.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +31,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import dev.ronaldomarques.dryve.challenge1.api.dto.AMotorVehicleDTO;
-import dev.ronaldomarques.dryve.challenge1.api.service.MotorVehicleDTOConversion;
+import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDtoInlet;
+import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntity;
 import dev.ronaldomarques.dryve.challenge1.domain.model.repository.MotorVehicleRepository;
 import dev.ronaldomarques.dryve.challenge1.domain.service.MotorVehicleEntityConversion;
+import dev.ronaldomarques.dryve.challenge1.domain.service.MotorVehicleRegistryService;
 import dev.ronaldomarques.myutility.debugger.DP;
 
 
@@ -70,8 +73,7 @@ public class MotorVehicleController {
 	 * Por último, o mais interessante, tratamento de exceções por camadas: versão futura, talvez "v0.3.0-dev". */
 	@Autowired
 	private MotorVehicleRepository motorVehicleRepo;
-	private MotorVehicleDTOConversion mvdConversion;
-	private MotorVehicleEntityConversion mveConversion;
+	private MotorVehicleRegistryService motorVehicleRegistryServ;
 	
 	
 	
@@ -81,26 +83,31 @@ public class MotorVehicleController {
 		
 		DP.pdln(this.getClass().getName() + ".listar();"); // Simple debug printing, using my personal LIB.
 		
-		return ResponseEntity.ok(motorVehicleRepo.findAll());
+		/* 1st step get entity list from repository. */
+		List<MotorVehicleEntity> mvEntities = new ArrayList<>();
+		mvEntities = motorVehicleRepo.findAll();
+		
+		
+		/* 2nd step convert entity list to DTOOutlet list. */
+		/* It will be continued... */
+		
+		
+		/* 3rd step retun the DTOOutlet list. */
+		
+		return ResponseEntity.ok(null);
 		
 	}
 	
 	
 	
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<?> adicionar(@RequestBody AMotorVehicleDTO motorVehicleInletDTO) {
+	public ResponseEntity<?> adicionar(@RequestBody MotorVehicleDtoInlet motorVehicleDtoInlet) {
 		
 		DP.pdln(this.getClass().getName() + ".adicionar();"); // Simple debug printing, using my personal LIB.
 		
-		/* HERE: AINDA POR TERMINAR...
-		 * IMPLEMENTAR A CAMADA DE REGRAS DE NEGÓCIO "SERVICE" CONFORME ARQUITETURA DO PROJETO,
-		 * NO PACOTE 'dev.ronaldomarques.dryve.challenge1.domain.service'. */
-		
-		/* FURTHER: I ll implement a cuple of service class to validations. */
-		
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(mveConversion.toOutletDTO(motorVehicleRepo.save(mvdConversion.toEntity(motorVehicleInletDTO))));
+		return ResponseEntity.status(HttpStatus.CREATED).body(
+				MotorVehicleEntityConversion.toDtoOutlet(
+						motorVehicleRegistryServ.registrar(motorVehicleDtoInlet)));
 		
 	}
 	

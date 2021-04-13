@@ -37,7 +37,28 @@ import org.springframework.stereotype.Component;
  *              comparação de objetos.
  */
 @Component
-public class MotorVehicleDTOInlet extends AMotorVehicleDTO {
+public class MotorVehicleDtoInlet extends AMotorVehicleDto {
+	
+	/* This is the Abs-DTO has: */
+	/* private String plate;
+	 * private BigDecimal priceAdv;
+	 * private short year; */
+	
+	/* This is the DTO Inlet has: */
+	/* private String plate; // Abs
+	 * private short year; // Abs
+	 * private BigDecimal priceAdv; // Abs
+	 * private UUID brandId;
+	 * private UUID modelId; */
+	
+	/* This is the DTO Outlet has: */
+	/* private String plate; // Abs
+	 * private short year; // Abs
+	 * private BigDecimal priceAdv; // Abs
+	 * private String brandName;
+	 * private String modelName;
+	 * private BigDecimal priceKBB;
+	 * private Date registryDate; */
 	
 	private UUID brandId;
 	private UUID modelId;

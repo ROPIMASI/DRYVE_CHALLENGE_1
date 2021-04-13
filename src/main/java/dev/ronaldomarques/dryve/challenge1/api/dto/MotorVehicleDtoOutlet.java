@@ -21,7 +21,7 @@ package dev.ronaldomarques.dryve.challenge1.api.dto;
 
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import org.springframework.stereotype.Component;
 
 
@@ -38,7 +38,28 @@ import org.springframework.stereotype.Component;
  *              comparação de objetos.
  */
 @Component
-public class MotorVehicleDTOOutlet extends AMotorVehicleDTO {
+public class MotorVehicleDtoOutlet extends AMotorVehicleDto {
+	
+	/* This is the Abs-DTO has: */
+	/* private String plate;
+	 * private BigDecimal priceAdv;
+	 * private short year; */
+	
+	/* This is the DTO Inlet has: */
+	/* private String plate; // Abs
+	 * private short year; // Abs
+	 * private BigDecimal priceAdv; // Abs
+	 * private UUID brandId;
+	 * private UUID modelId; */
+	
+	/* This is the DTO Outlet has: */
+	/* private String plate; // Abs
+	 * private short year; // Abs
+	 * private BigDecimal priceAdv; // Abs
+	 * private String brandName;
+	 * private String modelName;
+	 * private BigDecimal priceKBB;
+	 * private Date registryDate; */
 	
 	private String brandName;
 	private String modelName;

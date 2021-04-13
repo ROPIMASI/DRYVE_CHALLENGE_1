@@ -78,7 +78,7 @@ public final class DryveChallenge1Controller {
 		return "<HTML>"
 				+ "<H1>HELP:</H1>"
 				+ "<BR/> <BR/>"
-				+ "<H4><B>Lista das funcionalidades disponíveis nesta versão... Em construção...</B></H4>"
+				+ "<H4><B>Lista das funcionalidades disponíveis nesta versão: Em construção...</B></H4>"
 				+ "</HTML>";
 	}
 }

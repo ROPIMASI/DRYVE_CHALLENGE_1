@@ -20,9 +20,10 @@
 package dev.ronaldomarques.dryve.challenge1.domain.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Service;
-import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDTOInlet;
+import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDtoOutlet;
 import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntity;
 
 
@@ -32,33 +33,38 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntit
  * @since       20210410.
  * @last_change 20210410.
  * @version     0.2.0-beta.
- * @category    Factory Service: class specialized in factoring a specific type object from converting a given objetct.
+ * @category    Service: class specialized in factoring a specific type object from converting a given objetct.
  * @analysis    ... TODO: this description: something about OVERLOAD two types of MotorVehicleDTO:
  *              - MotorVehicle-ENTRY-DTO, and
  *              - MotorVehicle-OUTLET-DTO.
  */
 @Service
-public class MotorVehicleEntityConversion {
+public final class MotorVehicleEntityConversion {
 	
-	/* This service class needs to know some details about a structure(api)-class:
-	 * MotorVehicleDTOInlet, and
-	 * MotorVehicleDTOOutlet. */
-	
-	@Autowired
-	MotorVehicleDTOInlet mvdInFactoring;
-	
-	@Autowired
-	MotorVehicleDTOInlet mvdOutFactoring;
-	
-	
-	
-	public MotorVehicleDTOInlet toOutletDTO(MotorVehicleEntity aEntity) {
+	public static MotorVehicleDtoOutlet toDtoOutlet(MotorVehicleEntity entity) {
+		
+		var mvdOutlet = new MotorVehicleDtoOutlet();
 		
 		/* TODO: real procedures to evaluate that properties below. */
-		mvdOutFactoring.setPlate(null);
-		mvdOutFactoring.setPriceAdv(null);
+		mvdOutlet.setPlate(entity.getPlate());
+		mvdOutlet.setPriceAdv(entity.getPriceAdv());
 		
-		return mvdOutFactoring;
+		return mvdOutlet;
+		
+	}
+	
+	
+	
+	public static List<MotorVehicleDtoOutlet> toDtoOutletList(List<MotorVehicleEntity> mvEntities) {
+		
+		List<MotorVehicleDtoOutlet> mvDtoOutlets = new ArrayList<MotorVehicleDtoOutlet>();
+		
+		mvEntities.stream().forEach(e -> {
+			var mvDtoOutlet = toDtoOutlet(e);
+			mvDtoOutlets.add(mvDtoOutlet);
+		});
+		
+		return mvDtoOutlets;
 		
 	}
 	

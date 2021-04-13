@@ -30,6 +30,6 @@ package dev.ronaldomarques.dryve.challenge1.domain.model;
  *              ou indisponível.
  */
 public enum EStatus {
-	ACTIVE,
-	INACTIVE;
+	INACTIVE,
+	ACTIVE;
 }
