@@ -18,8 +18,8 @@
 -- ---
 -- @author		Ronaldo Marques.
 -- @since		20210317.
--- @last_change	20210406.
--- @version		0.2.0.
+-- @last_change	20210413.
+-- @version		0.2.0-beta.
 -- @category	DML, DDL, SQL Script for data generation and data imports, para feed applications's tables during tests phase.
 
 

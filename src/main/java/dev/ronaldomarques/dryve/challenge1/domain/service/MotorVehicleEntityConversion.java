@@ -35,8 +35,8 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntit
  * @version     0.2.0-beta.
  * @category    Service: class specialized in factoring a specific type object from converting a given objetct.
  * @analysis    ... TODO: this description: something about OVERLOAD two types of MotorVehicleDTO:
- *              - MotorVehicle-ENTRY-DTO, and
- *              - MotorVehicle-OUTLET-DTO.
+ *              - MotorVehicle-DTO-ENTRY, and
+ *              - MotorVehicle-DTO-OUTLET.
  */
 @Service
 public final class MotorVehicleEntityConversion {

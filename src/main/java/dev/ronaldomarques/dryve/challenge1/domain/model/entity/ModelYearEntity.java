@@ -33,7 +33,7 @@ import javax.persistence.Table;
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210409.
+ * @last_change 20210413.
  * @version     0.2.0-beta.
  * @category    Modelagem do Negócio, classe concreta;
  * @analysis    Representa a singularidade de cada registro importado da API-KBB, permitindo um único preço para cada
@@ -70,14 +70,6 @@ public class ModelYearEntity {
 	private long kbbId = 0;
 	/* Inicia o atributo com valor ZERO para garantir um valor não nulo, já que a documentação da KBB-API afirma que não
 	 * existe registro com id=0 em seus registros. */
-	
-	
-	
-	public ModelYearEntity() {
-		
-		super();
-		
-	}
 	
 	
 	

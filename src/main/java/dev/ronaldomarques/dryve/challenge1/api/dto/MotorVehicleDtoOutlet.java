@@ -29,10 +29,10 @@ import org.springframework.stereotype.Component;
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210410.
+ * @last_change 20210413.
  * @version     0.2.0-beta.
- * @category    Modelagem da API, classe de representação de objeto transferidor de dados de entidade: para entidade
- *              veículos automotores.
+ * @category    Modelagem da API, classe concreta de representação de objeto transferidor de dados de entidade: para
+ *              entidade veículos automotores.
  * @analysis    Boa conduta na transferência de dados em uma REST API. DTO contem apenas os dados necessários, não expõe
  *              dados sensíveis, ainda podem desempenhar as regras lógicas necessárias aos requisitos do projeto para
  *              comparação de objetos.
@@ -42,8 +42,8 @@ public class MotorVehicleDtoOutlet extends AMotorVehicleDto {
 	
 	/* This is the Abs-DTO has: */
 	/* private String plate;
-	 * private BigDecimal priceAdv;
-	 * private short year; */
+	 * private short year; *
+	 * private BigDecimal priceAdv; */
 	
 	/* This is the DTO Inlet has: */
 	/* private String plate; // Abs
@@ -97,5 +97,16 @@ public class MotorVehicleDtoOutlet extends AMotorVehicleDto {
 	
 	
 	public void setRegistryDate(Date registryDate) { this.registryDate = registryDate; }
+	
+	
+	
+	@Override
+	public String toString() {
+		
+		return "MotorVehicleDtoOutlet [brandName=" + this.brandName + ", modelName=" + this.modelName + ", priceKBB="
+				+ this.priceKBB + ", registryDate=" + this.registryDate + ", plate=" + this.plate + ", priceAdv="
+				+ this.priceAdv + ", year=" + this.year + "]";
+		
+	}
 	
 }

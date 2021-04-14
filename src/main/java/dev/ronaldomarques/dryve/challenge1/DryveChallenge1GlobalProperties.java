@@ -20,77 +20,98 @@
 package dev.ronaldomarques.dryve.challenge1;
 
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import java.util.Properties;
 
 
 
 /**
  * @author      Ronaldo Marques.
  * @since       20210312.
- * @last_change 20210329.
- * @version     0.2.0.
+ * @last_change 20210413.
+ * @version     0.2.0-beta.
  * @category    Parameters Handling.
  * @analysis    Inicia em forma de serviço no servidor Tomcat.
  */
-@Component
 public final class DryveChallenge1GlobalProperties {
 	
-	@Value("${dryve.global.major-version}")
+	/* A dependency tool. Instantied without arg, set MY TEMP default source file. */
+	private MyPropertyReader mpr = new MyPropertyReader();
+	
+	/* This class' properties */
 	private byte majorVersion;
-	
-	@Value("${dryve.global.minor-version}")
 	private byte minorVersion;
-	
-	@Value("${dryve.global.patch-version}")
 	private byte patchVersion;
-	
-	@Value("${dryve.global.status-version}")
-	private String stageVersion;
-	
-	@Value("${dryve.global.application-name}")
+	private String statusVersion;
+	private String buildVersion;
 	private String appName;
-	
-	/* Valor desta propriedade é determinado no static-constructor. */
 	private String appVersion;
-	
-	/* Valor desta propriedade é determinado no static-constructor. */
 	private String appDescription;
 	
-	/* O Constructor Padrão (na JVM) é chamado ANTES da injeção de valor @Value, então constrói o MenagedBean no
-	 * SpringContainer com propriedades 0 e null, valor não-funcional. Sendo assim, farei um método para sincronizar
-	 * os valores das propriedades da classe, até eu refatora-la num futuro próximo.
-	 * // FURTHER: public DryveChallenge1GlobalProperties() { } */
 	
 	
-	
-	public void sinc() {
+	/* Special task for CONSTRUCTOR: to load all values from dryvechallenge1.properties file to their respective
+	 * variables/properties. */
+	public DryveChallenge1GlobalProperties() {
 		
-		appVersion = getMajorVersion() + "." + getMinorVersion() + "." + getPatchVersion() + "-" + getStageVersion();
-		appDescription = "[" + getAppName() + ", versão " + getAppVersion() + "] é uma "
-				+ "aplicação-serviço-web de \n"
-				+ "cadastro de veículos com seus dados básicos e seu valor estimado na consulta da API da KBB.\n"
+		/* Temporarily special var (properties organizer) to catch the read properties from the file. */
+		var properties = new Properties();
+		
+		/* Loading the properties from the properties file to tmp var, without arg, set MY TEMP default source file. */
+		properties = mpr.load();
+		
+		/* Attributing each property's value to its respective variable-property. */
+		this.majorVersion = Byte.parseByte(properties.getProperty("dryve.global.major-version"));
+		this.minorVersion = Byte.parseByte(properties.getProperty("dryve.global.minor-version"));
+		this.patchVersion = Byte.parseByte(properties.getProperty("dryve.global.patch-version"));
+		this.statusVersion = properties.getProperty("dryve.global.status-version");
+		this.buildVersion = properties.getProperty("dryve.global.build-version");
+		this.appName = properties.getProperty("dryve.global.application-name");
+		
+		this.appVersion =
+				getMajorVersion() + "." + getMinorVersion() + "." + getPatchVersion() + "-" + getStatusVersion()
+						+ "+" + getBuildVersion();
+		
+		this.appDescription = "[" + getAppName() + ", versão " + getAppVersion() + "] "
+				+ "é uma aplicação-serviço-web de cadastro de veículos com seus dados básicos e seu valor estimado na consulta da API da KBB.\n"
 				+ "\n"
-				+ "Dados de entrada da API: \t Dados armazenados da API: \t Dados de resposta da API:\n"
-				+ "Placa Veículo; \t\t\t Placa Veículo; \t\t Placa Veículo;\n"
-				+ "ID Marca; \t\t\t --- \t\t\t\t Nome Marca;\n"
-				+ "ID Modelo; \t\t\t --- \t\t\t\t Nome Modelo;\n"
-				+ "Preço no anúncio; \t\t Preço no anúncio; \t\t Preço no anúncio;\n"
-				+ "Ano Veículo. \t\t\t Ano Veículo; \t\t\t Ano Veículo;\n"
-				+ "\t\t \t\t Preço KBB; \t\t\t Preço KBB;\n"
-				+ "\t\t \t\t Data Cadastro; \t\t Data Cadastro;\n"
+				+ "Dados de entrada para API:\n"
+				+ "\tPlaca do veículo;\n"
+				+ "\tID da marca;\n"
+				+ "\tID do modelo;\n"
+				+ "\tAno do veículo;\n"
+				+ "\tPreço no anúncio.\n"
 				+ "\n"
+				+ "Dados armazenados na API:\n"
+				+ "\tPlaca do veículo;\n"
+				+ "\tID da marca;\n"
+				+ "\tNome da marca;\n"
+				+ "\tID do modelo;\n"
+				+ "\tNome do modelo;\n"
+				+ "\tAno do veículo;\n"
+				+ "\t\tRelação entre modelo, ano, e sua referência na KBB-API;\n"
+				+ "\tPreço no anúncio;\n"
+				+ "\tPreço na API KBB;\n"
+				+ "\tData do cadastro.\n"
 				+ "\n"
-				+ "Para sumário da API pública desta aplicação acesse URI \"/help\" .";
+				+ "Dados de resposta da API:\n"
+				+ "\tPlaca do veículo;\n"
+				+ "\tNome da marca;\n"
+				+ "\tNome do modelo;\n"
+				+ "\tAno do veículo;\n"
+				+ "\tPreço no anúncio;\n"
+				+ "\tPreço na API KBB;\n"
+				+ "\tData do cadastro.\n"
+				+ "\n"
+				+ "Para sumário da API pública desta aplicação acesse o URI \"/help\" .";
 		
 	}
 	
 	
 	
 	/* Nenhuma destas 7 propriedades a cima, possuem 'setter'. Valores dinâmicos pré-determinados pela classe e arquivo
-	 * application.properties, não pelo 'desenvolvedor-coder', nem pelo usuário da aplicação.
+	 * <file_name>.properties, não pelo 'desenvolvedor-coder', nem pelo usuário da aplicação.
 	 * -
-	 * Apesar destas 3 propriedades a cima referentes aos 'getters' a baixo serem tipo 'byte', este retorno 'int' faz
+	 * Apesar destas 3 propriedades a cima serem tipo 'byte' seus 'getters' a baixo são tipo retorno 'int' para fazer
 	 * uso do casting automático (graças a hierarquia de tipos primitivos, o 'byte' é menor então se enquadra no 'int')
 	 * para melhor experiência prática do desenvolvedor, assim guarda-se o objeto com menor tamanho de memória (byte) e,
 	 * como a maioria dos projetos usam cálculos matemáticos de números inteiros na aplitude das variáveis 'int',
@@ -108,7 +129,11 @@ public final class DryveChallenge1GlobalProperties {
 	
 	
 	
-	public String getStageVersion() { return stageVersion; }
+	public String getStatusVersion() { return statusVersion; }
+	
+	
+	
+	public String getBuildVersion() { return buildVersion; }
 	
 	
 	
@@ -123,11 +148,3 @@ public final class DryveChallenge1GlobalProperties {
 	public String getAppDescription() { return appDescription; }
 	
 }
-//
-//
-//
-//
-//
-//
-//
-//

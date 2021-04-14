@@ -23,14 +23,15 @@ package dev.ronaldomarques.dryve.challenge1;
 /**
  * @author      Ronaldo Marques.
  * @since       20210312.
- * @last_change 20210329.
- * @version     0.2.0.
- * @category    Launcher da aplicação.
- * @analysis    Inicia em forma de serviço no servidor Tomcat.
+ * @last_change 20210413.
+ * @version     0.2.0-beta.
+ * @category    Application's Launcher.
+ * @analysis    Starts in service way on Apache-Tomcat server.
  */
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import dev.ronaldomarques.myutility.debugger.DP;
+
 
 
 @SpringBootApplication
@@ -41,12 +42,8 @@ public class DryveChallenge1Application {
 		/* Iniciar minha "static LIB" pessoal com propriedade "FALSE" para "I T P D". */
 		DP.pdOff();
 		
-		/* Iniciar a aplicação API propriamente dita. */
+		/* Starts the application itself. */
 		SpringApplication.run(DryveChallenge1Application.class, args);
-		//SpringApplication.run(DryveChallenge1ApplicationTests.class, args);
-		
-		
-		
 		
 	}
 	

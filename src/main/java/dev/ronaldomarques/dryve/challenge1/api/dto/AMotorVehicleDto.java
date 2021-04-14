@@ -27,50 +27,37 @@ import java.math.BigDecimal;
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210410.
+ * @last_change 20210413.
  * @version     0.2.0-beta.
- * @category
- *              @analysis
+ * @category    Modelagem da API, classe abstrata para um DTO.
+ * @analysis    Base da representação de objeto transferidor de dados de entidade: para entidade veículos automotores.
  */
-public class AMotorVehicleDto {
+abstract public class AMotorVehicleDto {
 	
 	/* This is the Abs-DTO has: */
-	/*
-	private String plate;
-	private BigDecimal priceAdv;
-	private short year;
-	*/
-
+	/* private String plate;
+	 * private short year;
+	 * private BigDecimal priceAdv; */
+	
 	/* This is the DTO Inlet has: */
-	/*
-	private String plate;			// Abs
-	private short year;				// Abs
-	private BigDecimal priceAdv;	// Abs
-	private UUID brandId;
-	private UUID modelId;
-	*/
+	/* private String plate; // Abs
+	 * private short year; // Abs
+	 * private BigDecimal priceAdv; // Abs
+	 * private UUID brandId;
+	 * private UUID modelId; */
 	
 	/* This is the DTO Outlet has: */
-	/*
-	private String plate;			// Abs
-	private short year;				// Abs
-	private BigDecimal priceAdv;	// Abs
-	private String brandName;
-	private String modelName;
-	private BigDecimal priceKBB;
-	private Date registryDate;
-	*/	
-
-	private String plate;
-	private BigDecimal priceAdv;
-	private short year;
+	/* private String plate; // Abs
+	 * private short year; // Abs
+	 * private BigDecimal priceAdv; // Abs
+	 * private String brandName;
+	 * private String modelName;
+	 * private BigDecimal priceKBB;
+	 * private Date registryDate; */
 	
-	
-	public AMotorVehicleDto() {
-		
-		super();
-		
-	}
+	protected String plate;
+	protected short year;
+	protected BigDecimal priceAdv;
 	
 	
 	
@@ -82,18 +69,18 @@ public class AMotorVehicleDto {
 	
 	
 	
-	public BigDecimal getPriceAdv() { return this.priceAdv; }
-	
-	
-	
-	public void setPriceAdv(BigDecimal priceAdv) { this.priceAdv = priceAdv; }
-	
-	
-	
 	public short getYear() { return this.year; }
 	
 	
 	
 	public void setYear(short year) { this.year = year; }
+	
+	
+	
+	public BigDecimal getPriceAdv() { return this.priceAdv; }
+	
+	
+	
+	public void setPriceAdv(BigDecimal priceAdv) { this.priceAdv = priceAdv; }
 	
 }

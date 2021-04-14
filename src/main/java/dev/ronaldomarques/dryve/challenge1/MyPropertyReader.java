@@ -20,9 +20,10 @@
 package dev.ronaldomarques.dryve.challenge1;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 
 
 
@@ -31,33 +32,75 @@ import java.util.Date;
  * @since       20210413.
  * @last_change 20210413.
  * @version     0.1.0-beta.
- * @category    Date Tool Class Lib.
+ * @category    Properties File Reader Tool Class Lib.
  * @analysis    Under dedevelopment...
  */
-public final class MyDate {
+public final class MyPropertyReader {
 	
-	private static Date myDate;
-	private static SimpleDateFormat mySdf;
+	private String propertyFilePath = new String();
+	private Properties properties = new Properties();
+	private final String DRYVE_PROPERTIES_FILE = "./src/main/resources/dryvechallenge1.properties";
 	
 	
 	
-	public static Date myToday() {
+	public MyPropertyReader() {
+		
+		/* My personal shortcut. */
+		this.propertyFilePath = DRYVE_PROPERTIES_FILE;
+		
+	}
+	
+	
+	
+	public MyPropertyReader(String propertyFilePath) {
+		
+		/* My personal shortcut. */
+		if (propertyFilePath.equalsIgnoreCase("dryve"))
+			this.propertyFilePath = DRYVE_PROPERTIES_FILE;
+		
+		this.propertyFilePath = propertyFilePath;
+		
+	}
+	
+	
+	
+	public Properties load() {
 		
 		try {
-			mySdf = new SimpleDateFormat("yyyy-mm-dd");
-			myDate = mySdf.parse(new Date().toString());
-			return myDate;
+			FileInputStream fis = new FileInputStream(this.propertyFilePath);
+			properties.load(fis);
 		}
-		catch (ParseException excep1) {
-			System.out.println("EXCEPTION: 'ParseException'."); // Under dedevelopment.
-			excep1.printStackTrace();
+		catch (FileNotFoundException excep) {
+			System.out.println(excep.getMessage());
+			excep.printStackTrace();
 		}
-		catch (Exception excep2) {
-			System.out.println("EXCEPTION: Any else, different from 'ParseException'."); // Under dedevelopment.
-			excep2.printStackTrace();
+		catch (IOException excep) {
+			System.out.println(excep.getMessage());
+			excep.printStackTrace();
 		}
 		
-		return null;
+		return properties;
+		
+	}
+	
+	
+	
+	public Properties load(String propertyFilePath) {
+		
+		try {
+			FileInputStream fis = new FileInputStream(propertyFilePath);
+			properties.load(fis);
+		}
+		catch (FileNotFoundException excep) {
+			System.out.println(excep.getMessage());
+			excep.printStackTrace();
+		}
+		catch (IOException excep) {
+			System.out.println(excep.getMessage());
+			excep.printStackTrace();
+		}
+		
+		return properties;
 		
 	}
 	

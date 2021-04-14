@@ -1,27 +1,27 @@
 # DRYVE CHALLENGE 1  
-pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
-  
 en-US: Repository for the recruitment test for the junior java/kotlin job vacancy at [Dryve.com.br](https://dryve.com.br).  
   
+pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
+  
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104081535-UTC/GMT/Z-time*  
+*Last change 202104130240-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
-&nbsp;
-
-<a name="whatitis"></a>  
+&nbsp;  
+  
+<a name="whatitis"></a>
 ## O QUÊ É / WHAT IT IS
 pt-BR: Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo. Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
-pt-BR:  **Agora, projeto _refatorado_ em nova fase** de desenvolvimento volutário para posteridade e portfólio.  
-  > **Nota: a próxima versão do projeto será implementada e documentada apenas em inglês.**  
+pt-BR:  **Agora, projeto _refatorado_ em nova fase** de desenvolvimento volutário para portfólio.  
+> **Nota: a próxima versão do projeto será implementada e documentada apenas em inglês.**  
   
 en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales. This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
-en-US: **Now, _refactored_ project in a new phase** of voluntary development for posterity and portfolio.  
+en-US: **Now, _refactored_ project in a new phase** of voluntary development for portfolio.  
   
 &nbsp;  
 &nbsp;  
-&nbsp;
+&nbsp;  
   
 <a name="list-of-content"></a>
 ## LIST OF CONTENT
@@ -39,7 +39,7 @@ en-US: **Now, _refactored_ project in a new phase** of voluntary development for
   
 &nbsp;  
 &nbsp;  
-&nbsp;
+&nbsp;  
   
 <a name="versions"></a>
 ## VERSÕES / VERSIONS
@@ -47,7 +47,7 @@ en-US: **Now, _refactored_ project in a new phase** of voluntary development for
 <a name="versioning"></a>
 ### VERSIONING GUIDELINES
 In a team project, it is very important to know and follow the specifications of the project version. Although at the moment **DRYVE_CHALLENGE_1**'s status is under early development (as it has not its first stable version [1.0.0-released] released yet) its project already is designed under [**_SemVer_** (Semantic Versioning Specification)](http://semver.org/).  
-Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** is a specification (set of rules) that tells (or dictates) us how to use the numbers (and some letters) on the _versioning-expression_ (**_VerExpr_**). More specifically, **DRYVE_CHALLENGE_1** uses the following standardization: **_Major.Minor.Patch-ReleaseStatus+Build_**, where:
+Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** is a specification (set of rules) that tells (or dictates) us how to use the numbers (and some letters) on the _versioning-expression_ (**_VerExpr_**). More specifically, **DRYVE_CHALLENGE_1** uses the following standardization: **_Major.Minor.Patch-ReleaseStatus+Build_**, where:  
 * The standard values of **_Major_**, **_Minor_**, and **_Patch_** for the _VerExpr_ are as follows:
   + Positive integer decimal numbers, without zero remaining on the left;
   + **_Major_** version represents wider changes in the project, which affects the main structure of the project, or its main objectives, or the last user API released;
@@ -57,7 +57,7 @@ Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** i
   + **_dev_**: in early development, being coding, structuring, refatoring, has no all expected methods, usage not encouraged;
   + **_alpha_**: in development, first test phase, it's encouraged usage for **test only** by people involved with software development, at self-own risk;
   + **_beta_**: in pre-release version, general public usage is acceptable, however, **only for test**, usage is a choice at self-own risk;
-  + **_released_**: it is a relatively stable version, stable in proportion to the effectiveness of the tests; bugs are possible to appear, so it would come back to a _hotfix-branch_ if needed.
+  + **_released_**: it is a relatively stable version, stable in proportion to the effectiveness of the tests; bugs are possible to appear, so it would come back to a _hotfix-branch_ if needed.  
 * The standard values of **_Build_** for the _VerExpr_ are as follows:
   + A 12-digit numeric sequence, positive integer decimal digits, formatted somewhat similar to PostgreSQL DateTime YYYYMMDDhhmm;
   + The initial 4 digits (YYYY) represent the year;
@@ -65,7 +65,7 @@ Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** i
   + The next 2 digits (DD) represent the day;
   + The next 2 digits (hh) represent the hour;
   + The following 2 digits (mm) represent the minutes;
-  + All referring to the moment when the developer builds/exports the application container. (* 1)  
+  + All referring to the moment when the developer builds/exports the application container **(* 1)**.  
   
 > Example of **_Build_**: "202112311745".  
   
@@ -73,11 +73,11 @@ Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** i
   
 > Full example of **_Versioning-Expression_**: `1.2.3-released+202112311745`, meaning `1`._ ._ version fully implemented according to the project and its backlog; added by _ .`2`._ additionals features to the main version, according to the project backlog and its issues priorities in the **_SCRUM life cycle_**; added by _ ._ .`3` patches fixed in this mentioned lastest version following the **_GITFLOW life cycle_**, that means, it is a released version after passed by the tests in **_alpha_** and **_beta_** pre-releases; and finally, it was/would specifically build at the year 2021 month 12 (December) day 31 at 17:45h at UTC/GMT/Z-time/Zulu-time (17hours and 45minutes equal 5pm and 45minutes in some idioms).  
   
-&nbsp;
+&nbsp;  
   
-<a name="current"></a>  
+<a name="current"></a>
 ### Versão atual / Current Version 0.2.0-**beta**
-Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...
+Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...  
 + Cadastro de marcas / Brands registry
   > *End-point* `/brands`, http-method `POST`, body-payload `objeto em JSON`;  
 + Cadastro de modelos / Models registry
@@ -87,7 +87,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
 + Cadastro de veículos-anunciados *(automotores)* / Advertised vehicles registry (motor vehicles)
   > *End-point* `/motorvehicles`, http-method `POST`, body-payload `objeto em JSON`;  
   
-&nbsp;
+&nbsp;  
   
 ### Versão anterior / Last Version 0.1.0-**beta**
 + Listagem de marcas / Brands listing
@@ -101,18 +101,18 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 &nbsp;  
 &nbsp;  
-&nbsp;
+&nbsp;  
   
 <a name="guideline"></a>
 ## DIRETRIZES ROTEIRO / GUIDELINE ROADMAP
   
 ### Futura versão / Future version 0.3.0-beta
-All features from last version, plus...
+All features from last version, plus...  
 + Integration with KBB public API: consulting the price for `price_KBB` object's atribute related to the relation represented by `model_year` object's atribute;
   > *Internal* `dev.ronaldomarques.dryve.challenge1.domain.**service**.ModelsYearsRegistryService`, new method `.fetchKBBId();`;  
   
-&nbsp;
-    
+&nbsp;  
+  
 ### Futura versão / Future version 0.4.0-beta
 + Description..  
   

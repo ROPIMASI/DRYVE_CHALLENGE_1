@@ -20,7 +20,6 @@
 package dev.ronaldomarques.dryve.challenge1;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,19 +27,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-
 /**
- * @author   Ronaldo Marques.
- * @since    20210312.
- * @version  20210315.
- * @category Controller base: apresenta e instrui o usuário em sua utilização.
+ * @author      Ronaldo Marques.
+ * @since       20210312.
+ * @last_change 20210413.
+ * @version     0.2.0-beta.
+ * @category    Controller base: apresenta e instrui o usuário em sua utilização.
+ * @analysis    ...
  */
 
 @RestController
 @RequestMapping(value = "/")
 public final class DryveChallenge1Controller {
-	@Autowired
-	private DryveChallenge1GlobalProperties props;
+	
+	private DryveChallenge1GlobalProperties dcgp = new DryveChallenge1GlobalProperties();
 	
 	
 	
@@ -48,21 +48,21 @@ public final class DryveChallenge1Controller {
 	@GetMapping("/hello")
 	@ResponseBody
 	public String hello() {
-		props.sinc(); // Vide DryveChallenge1GlobalProperties.java na tag 'fixme'.
 		
 		System.out.println("\n\nHello Dryve!\n"
 				+ "\n"
-				+ "Nome da aplicação:\t" + props.getAppName() + "\n"
-				+ "Versão:\t\t\t" + props.getAppVersion() + "\n"
-				+ "Descrição:\t\t" + props.getAppDescription() + "\n");
+				+ "Nome da aplicação:\t" + dcgp.getAppName() + "\n"
+				+ "Versão:\t\t\t" + dcgp.getAppVersion() + "\n"
+				+ "Descrição:\t\t" + dcgp.getAppDescription() + "\n");
 		
 		return "<HTML>"
 				+ "<H1>Hello Dryve!</H1>"
 				+ "<BR/> <BR/>"
-				+ "<H4><B>Nome da aplicação: </B><I>" + props.getAppName() + "</I></H4>"
-				+ "<H4><B>Versão: </B><I>" + props.getAppVersion() + "</I></H4>"
-				+ "<H4><B>Descrição: </B><I>" + props.getAppDescription() + "</I></H4>"
+				+ "<H4><B>Nome da aplicação: </B><I>" + dcgp.getAppName() + "</I></H4>"
+				+ "<H4><B>Versão: </B><I>" + dcgp.getAppVersion() + "</I></H4>"
+				+ "<H4><B>Descrição: </B><I>" + dcgp.getAppDescription() + "</I></H4>"
 				+ "</HTML>";
+		
 	}
 	
 	
@@ -71,14 +71,17 @@ public final class DryveChallenge1Controller {
 	@GetMapping("/help")
 	@ResponseBody
 	public String help() {
+		
 		System.out.println("\n\nHELP:\n"
 				+ "\n"
-				+ "Lista das funcionalidades disponíveis nesta versão... Em construção...\n");
+				+ "Lista das funcionalidades disponíveis nesta versão -> Em construção...\n");
 		
 		return "<HTML>"
 				+ "<H1>HELP:</H1>"
 				+ "<BR/> <BR/>"
-				+ "<H4><B>Lista das funcionalidades disponíveis nesta versão: Em construção...</B></H4>"
+				+ "<H4><B>Lista das funcionalidades disponíveis nesta versão -&gt; Em construção...</B></H4>"
 				+ "</HTML>";
+		
 	}
+	
 }
