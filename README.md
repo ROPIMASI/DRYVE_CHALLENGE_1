@@ -108,8 +108,9 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 ### Futura versão / Future version 0.3.0-beta
 All features from last version, plus...  
-+ Integration with KBB public API: consulting the price for `price_KBB` object's atribute related to the relation represented by `model_year` object's atribute;
-  > *Internal* `dev.ronaldomarques.dryve.challenge1.domain.**service**.ModelsYearsRegistryService`, new method `.fetchKBBId();`;  
++ Integration with KBB public API, geting the price for `price_KBB` object's atribute;
+  > *Internal* `dev.ronaldomarques.dryve.challenge1.domain.service.ModelsYearsRegistryService`, new method `.findKBBId();`;  
+  > *Internal* `dev.ronaldomarques.dryve.challenge1.api.service.KbbApiService`, new method `.findPrice();`.  
   
 &nbsp;  
   
