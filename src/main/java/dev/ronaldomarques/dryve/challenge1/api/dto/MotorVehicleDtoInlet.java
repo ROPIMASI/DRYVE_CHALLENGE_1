@@ -28,8 +28,8 @@ import org.springframework.stereotype.Component;
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210410.
- * @version     0.2.0-beta.
+ * @last_change 20210414.
+ * @version     0.2.1-beta.
  * @category    Modelagem da API, classe de representação de objeto transferidor de dados de entidade: para entidade
  *              veículos automotores.
  * @analysis    Boa conduta na transferência de dados em uma REST API. DTO contem apenas os dados necessários, não expõe
@@ -78,5 +78,52 @@ public class MotorVehicleDtoInlet extends AMotorVehicleDto {
 	
 	
 	public void setModelId(UUID modelId) { this.modelId = modelId; }
+	
+	
+	
+	@Override
+	public int hashCode() {
+		
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.brandId == null) ? 0 : this.brandId.hashCode());
+		result = prime * result + ((this.modelId == null) ? 0 : this.modelId.hashCode());
+		return result;
+		
+	}
+	
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		MotorVehicleDtoInlet other = (MotorVehicleDtoInlet) obj;
+		
+		if (this.brandId == null) {
+			if (other.brandId != null) return false;
+		}
+		else if (!this.brandId.equals(other.brandId)) return false;
+		
+		if (this.modelId == null) {
+			if (other.modelId != null) return false;
+		}
+		else if (!this.modelId.equals(other.modelId)) return false;
+		
+		return true;
+		
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		
+		return "MotorVehicleDtoInlet [brandId=" + this.brandId + ", modelId=" + this.modelId + ", plate=" + this.plate
+				+ ", year=" + this.year + ", priceAdv=" + this.priceAdv + "]";
+		
+	}
 	
 }

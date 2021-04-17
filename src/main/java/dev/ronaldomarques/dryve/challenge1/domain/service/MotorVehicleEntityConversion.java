@@ -31,8 +31,8 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntit
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210410.
- * @version     0.2.0-beta.
+ * @last_change 20210414.
+ * @version     0.2.1-beta.
  * @category    Service: class specialized in factoring a specific type object from converting a given objetct.
  * @analysis    ... TODO: this description: something about OVERLOAD two types of MotorVehicleDTO:
  *              - MotorVehicle-DTO-ENTRY, and
@@ -41,13 +41,18 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntit
 @Service
 public final class MotorVehicleEntityConversion {
 	
-	public static MotorVehicleDtoOutlet toDtoOutlet(MotorVehicleEntity entity) {
+	public static MotorVehicleDtoOutlet toDtoOutlet(MotorVehicleEntity mvEntity) {
 		
 		var mvdOutlet = new MotorVehicleDtoOutlet();
 		
-		/* TODO: real procedures to evaluate that properties below. */
-		mvdOutlet.setPlate(entity.getPlate());
-		mvdOutlet.setPriceAdv(entity.getPriceAdv());
+		mvdOutlet.setPlate(mvEntity.getPlate());
+		mvdOutlet.setPriceAdv(mvEntity.getPriceAdv());
+		mvdOutlet.setBrandName(mvEntity.getModelYear().getModel().getBrand().getName());
+		mvdOutlet.setModelName(mvEntity.getModelYear().getModel().getName());
+		mvdOutlet.setYear(mvEntity.getModelYear().getYear());
+		mvdOutlet.setPriceAdv(mvEntity.getPriceAdv());
+		mvdOutlet.setPriceKBB(mvEntity.getPriceKBB());
+		mvdOutlet.setRegistryDate(mvEntity.getRegistryDate());
 		
 		return mvdOutlet;
 		

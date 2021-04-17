@@ -1,10 +1,12 @@
 # DRYVE CHALLENGE 1  
 en-US: Repository for the recruitment test for the junior java/kotlin job vacancy at [Dryve.com.br](https://dryve.com.br).  
+Follow the [SCRUM-KANBAN Project's Painel](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
+Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104130240-UTC/GMT/Z-time*  
+*Last change 202104141300-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -76,7 +78,25 @@ Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** i
 &nbsp;  
   
 <a name="current"></a>
-### Versão atual / Current Version 0.2.0-**beta**
+### Versão atual / Current Version 0.2.1-beta
+Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...  
++ Correção de cadastro de modelos / Models registry correction
+  - Creating null properties' value, `500 internal server error` on request:  
+  > POST /models HTTP/1.1  
+  > Host: localhost:8080  
+  > Content-Type: application/json
+  > Body-Data: __an_object_representation__   
+  - Which responses:
+  > {
+  >   "trace": "org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name\r\n\tat org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:294)\r\n\tat org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:233)\r\n\tat org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:566)\r\n\tat org.springframework.transaction.support...",
+  >   "message": "not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name",
+  >   "path": "/models"
+  > }  
+  
+&nbsp;  
+  
+<a name="last"></a>
+### Versão anterior / Last Version 0.2.0-beta
 Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...  
 + Cadastro de marcas / Brands registry
   > *End-point* `/brands`, http-method `POST`, body-payload `objeto em JSON`;  
@@ -89,7 +109,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 &nbsp;  
   
-### Versão anterior / Last Version 0.1.0-**beta**
+### Versão anterior / Last Version 0.1.0-beta
 + Listagem de marcas / Brands listing
   > *End-point* `/brands`, http-method `GET`;  
 + Listagem de modelo / Models listing

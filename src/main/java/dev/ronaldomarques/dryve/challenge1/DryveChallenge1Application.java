@@ -39,8 +39,9 @@ public class DryveChallenge1Application {
 	
 	public static void main(String[] args) {
 		
-		/* Iniciar minha "static LIB" pessoal com propriedade "FALSE" para "I T P D". */
-		DP.pdOff();
+		/* Iniciar minha "static LIB" pessoal com propriedade "FALSE" ou "TURE" para "I T P D". */
+		//DP.pdOff();
+		DP.pdOn();
 		
 		/* Starts the application itself. */
 		SpringApplication.run(DryveChallenge1Application.class, args);

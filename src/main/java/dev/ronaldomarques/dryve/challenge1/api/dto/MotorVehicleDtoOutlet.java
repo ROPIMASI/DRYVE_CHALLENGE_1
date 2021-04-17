@@ -23,14 +23,15 @@ package dev.ronaldomarques.dryve.challenge1.api.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.springframework.stereotype.Component;
+import dev.ronaldomarques.dryve.challenge1.MyDate;
 
 
 
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210413.
- * @version     0.2.0-beta.
+ * @last_change 20210414.
+ * @version     0.2.1-beta.
  * @category    Modelagem da API, classe concreta de representação de objeto transferidor de dados de entidade: para
  *              entidade veículos automotores.
  * @analysis    Boa conduta na transferência de dados em uma REST API. DTO contem apenas os dados necessários, não expõe
@@ -63,8 +64,8 @@ public class MotorVehicleDtoOutlet extends AMotorVehicleDto {
 	
 	private String brandName;
 	private String modelName;
-	private BigDecimal priceKBB;
-	private Date registryDate;
+	private String priceKBB;
+	private String registryDate;
 	
 	
 	
@@ -84,19 +85,72 @@ public class MotorVehicleDtoOutlet extends AMotorVehicleDto {
 	
 	
 	
-	public BigDecimal getPriceKBB() { return this.priceKBB; }
+	public String getPriceKBB() { return this.priceKBB; }
 	
 	
 	
-	public void setPriceKBB(BigDecimal priceKBB) { this.priceKBB = priceKBB; }
+	public void setPriceKBB(BigDecimal priceKBB) {
+		
+		this.priceKBB = (priceKBB == null) ? "0" : priceKBB.toString();
+		
+	}
 	
 	
 	
-	public Date getRegistryDate() { return this.registryDate; }
+	public String getRegistryDate() { return this.registryDate; }
 	
 	
 	
-	public void setRegistryDate(Date registryDate) { this.registryDate = registryDate; }
+	public void setRegistryDate(Date registryDate) { this.registryDate = MyDate.myDateFormatToString(registryDate); }
+	
+	
+	
+	@Override
+	public int hashCode() {
+		
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.brandName == null) ? 0 : this.brandName.hashCode());
+		result = prime * result + ((this.modelName == null) ? 0 : this.modelName.hashCode());
+		result = prime * result + ((this.priceKBB == null) ? 0 : this.priceKBB.hashCode());
+		result = prime * result + ((this.registryDate == null) ? 0 : this.registryDate.hashCode());
+		return result;
+		
+	}
+	
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		MotorVehicleDtoOutlet other = (MotorVehicleDtoOutlet) obj;
+		
+		if (this.brandName == null) {
+			if (other.brandName != null) return false;
+		}
+		else if (!this.brandName.equals(other.brandName)) return false;
+		
+		if (this.modelName == null) {
+			if (other.modelName != null) return false;
+		}
+		else if (!this.modelName.equals(other.modelName)) return false;
+		
+		if (this.priceKBB == null) {
+			if (other.priceKBB != null) return false;
+		}
+		else if (!this.priceKBB.equals(other.priceKBB)) return false;
+		
+		if (this.registryDate == null) {
+			if (other.registryDate != null) return false;
+		}
+		else if (!this.registryDate.equals(other.registryDate)) return false;
+		
+		return true;
+		
+	}
 	
 	
 	
@@ -104,8 +158,8 @@ public class MotorVehicleDtoOutlet extends AMotorVehicleDto {
 	public String toString() {
 		
 		return "MotorVehicleDtoOutlet [brandName=" + this.brandName + ", modelName=" + this.modelName + ", priceKBB="
-				+ this.priceKBB + ", registryDate=" + this.registryDate + ", plate=" + this.plate + ", priceAdv="
-				+ this.priceAdv + ", year=" + this.year + "]";
+				+ this.priceKBB + ", registryDate=" + this.registryDate + ", plate=" + this.plate + ", year="
+				+ this.year + ", priceAdv=" + this.priceAdv + "]";
 		
 	}
 	

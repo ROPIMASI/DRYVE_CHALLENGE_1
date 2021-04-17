@@ -29,8 +29,8 @@ import java.util.Date;
 /**
  * @author      Ronaldo Marques.
  * @since       20210413.
- * @last_change 20210413.
- * @version     0.1.0-beta.
+ * @last_change 20210414.
+ * @version     0.2.0-beta.
  * @category    Date Tool Class Lib.
  * @analysis    Under dedevelopment...
  */
@@ -43,10 +43,34 @@ public final class MyDate {
 	
 	public static Date myToday() {
 		
+		mySdf = new SimpleDateFormat("yyyy-mm-dd");
+		
 		try {
-			mySdf = new SimpleDateFormat("yyyy-mm-dd");
 			myDate = mySdf.parse(new Date().toString());
 			return myDate;
+		}
+		catch (ParseException excep1) {
+			System.out.println("EXCEPTION: 'ParseException'."); // Under dedevelopment.
+			excep1.printStackTrace();
+		}
+		catch (Exception excep2) {
+			System.out.println("EXCEPTION: Any else, different from 'ParseException'."); // Under dedevelopment.
+			excep2.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+	
+	
+	
+	public static String myDateFormatToString(Date date) {
+		
+		mySdf = new SimpleDateFormat("yyyy-mm-dd");
+		
+		try {
+			myDate = mySdf.parse(date.toString());
+			return myDate.toString();
 		}
 		catch (ParseException excep1) {
 			System.out.println("EXCEPTION: 'ParseException'."); // Under dedevelopment.

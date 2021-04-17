@@ -28,8 +28,8 @@ import java.util.Date;
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210409.
- * @version     0.2.0-beta.
+ * @last_change 20210414.
+ * @version     0.2.1-beta.
  * @category    Modelagem do Negócio, classe abstrata que prove características em comum para as classes heredeiras.
  * @analysis    Esta abordagem possibilita implementação de diferentes tipos de veículos que precisarão do polimorfismo
  *              para terem diferentes tratamentos na aplicação e futura integração com NOSQL-DB.
@@ -53,7 +53,7 @@ public abstract class AVehicle {
 	
 	
 	
-	public String getPlate() { return plate; }
+	public String getPlate() { return this.plate; }
 	
 	
 	
@@ -61,7 +61,7 @@ public abstract class AVehicle {
 	
 	
 	
-	public ModelYearEntity getModelYear() { return modelYear; }
+	public ModelYearEntity getModelYear() { return this.modelYear; }
 	
 	
 	
@@ -69,7 +69,7 @@ public abstract class AVehicle {
 	
 	
 	
-	public BigDecimal getPriceAdv() { return priceAdv; }
+	public BigDecimal getPriceAdv() { return this.priceAdv; }
 	
 	
 	
@@ -77,7 +77,7 @@ public abstract class AVehicle {
 	
 	
 	
-	public BigDecimal getPriceKBB() { return priceKBB; }
+	public BigDecimal getPriceKBB() { return this.priceKBB; }
 	
 	
 	
@@ -85,7 +85,7 @@ public abstract class AVehicle {
 	
 	
 	
-	public Date getRegistryDate() { return registryDate; }
+	public Date getRegistryDate() { return this.registryDate; }
 	
 	
 	

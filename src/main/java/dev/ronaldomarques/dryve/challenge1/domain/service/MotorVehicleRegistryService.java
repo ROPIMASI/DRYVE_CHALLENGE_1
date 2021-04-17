@@ -33,8 +33,8 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.repository.MotorVehicleR
 /**
  * @author      Ronaldo Marques.
  * @since       20210409.
- * @last_change 20210413.
- * @version     0.2.0-beta.
+ * @last_change 20210414.
+ * @version     0.2.1-beta.
  * @category    Service: Operations of business.
  * @analysis    ...
  */
@@ -54,8 +54,8 @@ public class MotorVehicleRegistryService {
 		/* 1st step: to convert de DTO Inlet to an Entity. */
 		mvEntity = MotorVehicleDtoConversion.toEntity(mvDtoInlet);
 		
-		/* 2nd step: fetch priceKBB from the KBB-API-Service. */
-		KbbApiService.findPrice(mvEntity.getModelYear().getKbbId());
+		/* FURTHER: 2nd step: fetch priceKBB from the KBB-API-Service. */
+		mvEntity.setPriceKBB(KbbApiService.findPrice(mvEntity.getModelYear().getKbbId()));
 		
 		/* FURTHER: Errors/Exceptions handling. */
 		return motorVehicleRepo.save(mvEntity);

@@ -27,8 +27,8 @@ import java.math.BigDecimal;
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210413.
- * @version     0.2.0-beta.
+ * @last_change 20210414.
+ * @version     0.2.1-beta.
  * @category    Modelagem da API, classe abstrata para um DTO.
  * @analysis    Base da representação de objeto transferidor de dados de entidade: para entidade veículos automotores.
  */

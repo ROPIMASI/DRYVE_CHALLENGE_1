@@ -18,8 +18,8 @@
 -- ---
 -- @author		Ronaldo Marques.
 -- @since		20210317.
--- @last_change	20210413.
--- @version		0.2.0-beta.
+-- @last_change	20210414.
+-- @version		0.2.1-beta.
 -- @category	DML, DDL, SQL Script for data generation and data imports, para feed applications's tables during tests phase.
 
 
@@ -63,13 +63,13 @@ INSERT INTO model_year (id, model_id, year, kbb_id) VALUES ('6aa4d860-f5a8-439a-
 -- Soon 'price_kbb' must not be inset, it should come from BKK API consulting.
 -- On de application 'registry_date' is set by the system.
  
-INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, status) VALUES ('ASD1234', '9d31e563-9d09-4ce8-8ab5-c5177f51d92f', 100000.55, 99999.55, '2021-03-15', 0);
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv, status) VALUES ('QWE987Q', '9d31e563-9d09-4ce8-8ab5-c5177f51d92f', 100000.55, 0);
 
-INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, status) VALUES ('Z1X2C34', 'b9824542-0d28-4e09-92df-53379e8b3b22', 100002.55, 100001.55, '2021-03-15', 1);
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv, status) VALUES ('ASD654A', 'b9824542-0d28-4e09-92df-53379e8b3b22', 100001.55, 1);
 
-INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, status) VALUES ('Q3W2E10', 'f78e6d41-c620-4a76-a0a4-eb19f45c623e', 100004.55, 100003.55, '2021-03-20', 1);
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv) VALUES ('ZXC321Z', 'f78e6d41-c620-4a76-a0a4-eb19f45c623e', 100002.55);
 
-INSERT INTO motor_vehicle (plate, model_year_id, price_adv, price_kbb, registry_date, status) VALUES ('OUTRA', '2dc1afe8-7851-4edc-9b91-a507c692483b', 100006.55, 100005.55, '2021-03-25', 1);
+INSERT INTO motor_vehicle (plate, model_year_id, price_adv) VALUES ('OUTRA', '2dc1afe8-7851-4edc-9b91-a507c692483b', 100003.55);
 
 
 --

@@ -20,6 +20,7 @@
 package dev.ronaldomarques.dryve.challenge1.api.controller;
 
 
+import static dev.ronaldomarques.myutility.debugger.DP.pdln;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,20 +33,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDtoInlet;
+import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDtoOutlet;
 import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntity;
 import dev.ronaldomarques.dryve.challenge1.domain.model.repository.MotorVehicleRepository;
 import dev.ronaldomarques.dryve.challenge1.domain.service.MotorVehicleEntityConversion;
 import dev.ronaldomarques.dryve.challenge1.domain.service.MotorVehicleRegistryService;
-import dev.ronaldomarques.myutility.debugger.DP;
 
 
 
 /**
  * @author      Ronaldo Marques.
  * @since       20210315.
- * @last_change 20210410.
+ * @last_change 20210414.
  * @version     0.2.0-beta.
- * @category    Controladora: Classa especializada em receber as requisições de clientes.
+ * @category    Controladora: Classe especializada em receber as requisições de clientes.
  * @analysis    Processar dados preliminares, mínimo possível seguindo pricípios de "SOLID", delegar o processamento
  *              principal às respectivas classes de regras de negócio do domínio, e ou de serviços, e então enviar
  *              respostas ao cliente-requisitante.
@@ -81,20 +82,20 @@ public class MotorVehicleController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<?> listar() {
 		
-		DP.pdln(this.getClass().getName() + ".listar();"); // Simple debug printing, using my personal LIB.
+		pdln(this.getClass().getName() + ".listar();"); // Simple debug printing, using my personal LIB.
 		
 		/* 1st step get entity list from repository. */
 		List<MotorVehicleEntity> mvEntities = new ArrayList<>();
 		mvEntities = motorVehicleRepo.findAll();
-		
+		pdln(" mvEntities.toString() depois de .findAll(); -->[" + mvEntities.toString() + "]");
 		
 		/* 2nd step convert entity list to DTOOutlet list. */
-		/* It will be continued... */
-		
+		List<MotorVehicleDtoOutlet> mvDtoOutlets = new ArrayList<>();
+		mvDtoOutlets = MotorVehicleEntityConversion.toDtoOutletList(mvEntities);
+		pdln(" mvDtoOutlets.toString() depois de .toDtoOutletList(); -->[" + mvDtoOutlets.toString() + "]");
 		
 		/* 3rd step retun the DTOOutlet list. */
-		
-		return ResponseEntity.ok(null);
+		return ResponseEntity.ok(mvDtoOutlets);
 		
 	}
 	
@@ -103,11 +104,16 @@ public class MotorVehicleController {
 	@PostMapping
 	public ResponseEntity<?> adicionar(@RequestBody MotorVehicleDtoInlet motorVehicleDtoInlet) {
 		
-		DP.pdln(this.getClass().getName() + ".adicionar();"); // Simple debug printing, using my personal LIB.
+		pdln(this.getClass().getName() + ".adicionar();"); // Simple debug printing, using my personal LIB.
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(
-				MotorVehicleEntityConversion.toDtoOutlet(
-						motorVehicleRegistryServ.registrar(motorVehicleDtoInlet)));
+		var tmpMvEntity = new MotorVehicleEntity();
+		var tmpMvDtoOutlet = new MotorVehicleDtoOutlet();
+		
+		tmpMvEntity = motorVehicleRegistryServ.registrar(motorVehicleDtoInlet);
+		
+		tmpMvDtoOutlet = MotorVehicleEntityConversion.toDtoOutlet(tmpMvEntity);
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(tmpMvDtoOutlet);
 		
 	}
 	
