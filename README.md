@@ -6,7 +6,7 @@ pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvol
 Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104141300-UTC/GMT/Z-time*  
+*Last change 202104192000-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -92,6 +92,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   >   "message": "not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name",
   >   "path": "/models"
   > }  
++ Correção da lista de features e suas breves descrições, na funcionalidade `/help`.  
   
 &nbsp;  
   
@@ -131,16 +132,29 @@ All features from last version, plus...
 + Integration with KBB public API, geting the price for `price_KBB` object's atribute;
   > *Internal* `dev.ronaldomarques.dryve.challenge1.domain.service.ModelsYearsRegistryService`, new method `.findKBBId();`;  
   > *Internal* `dev.ronaldomarques.dryve.challenge1.api.service.KbbApiService`, new method `.findPrice();`.  
-  
++ Brands exclusion
+  > *End-point* `/brands`, http-method `DELETE`, header-parameter `brand.id`'s value type;  
++ Models exclusion
+  > *End-point* `/models`, http-method `DELETE`, header-parameter `model.id`'s value type;  
++ Model-year relation exclusion
+  > *End-point* `/modelsyears`, http-method `DELETE`, header-parameter `modelYear.id`'s value type;  
++ Motor vehicles exclusion
+  > *End-point* `/motorvehicles`, http-method `DELETE`, header-parameter `motoVehicle.id`'s value type; 
 &nbsp;  
   
 ### Futura versão / Future version 0.4.0-beta
-+ Description..  
-  
++ Brands update
+  > *End-point* `/brands`, http-method `UPDATE`, header-parameter `brand.id`'s value type, body-payload `objeto em JSON`;  
++ Models update
+  > *End-point* `/models`, http-method `UPDATE`, header-parameter `model.id`'s value type, body-payload `objeto em JSON`;  
++ Model-year relation update
+  > *End-point* `/modelsyears`, http-method `UPDATE`, header-parameter `modelYear.id`'s value type, body-payload `objeto em JSON`;  
++ Motor vehicles update
+  > *End-point* `/motorvehicles`, http-method `UPDATE`, header-parameter `motoVehicle.id`'s value type, body-payload `objeto em JSON`; 
 &nbsp;  
   
 ### Futura versão / Future version 0.5.0-beta
-+ Description..  
++ Description... Under analyzing...   
   
 &nbsp;  
   
@@ -296,7 +310,7 @@ Description...
 ## AUTHOR
 ### Ronaldo Marques.
 ###### | https://ronaldomarques.dev | [linkedin @ronaldo marques](https://linkedin.com/in/ropimasi/) | [twitter @ropimasi](https://twitter.com/ropimasi/) | [insta @ropimasi](https://instagram.com/ropimasi/) | ronaldomarques@email.com |
-### Thank you _/\_ .  
+### Thank you _/\\_ .  
 &nbsp;  
   
   
