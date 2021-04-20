@@ -6,7 +6,7 @@ pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvol
 Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104192000-UTC/GMT/Z-time*  
+*Last change 202104201940-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -92,7 +92,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   >   "message": "not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name",
   >   "path": "/models"
   > }  
-+ Correção da lista de features e suas breves descrições, na funcionalidade `/help`.  
++ Features list and its breaf descriptions' corrections, at `/help` end-point.  
   
 &nbsp;  
   
@@ -100,25 +100,19 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
 ### Versão anterior / Last Version 0.2.0-beta
 Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...  
 + Cadastro de marcas / Brands registry
-  > *End-point* `/brands`, http-method `POST`, body-payload `objeto em JSON`;  
 + Cadastro de modelos / Models registry
-  > *End-point* `/models`, http-method `POST`, body-payload `objeto em JSON`;  
 + Cadastro de relações modelo-ano / Model-year relation registry
-  > *End-point* `/modelsyears`, http-method `POST`, body-payload `objeto em JSON`;  
 + Cadastro de veículos-anunciados *(automotores)* / Advertised vehicles registry (motor vehicles)
-  > *End-point* `/motorvehicles`, http-method `POST`, body-payload `objeto em JSON`;  
   
 &nbsp;  
   
 ### Versão anterior / Last Version 0.1.0-beta
 + Listagem de marcas / Brands listing
-  > *End-point* `/brands`, http-method `GET`;  
 + Listagem de modelo / Models listing
-  > *End-point* `/models`, http-method `GET`;  
 + Listagem de relações modelo-ano / Model-year relation listing
-  > *End-point* `/modelsyears`, http-method `GET`;  
-+ Listagem de veículos-anunciados (automotores) / Advertised vehicles listing (motor vehicles)
-  > *End-point* `/motorvehicles`, http-method `GET`;  
++ Listagem de veículos-anunciados (automotores) / Advertised vehicles listing (motor vehicles)  
+  
+###### More details about the past end-points, their methods, and their features, see [project documentation, at `CHANGELOG.md`](documentation/CHANGELOG.md "CHANGELOG.md").
   
 &nbsp;  
 &nbsp;  
@@ -153,11 +147,6 @@ All features from last version, plus...
   > *End-point* `/motorvehicles`, http-method `UPDATE`, header-parameter `motoVehicle.id`'s value type, body-payload `objeto em JSON`; 
 &nbsp;  
   
-### Futura versão / Future version 0.5.0-beta
-+ Description... Under analyzing...   
-  
-&nbsp;  
-  
 ### Versão objetivo final / Final objective version 1.0.0-released
 + Autoapresentação: retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial. / Self-presentation: returns a smal text with application's version name, and an initial introduction.
   > *End-point* `/hello`, http-method `GET`.  
@@ -165,58 +154,28 @@ All features from last version, plus...
   > *End-point* `/help`, http-method `GET`.  
 + Listagem de cada URI / Listing of each URI
   - Listagem de todos os objetos registrados em seu respectivo URI. Retorna uma `ResponseEntity` com uma `List` vazia ou populada no `body` da `Response`. / List of all objects registered in their respective URI. Returns a `ResponseEntity` with an empty or populated `List` in `body` of the `Response`.
-  > *End-point* `/brands`, http-method `GET`;  
-  > *End-point* `/models`, http-method `GET`;  
-  > *End-point* `/modelsyears`, http-method `GET`;  
-  > *End-point* `/motovehicles`, http-method `GET`;  
   - Filtrando por uma determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma `ResponseEntity` com uma `list` vazia ou populada no `body` da `Response`. / Filtering for a particular 'plate' (or part of it) informed by the user. Returns a `ResponseEntity` with an empty or populated `List` in `body` of the `Response`.
-  > *End-point* `/motorvehicles/{some_value}`, http-method `GET`.  
 + Cadastro de marcas / Registry of brands
   - Retorna uma `ResponseEntity` com uma instância do objeto persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
-  > *End-point* `/brands`, http-method `POST`, body-payload `JSON`;  
-  > *End-point* `/brands`, http-method `PUT`, body-payload `JSON`;  
-  > *End-point* `/brands`, http-method `PATCH`, body-payload `JSON`;  
-  > *End-point* `/brands`, http-method `DELETE`, body-payload `JSON`.  
 + Consulta de **uma** marca específica / Consultation of **a** specific brand
   - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
-  > *End-point* `/brands/id/{some_value}`, http-method `GET`.  
   - Por **um** `nome` da marca. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **a** brand's `name`. Returns a `ResponseEntity` with an instance of the consulted object, or null in `body` of the `Response`.
-  > *End-point* `/brands/name/{some_value}`, http-method `GET`.  
 + Cadastro de modelos / Registry of models
   - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
-  > *End-point* `/models`, http-method `POST`, body-payload `JSON`;  
-  > *End-point* `/models`, http-method `PUT`, body-payload `JSON`;  
-  > *End-point* `/models`, http-method `PATCH`, body-payload `JSON`;  
-  > *End-point* `/models`, http-method `DELETE`, body-payload `JSON`.  
 + Consulta de **um** modelo / Consultation of a specific model
   - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
-  > *End-point* `/models/id/{some_value}`, http-method `GET`.  
   - Por **um** `nome` do modelo. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **a** model's `name`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
-  > *End-point* `/models/name/{some_value}`, http-method `GET`.  
 + Cadastro de relações modelo-ano / Registry of model-year relation
   - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
-  > *End-point* `/modelsyears`, http-method `POST`, body-payload `JSON`;  
-  > *End-point* `/modelsyears`, http-method `PUT`, body-payload `JSON`;  
-  > *End-point* `/modelsyears`, http-method `PATCH`, body-payload `JSON`;  
-  > *End-point* `/modelsyears`, http-method `DELETE`, body-payload `JSON`.  
 + Consulta de **uma ou mais** relação modelo-ano / Consultation of **one or more** model-year relation
   - Por **um** `id`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` da `Response`. / By **an** `id`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
-  > *End-point* `/modelsyears/id/{some_value}`, http-method `GET`.  
   - Por **um** `nome` do modelo. Retorna uma `ResponseEntity` com uma `list` populada ou vazia de instância do objedo consultado, no `body` da `Response`. By **a** model's `name`. Returns a `ResponseEntity` with an `list` populated or empty of instance of the consulted object, in `body` of the `Response`.
-  > *End-point* `/modelsyears/name/{some_value}`, http-method `GET`.  
 + Cadastro de veículo-anunciado (automotor) / Registry of advertised-vehicle (motor vehicles)
   - Retorna uma `ResponseEntity` com uma instância do objedo persistido/excluído no `body` da `Response`, em caso de procedimento bem sucedido; caso contrário `ResponseEntity` não tem instância do objeto (nulo) no `body` da `Response`. / Returns a `ResponseEntity` with an instance of the just persisted/deleted object in `body` of the `Response`, in case of successful procedure; Otherwise `Response` has no instance of the object (null) in `body` of the `Response`.
-  > *End-point* `/motorvehicles`, http-method `POST`;  
-  > *End-point* `/motorvehicles`, http-method `PUT`;  
-  > *End-point* `/motorvehicles`, http-method `PATCH`;  
-  >> Integrados API KBB externa para armazenar o atributo `kbb_id`.  
-  >  
-  > *End-point* `/motorvehicles`, http-method `DELETE`.  
-  >    
 + Consulta de **um** veículo-anunciado. / Consultation of a specific advertised vehicle (motor vehicle)
-  - Por **uma** `placa`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` Response. / By **a** `plate`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.
-  > *End-point* `/motorvehicles/plate/{some_value}`, http-method `GET`.  
-###### More details about the end-points, their methods, and their features, see [project documentation](documentation/ "Soon...").
+  - Por **uma** `placa`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` Response. / By **a** `plate`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.  
+  
+###### More details about the future end-points, their methods, and their features, see [project documentation, at `ROADMAP.md`](documentation/ROADMAP.md "ROADMAP.md").
   
 &nbsp;  
 &nbsp;  
