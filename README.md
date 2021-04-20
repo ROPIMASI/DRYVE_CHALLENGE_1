@@ -6,7 +6,7 @@ pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvol
 Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104201940-UTC/GMT/Z-time*  
+*Last change 202104202041-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -112,7 +112,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
 + Listagem de relações modelo-ano / Model-year relation listing
 + Listagem de veículos-anunciados (automotores) / Advertised vehicles listing (motor vehicles)  
   
-###### More details about the past end-points, their methods, and their features, see [project documentation, at `CHANGELOG.md`](documentation/CHANGELOG.md "CHANGELOG.md").
+###### More details about the past versions _(end-points, methods, features)_, see [project documentation, at `CHANGELOG.md`](project-resources/documentation/CHANGELOG.md "CHANGELOG.md").
   
 &nbsp;  
 &nbsp;  
@@ -124,34 +124,22 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
 ### Futura versão / Future version 0.3.0-beta
 All features from last version, plus...  
 + Integration with KBB public API, geting the price for `price_KBB` object's atribute;
-  > *Internal* `dev.ronaldomarques.dryve.challenge1.domain.service.ModelsYearsRegistryService`, new method `.findKBBId();`;  
-  > *Internal* `dev.ronaldomarques.dryve.challenge1.api.service.KbbApiService`, new method `.findPrice();`.  
 + Brands exclusion
-  > *End-point* `/brands`, http-method `DELETE`, header-parameter `brand.id`'s value type;  
 + Models exclusion
-  > *End-point* `/models`, http-method `DELETE`, header-parameter `model.id`'s value type;  
 + Model-year relation exclusion
-  > *End-point* `/modelsyears`, http-method `DELETE`, header-parameter `modelYear.id`'s value type;  
 + Motor vehicles exclusion
-  > *End-point* `/motorvehicles`, http-method `DELETE`, header-parameter `motoVehicle.id`'s value type; 
 &nbsp;  
   
 ### Futura versão / Future version 0.4.0-beta
 + Brands update
-  > *End-point* `/brands`, http-method `UPDATE`, header-parameter `brand.id`'s value type, body-payload `objeto em JSON`;  
 + Models update
-  > *End-point* `/models`, http-method `UPDATE`, header-parameter `model.id`'s value type, body-payload `objeto em JSON`;  
 + Model-year relation update
-  > *End-point* `/modelsyears`, http-method `UPDATE`, header-parameter `modelYear.id`'s value type, body-payload `objeto em JSON`;  
 + Motor vehicles update
-  > *End-point* `/motorvehicles`, http-method `UPDATE`, header-parameter `motoVehicle.id`'s value type, body-payload `objeto em JSON`; 
 &nbsp;  
   
 ### Versão objetivo final / Final objective version 1.0.0-released
 + Autoapresentação: retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial. / Self-presentation: returns a smal text with application's version name, and an initial introduction.
-  > *End-point* `/hello`, http-method `GET`.  
 + Sumário de funcionalidades: retorna uma lista de cada end-point disponível no projeto e uma breve descrição de sua função. / Summary fo the features: returns a list of each avalable end-point in the project and a breif description of its fuction.
-  > *End-point* `/help`, http-method `GET`.  
 + Listagem de cada URI / Listing of each URI
   - Listagem de todos os objetos registrados em seu respectivo URI. Retorna uma `ResponseEntity` com uma `List` vazia ou populada no `body` da `Response`. / List of all objects registered in their respective URI. Returns a `ResponseEntity` with an empty or populated `List` in `body` of the `Response`.
   - Filtrando por uma determinada 'placa' (ou parte dela) informada pelo usuário. Retorna uma `ResponseEntity` com uma `list` vazia ou populada no `body` da `Response`. / Filtering for a particular 'plate' (or part of it) informed by the user. Returns a `ResponseEntity` with an empty or populated `List` in `body` of the `Response`.
@@ -175,7 +163,7 @@ All features from last version, plus...
 + Consulta de **um** veículo-anunciado. / Consultation of a specific advertised vehicle (motor vehicle)
   - Por **uma** `placa`. Retorna uma `ResponseEntity` com uma instância do objedo consultado, ou nulo, no `body` Response. / By **a** `plate`. Returns a `ResponseEntity` with an instance of the consulted object, or null, in `body` of the `Response`.  
   
-###### More details about the future end-points, their methods, and their features, see [project documentation, at `ROADMAP.md`](documentation/ROADMAP.md "ROADMAP.md").
+###### More details about the future versions _(end-points, methods, features)_, see [project documentation, at `ROADMAP.md`](project-resources/documentation/ROADMAP.md "ROADMAP.md").
   
 &nbsp;  
 &nbsp;  
