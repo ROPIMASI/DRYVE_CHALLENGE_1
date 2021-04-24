@@ -6,7 +6,7 @@ pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvol
 Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104202041-UTC/GMT/Z-time*  
+*Last change 202104241430-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  

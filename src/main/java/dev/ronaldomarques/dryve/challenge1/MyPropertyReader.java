@@ -39,6 +39,7 @@ public final class MyPropertyReader {
 	
 	private String propertyFilePath = new String();
 	private Properties properties = new Properties();
+	// private final String ANY_PROPERTIES_FILE = "./src/main/resources/my-file.properties";
 	private final String DRYVE_PROPERTIES_FILE = "./src/main/resources/dryvechallenge1.properties";
 	
 	
@@ -46,6 +47,7 @@ public final class MyPropertyReader {
 	public MyPropertyReader() {
 		
 		/* My personal shortcut. */
+		// this.propertyFilePath = ANY_PROPERTIES_FILE;
 		this.propertyFilePath = DRYVE_PROPERTIES_FILE;
 		
 	}
@@ -57,8 +59,8 @@ public final class MyPropertyReader {
 		/* My personal shortcut. */
 		if (propertyFilePath.equalsIgnoreCase("dryve"))
 			this.propertyFilePath = DRYVE_PROPERTIES_FILE;
-		
-		this.propertyFilePath = propertyFilePath;
+		else
+			this.propertyFilePath = propertyFilePath;
 		
 	}
 	
@@ -66,6 +68,7 @@ public final class MyPropertyReader {
 	
 	public Properties load() {
 		
+		/* FURTHER: improve this exception handling. */
 		try {
 			FileInputStream fis = new FileInputStream(this.propertyFilePath);
 			properties.load(fis);
@@ -87,6 +90,7 @@ public final class MyPropertyReader {
 	
 	public Properties load(String propertyFilePath) {
 		
+		/* FURTHER: improve this exception handling. */
 		try {
 			FileInputStream fis = new FileInputStream(propertyFilePath);
 			properties.load(fis);
