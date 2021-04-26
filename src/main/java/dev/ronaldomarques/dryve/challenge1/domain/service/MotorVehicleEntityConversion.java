@@ -43,18 +43,18 @@ public final class MotorVehicleEntityConversion {
 	
 	public static MotorVehicleDtoOutlet toDtoOutlet(MotorVehicleEntity mvEntity) {
 		
-		var mvdOutlet = new MotorVehicleDtoOutlet();
+		var mvDtoOutlet = new MotorVehicleDtoOutlet();
 		
-		mvdOutlet.setPlate(mvEntity.getPlate());
-		mvdOutlet.setPriceAdv(mvEntity.getPriceAdv());
-		mvdOutlet.setBrandName(mvEntity.getModelYear().getModel().getBrand().getName());
-		mvdOutlet.setModelName(mvEntity.getModelYear().getModel().getName());
-		mvdOutlet.setYear(mvEntity.getModelYear().getYear());
-		mvdOutlet.setPriceAdv(mvEntity.getPriceAdv());
-		mvdOutlet.setPriceKBB(mvEntity.getPriceKBB());
-		mvdOutlet.setRegistryDate(mvEntity.getRegistryDate());
+		mvDtoOutlet.setPlate(mvEntity.getPlate());
+		mvDtoOutlet.setPriceAdv(mvEntity.getPriceAdv());
+		mvDtoOutlet.setBrandName(mvEntity.getModelYear().getModel().getBrand().getName());
+		mvDtoOutlet.setModelName(mvEntity.getModelYear().getModel().getName());
+		mvDtoOutlet.setYear(mvEntity.getModelYear().getYear());
+		mvDtoOutlet.setPriceAdv(mvEntity.getPriceAdv());
+		mvDtoOutlet.setPriceKBB(mvEntity.getPriceKBB());
+		mvDtoOutlet.setRegistryDate(mvEntity.getRegistryDate());
 		
-		return mvdOutlet;
+		return mvDtoOutlet;
 		
 	}
 	

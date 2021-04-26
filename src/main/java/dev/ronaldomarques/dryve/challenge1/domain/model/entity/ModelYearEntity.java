@@ -58,7 +58,7 @@ public class ModelYearEntity {
 	// @Column(name = "model_id", nullable = false)
 	@ManyToOne // (cascade = CascadeType.ALL? delete? set null?) FIXME: this cascade is not working at DB, it isn't
 				// declaring "actions" for the constraint.
-	@JoinColumn(name = "model_id", nullable = false)
+	@JoinColumn(name = "model_id", nullable = true) // fixme: to false, temporarilly true.
 	private ModelEntity model; // FK(ModelEntity.id) at DB.
 	
 	@Column(name = "year", nullable = false)

@@ -23,7 +23,7 @@ public final class KbbApiService {
 		
 		/* FURTHER: real value, temporarily bkkId value as price. */
 		// double tmp = (kbbId < 0) ? 9.99 : kbbId;
-		return BigDecimal.valueOf(((kbbId < 0) ? 9.99 : kbbId));
+		return BigDecimal.valueOf(((kbbId > 0) ? kbbId : 9.99));
 		
 	}
 	

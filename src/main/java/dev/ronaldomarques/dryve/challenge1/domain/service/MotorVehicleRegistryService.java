@@ -20,6 +20,8 @@
 package dev.ronaldomarques.dryve.challenge1.domain.service;
 
 
+import static dev.ronaldomarques.myutility.debugger.DP.pdln;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDtoInlet;
@@ -33,7 +35,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.repository.MotorVehicleR
 /**
  * @author      Ronaldo Marques.
  * @since       20210409.
- * @last_change 20210414.
+ * @last_change 20210426.
  * @version     0.2.1-beta.
  * @category    Service: Operations of business.
  * @analysis    ...
@@ -48,10 +50,12 @@ public class MotorVehicleRegistryService {
 	
 	public MotorVehicleEntity registrar(MotorVehicleDtoInlet mvDtoInlet) {
 		
-		/* HERE: I'm implementing a part of business rules layer, according project architeture on "service" layer. */
+		pdln(this.getClass().getName() + ".registrar(mvDtoInlet);"); // Simple debug printing, using my personal LIB.
+		
+		/* FURTHER: I'm implementing business rules layer, according project architeture on "service" layer. */
 		var mvEntity = new MotorVehicleEntity();
 		
-		/* 1st step: to convert de DTO Inlet to an Entity. */
+		/* 1st step: to convert de DTOInlet to an Entity. */
 		mvEntity = MotorVehicleDtoConversion.toEntity(mvDtoInlet);
 		
 		/* FURTHER: 2nd step: fetch priceKBB from the KBB-API-Service. */
