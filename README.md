@@ -96,7 +96,13 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   >   "message": "not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : dev.ronaldomarques.dryve.challenge1.domain.model.entity.BrandEntity.name",
   >   "path": "/models"
   > }  
-+ Features list and its breaf descriptions' corrections, at `/help` end-point.  
++ Features list and its breaf descriptions' corrected.
+  - On http-method `GET`, URI-end-point `/help`.
++ BUG FOUND!
+  - On `II.3.2.2.2`;
+  - Class `MotorVehiclesController`;
+  - Method `.adicionar()`;
+  - Description: ...  
   
 &nbsp;  
   
@@ -197,7 +203,7 @@ All features from last version, plus...
 &nbsp;  
 &nbsp;
   
-<a name="project-architerure"></a>
+<a name="project-architeture"></a>
 ## ARQUITETURA DO PROJETO / PROJECT ARCHITECTURE
 Description...  
   
