@@ -1,6 +1,7 @@
 package dev.ronaldomarques.dryve.challenge1;
 
 
+import java.util.UUID;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
@@ -21,6 +22,21 @@ public class MyPersonalTests {
 		 * // versão-4 ...-(4)288-... = correto.
 		 * 
 		 * DP.pd("teste 1"); */
+		
+		System.out.println("\n# Teste uuid #\n");
+		
+		String strUuid = "ca43ec74-5bb0-4288-ab11-5df094ca4dc4";
+		UUID uuid = UUID.fromString(strUuid);
+		
+		System.out.println("strUuid => [" + strUuid + "]\n");
+		
+		System.out.println("uuid de fato => [" + uuid + "]\n");
+		
+		System.out.println("uuid.toString() => [" + uuid.toString() + "]\n");
+		
+		System.out.println("(strUuid == uuid.toString()) ? => [" + (strUuid == uuid.toString()) + "]\n");
+		
+		System.out.println("(strUuid.equals(uuid.toString()) ? => [" + (strUuid.equals(uuid.toString())) + "]\n");
 		
 	}
 	

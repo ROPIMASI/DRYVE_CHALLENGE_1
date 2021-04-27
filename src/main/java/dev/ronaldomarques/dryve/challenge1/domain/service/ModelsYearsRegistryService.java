@@ -46,7 +46,7 @@ public class ModelsYearsRegistryService {
 	
 	public long findKBBId(ModelEntity model, short year) {
 		
-		/* HERE: I'm implementing a part of business rules layer, according project architeture on "service" layer. */
+		/* FURTHER: I'm implementing a part of business rules layer, according project architeture on "service" layer. */
 		var myEntity = new ModelYearEntity();
 		
 		/* 1st step: to find the record containing the looked model for, with the looked year for. */

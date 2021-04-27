@@ -21,6 +21,7 @@ package dev.ronaldomarques.dryve.challenge1.api.service;
 
 
 import static dev.ronaldomarques.dryve.challenge1.MyDate.myToday;
+import static dev.ronaldomarques.myutility.debugger.DP.pdln;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,6 @@ import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDtoOutlet;
 import dev.ronaldomarques.dryve.challenge1.domain.model.EStatus;
 import dev.ronaldomarques.dryve.challenge1.domain.model.entity.ModelYearEntity;
 import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntity;
-import dev.ronaldomarques.dryve.challenge1.domain.model.repository.ModelRepository;
 import dev.ronaldomarques.dryve.challenge1.domain.model.repository.ModelYearRepository;
 import dev.ronaldomarques.myutility.debugger.DP;
 
@@ -41,7 +41,7 @@ import dev.ronaldomarques.myutility.debugger.DP;
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210414.
+ * @last_change 20210426.
  * @version     0.2.1-beta.
  * @category    Service: class specialized in factoring a specific type object from converting a given objetct.
  * @analysis    This description something about using 'INTERFACES' it's possible two types of MotorVehicleDTO (Inlet
@@ -51,9 +51,6 @@ import dev.ronaldomarques.myutility.debugger.DP;
 public final class MotorVehicleDtoConversion {
 	
 	@Autowired
-	private static ModelRepository modelRepo;
-	
-	@Autowired
 	private static ModelYearRepository modelYearRepo;
 	
 	
@@ -61,75 +58,61 @@ public final class MotorVehicleDtoConversion {
 	/* DOUBT: is it better use interface or abstract on param ? */
 	public static MotorVehicleEntity toEntity(AMotorVehicleDto mvDto) {
 		
+		pdln("MotorVehicleDtoConversion" + ".toEntity(mvDto);"); // Simple debug printing, using my personal LIB.
+		
 		/* 1st step: Verify whether input is MotorVehicleDtoOutlet or MotorVehicleDTOInLet. */
-		/* DOUBT: Which is better if or switch-case ? */
 		if (mvDto instanceof MotorVehicleDtoOutlet) {
-			// return dtoOutletToEntity(mvDto);
-			DP.pdln("Esta conversão de  Dto Outlet  para  Entity (retroceder)  me parece desnecessário: não é requisito ...");
+			// return dtoOutletToEntity((MotorVehicleDtoOutlet) mvDto); // FURTHER: to verify wheter this block-statment
+			// is unnecessery, maybe
+			// refactore.
+			DP.pdln("Esta conversão de  Dto Outlet  para  Entity (retroceder) me parece desnecessário: não é requisito ...");
 			return null;
 		}
 		else if (mvDto instanceof MotorVehicleDtoInlet) {
-			return dtoInletToEntity(mvDto);
+			return dtoInletToEntity((MotorVehicleDtoInlet) mvDto);
 		}
 		else {
 			// FURTHER: ajustar esta frase a baixo, verificar a MyUtility como imprimi txt padrao da pdln();
-			DP.pdln("nome da classe moto vihecle dto conversio,  .toEntity() , erro case!");
+			DP.pdln("nome da classe: MotorVehicleDtoConversion,  .toEntity() , erro case!");
 			return (null); // ERROR CASE !!!
 		}
 		
 	}
 	
-	/* DOUBT: In this case, is it better use interface or abstract on param ? */
-	/* private static MotorVehicleEntity dtoOutletToEntity(AMotorVehicleDto mvDtoOutlet) {
-	 * 
-	 * var modelEntity = new ModelEntity();
-	 * var modelYearEntity = new ModelYearEntity();
-	 * var mvEntity = new MotorVehicleEntity();
-	 * 
-	 * FURTHER: I'll implement errors handling with messagens ando/or exceptions: Such as Name/Year not found.
-	 * FURTHER: è possível de se refatorar este código com pesquisa direta ao repositorio com JPQL;
-	 * importante lembrar que a implementação atual com modelRepo e modelyearRepo considera como regra de negócio
-	 * que o ModelName é UNIQ no banco de dados, e que na relação modelYear NÃO há modelo-ano registrados
-	 * repetidamente.
-	 * modelEntity = modelRepo.findByName(((MotorVehicleDtoOutlet) mvDtoOutlet).getModelName());
-	 * modelYearEntity = modelYearRepo.findByModelIdAndYear(modelEntity.getId(), mvDtoOutlet.getYear());
-	 * 
-	 * mvEntity.setPlate(((MotorVehicleDtoOutlet) mvDtoOutlet).getPlate());
-	 * mvEntity.setModelYear(modelYearEntity);
-	 * mvEntity.setPriceAdv(((MotorVehicleDtoOutlet) mvDtoOutlet).getPriceAdv());
-	 * mvEntity.setPriceKBB(((MotorVehicleDtoOutlet) mvDtoOutlet).getPriceKBB());
-	 * mvEntity.setRegistryDate(((MotorVehicleDtoOutlet) mvDtoOutlet).getRegistryDate());
-	 * mvEntity.setStatus(EStatus.ACTIVE); // FURTHER: I'll reanalyze it, maybe some validations service.
-	 * 
-	 * return mvEntity;
-	 * 
-	 * } */
-	
 	
 	
 	/* DOUBT: is it better use interface or abstract on param ? */
-	private static MotorVehicleEntity dtoInletToEntity(AMotorVehicleDto mvDtoInlet) {
+	private static MotorVehicleEntity dtoInletToEntity(MotorVehicleDtoInlet mtVhDtoInlet) {
 		
-		var modelYearEntity = new ModelYearEntity();
-		var mvEntity = new MotorVehicleEntity();
+		pdln("MotorVehicleDtoConversion" + ".dtoInletToEntity(mvDtoInlet);"); // Simple debug printing, using my
+																				// personal LIB.
 		
-		/* FURTHER: è possível de se refatorar este código com pesquisa direta ao repositorio com JPQL;
+		var mdYrEntity = new ModelYearEntity();
+		var mtVhEntity = new MotorVehicleEntity();
+		
+		mtVhEntity.setPlate(mtVhDtoInlet.getPlate());
+		
+		/* FURTHER: é possível de se refatorar este código com pesquisa direta ao repositorio com JPQL;
 		 * importante lembrar que a implementação atual com modelRepo e modelyearRepo considera como regra de negócio
 		 * que o ModelName é UNIQ no banco de dados, e que na relação modelYear NÃO há modelo-ano registrados
 		 * repetidamente. */
-		modelYearEntity = modelYearRepo.findByModelIdAndYear(((MotorVehicleDtoInlet) mvDtoInlet).getModelId(),
-				mvDtoInlet.getYear());
 		
-		mvEntity.setPlate(mvDtoInlet.getPlate());
-		mvEntity.setModelYear(modelYearEntity);
-		mvEntity.setPriceAdv(mvDtoInlet.getPriceAdv());
+		mdYrEntity = modelYearRepo.findByModelIdAndYear(((MotorVehicleDtoInlet) mtVhDtoInlet).getModelId(),
+				mtVhDtoInlet.getYear());
+		
+		mtVhEntity.setModelYear(mdYrEntity);
+		
+		mtVhEntity.setPriceAdv(mtVhDtoInlet.getPriceAdv());
+		
 		/* FURTHER: below, for now temporarily 0, but, maybe using kbb api here, maybe delegated to a validation
 		 * service, or mainly to a finder/fetcher api-service, which is better according SRP-Single-Pesponsability. */
-		mvEntity.setPriceKBB(new BigDecimal(0.0));
-		mvEntity.setRegistryDate((myToday()));
-		mvEntity.setStatus(EStatus.INACTIVE); // FURTHER: I'll reanalyze it, maybe some validations service.
+		mtVhEntity.setPriceKBB(new BigDecimal(0.0));
 		
-		return mvEntity;
+		mtVhEntity.setRegistryDate((myToday()));
+		
+		mtVhEntity.setStatus(EStatus.INACTIVE); // FURTHER: reanalyze, maybe some validations service will be implemented.
+		
+		return mtVhEntity;
 		
 	}
 	
@@ -138,18 +121,22 @@ public final class MotorVehicleDtoConversion {
 	/* DOUBT: is it better use interface or abstract on param ? */
 	public List<MotorVehicleEntity> toEntityList(List<AMotorVehicleDto> mvDtos) {
 		
-		/* 1st step: verify mvDtos not null. */
-		/* TODO: if or Optional or Another ? */
+		/* FURTHER: 1st step: verify mvDtos not null. */
+		/* DOUBT: "if" or "Optional" or "Another" technique ? */
 		
 		/* 2st step: Verify whether input's first element is MotorVehicleDtoOutlet or MotorVehicleDTOInLet. */
-		/* DOUBT: Which is better if or switch-case ? */
 		if (mvDtos.get(0) instanceof MotorVehicleDtoOutlet) {
-			// return dtoOutletListToEntityList(mvDtos);
+			// return dtoOutletListToEntityList(mvDtos); // FURTHER: to verify wheter this block-statment is
+			// unnecessery, maybe repactore.
 			DP.pdln("Esta conversão de  Dto Outlet  para  Entity (retroceder)  me parece desnecessário: não é requisito ...");
 			return null;
 		}
 		else if (mvDtos.get(0) instanceof MotorVehicleDtoInlet) {
-			return dtoIntletListToEntityList(mvDtos);
+			var mvDtosInlets = new ArrayList<MotorVehicleDtoInlet>();
+			
+			mvDtos.stream().forEach(e -> { mvDtosInlets.add((MotorVehicleDtoInlet) e); });
+			
+			return dtoIntletListToEntityList(mvDtosInlets);
 		}
 		else {
 			return (null); // ERROR CASE !!!
@@ -157,24 +144,10 @@ public final class MotorVehicleDtoConversion {
 		
 	}
 	
-	/* DOUBT: is it better use interface or abstract on param ? */
-	/* private List<MotorVehicleEntity> dtoOutletListToEntityList(List<AMotorVehicleDto> mvDtos) {
-	 * 
-	 * List<MotorVehicleEntity> mvEntities = new ArrayList<>();
-	 * 
-	 * mvDtos.stream().forEach(e -> {
-	 * var mvEntity = dtoOutletToEntity(e);
-	 * mvEntities.add(mvEntity);
-	 * });
-	 * 
-	 * return mvEntities;
-	 * 
-	 * } */
-	
 	
 	
 	/* DOUBT: is it better use interface or abstract on param ? */
-	private List<MotorVehicleEntity> dtoIntletListToEntityList(List<AMotorVehicleDto> mvDtos) {
+	private List<MotorVehicleEntity> dtoIntletListToEntityList(List<MotorVehicleDtoInlet> mvDtos) {
 		
 		List<MotorVehicleEntity> mvEntities = new ArrayList<>();
 		

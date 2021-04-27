@@ -6,7 +6,7 @@ pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvol
 Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104241430-UTC/GMT/Z-time*  
+*Last change 202104261805-UTC/GMT/Z-time*  
   
 &nbsp;  
 &nbsp;  
@@ -27,17 +27,20 @@ en-US: **Now, _refactored_ project in a new phase** of voluntary development for
   
 <a name="list-of-content"></a>
 ## LIST OF CONTENT
-* [A](#)
-  + [B](#)
-    - [C](#)
-    - [D](#)
-  + [E](#)
-    - [F](#)
-    - [G](#)
-* [H](#)
-  + [I](#)
-  + [J](#)
-    - [K](#)  
+* [WHAT IT IS](#whatitis)
+* [VERSIONS](#versions)
+  + [VERSIONING](#versioning)
+    - [Example](#versioning-example)
+  + [CURRENT VERSION](#current)
+  + [LAST VERSION](#last)
+* [GUIDELINE ROADMAP](#guideline)
+  + [FUTURE VERSION](#future)
+  + [OBJECTIVE VERSION](#objective-version)
+* [TECHNOLOGIES](#technologies)
+* [GITFLOW INFLUENCES](#gitflow)
+* [PROJECT ARCHITETURE](#project-architeture)
+  + [CLASSES AND THEIR PURPOSES](#classes-purposes)
+* [AUTHOR](#author)  
   
 &nbsp;  
 &nbsp;  
@@ -69,6 +72,7 @@ Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** i
   + The following 2 digits (mm) represent the minutes;
   + All referring to the moment when the developer builds/exports the application container **(* 1)**.  
   
+<a name="versioning-example"></a>
 > Example of **_Build_**: "202112311745".  
   
 > (* 1) The numerical sequence _Build_ necessarily refers to Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC), or "Z time" or "Zulu time".  
@@ -78,7 +82,7 @@ Thus, **DRYVE_CHALLENGE_1** uses **_SemVer_** for its versioning. **_SemVer_** i
 &nbsp;  
   
 <a name="current"></a>
-### Versão atual / Current Version 0.2.1-beta
+### Versão atual / CURRENT VERSION 0.2.1-beta
 Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...  
 + Correção de cadastro de modelos / Models registry correction
   - Creating null properties' value, `500 internal server error` on request:  
@@ -97,7 +101,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
 &nbsp;  
   
 <a name="last"></a>
-### Versão anterior / Last Version 0.2.0-beta
+### Versão anterior / LAST VERSION 0.2.0-beta
 Todas as funcionalidades da versão anteior, mais... / All features from last version, plus...  
 + Cadastro de marcas / Brands registry
 + Cadastro de modelos / Models registry
@@ -106,7 +110,7 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
   
 &nbsp;  
   
-### Versão anterior / Last Version 0.1.0-beta
+### Versão anterior / LAST VERSION 0.1.0-beta
 + Listagem de marcas / Brands listing
 + Listagem de modelo / Models listing
 + Listagem de relações modelo-ano / Model-year relation listing
@@ -121,7 +125,8 @@ Todas as funcionalidades da versão anteior, mais... / All features from last ve
 <a name="guideline"></a>
 ## DIRETRIZES ROTEIRO / GUIDELINE ROADMAP
   
-### Futura versão / Future version 0.3.0-beta
+<a name="future"></a>
+### Futura versão / FUTURE VERSION 0.3.0-beta
 All features from last version, plus...  
 + Integration with KBB public API, geting the price for `price_KBB` object's atribute;
 + Brands exclusion
@@ -130,14 +135,15 @@ All features from last version, plus...
 + Motor vehicles exclusion
 &nbsp;  
   
-### Futura versão / Future version 0.4.0-beta
+### Futura versão / FUTURE VERSION 0.4.0-beta
 + Brands update
 + Models update
 + Model-year relation update
 + Motor vehicles update
 &nbsp;  
   
-### Versão objetivo final / Final objective version 1.0.0-released
+<a name="objective-version"></a>
+### Versão objetivo final / OBJECTIVE VERSION 1.0.0-released
 + Autoapresentação: retorna pequeno texto com nome e versão da aplicação, e uma instrução inicial. / Self-presentation: returns a smal text with application's version name, and an initial introduction.
 + Sumário de funcionalidades: retorna uma lista de cada end-point disponível no projeto e uma breve descrição de sua função. / Summary fo the features: returns a list of each avalable end-point in the project and a breif description of its fuction.
 + Listagem de cada URI / Listing of each URI
@@ -169,6 +175,7 @@ All features from last version, plus...
 &nbsp;  
 &nbsp;
   
+<a name="technologies"></a>
 ## TECNOLOGIAS / TECHNOLOGIES
 + Java, Spring Boot, Spring Web, Spring Data JPA (Hibernate), Maven, PostgreSQL, Apache-Tomcat, Postman;
 + Built as a standalone/self-contained application with "file.jar" packaging (the famous "fat-jar", which contains the built-in Apache-Tomcat server);  
@@ -190,6 +197,7 @@ All features from last version, plus...
 &nbsp;  
 &nbsp;
   
+<a name="project-architerure"></a>
 ## ARQUITETURA DO PROJETO / PROJECT ARCHITECTURE
 Description...  
   
@@ -246,7 +254,8 @@ Description...
   
 &nbsp;
   
-### Classes e seus propósitos / Classes and their purposes
+<a name="classes-purposes"></a>
+### Classes e seus propósitos / CLASSES AND THEIR PURPOSES
 Description...  
   
 &nbsp;  
@@ -257,7 +266,7 @@ Description...
 ## AUTHOR
 ### Ronaldo Marques.
 ###### | https://ronaldomarques.dev | [linkedin @ronaldo marques](https://linkedin.com/in/ropimasi/) | [twitter @ropimasi](https://twitter.com/ropimasi/) | [insta @ropimasi](https://instagram.com/ropimasi/) | ronaldomarques@email.com |
-### Thank you _/\\_ .  
+### Thank you ```_/\_``` .  
 &nbsp;  
   
   

@@ -18,7 +18,7 @@
 -- ---
 -- @author		Ronaldo Marques.
 -- @since		20210317.
--- @last_change	20210414.
+-- @last_change	20210426.
 -- @version		0.2.1-beta.
 -- @category	DML, DDL, SQL Script for data generation and data imports, para feed applications's tables during tests phase.
 
@@ -29,6 +29,8 @@
 INSERT INTO brand (id, name) VALUES ('ca43ec74-5bb0-4288-ab11-5df094ca4dc4', 'FIAT');
 
 INSERT INTO brand (id, name) VALUES ('c0225595-e293-477b-8758-384872470f00', 'FORD');
+
+
 
 INSERT INTO model (id, name, brand_id) VALUES ('5bc16064-d3ee-4aed-a264-a914233d0c4f', 'TORO 2.0 DIESEL', 'ca43ec74-5bb0-4288-ab11-5df094ca4dc4');
 

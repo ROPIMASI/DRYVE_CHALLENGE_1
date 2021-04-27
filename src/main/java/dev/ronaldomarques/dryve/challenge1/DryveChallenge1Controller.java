@@ -20,17 +20,26 @@
 package dev.ronaldomarques.dryve.challenge1;
 
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.hibernate.id.UUIDGenerator;
+
+import dev.ronaldomarques.dryve.challenge1.domain.model.repository.BrandRepository;
+import dev.ronaldomarques.dryve.challenge1.domain.model.repository.ModelRepository;
+import dev.ronaldomarques.dryve.challenge1.domain.model.repository.ModelYearRepository;
 
 
 
 /**
  * @author      Ronaldo Marques.
  * @since       20210312.
- * @last_change 20210424.
+ * @last_change 20210426.
  * @version     0.2.1-beta.
  * @category    Controller base: apresenta e instrui o usuário em sua utilização.
  * @analysis    ...
@@ -41,6 +50,38 @@ import org.springframework.web.bind.annotation.RestController;
 public final class DryveChallenge1Controller {
 	
 	private DryveChallenge1GlobalProperties dcgp = new DryveChallenge1GlobalProperties();
+	
+	@Autowired
+	private BrandRepository brandRepo;
+	
+	@Autowired
+	private ModelRepository modelRepo;
+	
+	@Autowired
+	private ModelYearRepository modelYearRepo;
+	
+	
+	
+	/* Teste pessoal simples. */
+	@GetMapping("/teste")
+	@ResponseBody
+	private String teste() {
+		
+		System.out.println("\n\nTeste!\n"
+				+ "\n"
+				+ "brand:\t"		+ brandRepo.findById(		UUID.fromString("ca43ec74-5bb0-4288-ab11-5df094ca4dc4") ).get().getId()  + "\n"
+				+ "model:\t"		+ modelRepo.findById(		UUID.fromString("5bc16064-d3ee-4aed-a264-a914233d0c4f") ).get().getId() + "\n"
+				+ "modelYear:\t"	+ modelYearRepo.findById(	UUID.fromString("b9824542-0d28-4e09-92df-53379e8b3b22") ).get().getId() + "\n");
+
+		return "<HTML>"
+				+ "<H1>Teste!</H1>"
+				+ "<BR/> <BR/>"
+				+ "<H4><B>brand: </B><I>"		+ brandRepo.findById(		UUID.fromString("ca43ec74-5bb0-4288-ab11-5df094ca4dc4")).get().getId() + "</I></H4>"
+				+ "<H4><B>model: </B><I>"		+ modelRepo.findById(		UUID.fromString("5bc16064-d3ee-4aed-a264-a914233d0c4f")).get().getId() + "</I></H4>"
+				+ "<H4><B>modelYear: </B><I>"	+ modelYearRepo.findById(	UUID.fromString("b9824542-0d28-4e09-92df-53379e8b3b22")).get().getId() + "</I></H4>"
+				+ "</HTML>";
+		
+	}
 	
 	
 	
@@ -71,7 +112,6 @@ public final class DryveChallenge1Controller {
 	@GetMapping("/help")
 	@ResponseBody
 	public String help() {
-		
 		
 		/* FURTHER: get this txt content in an external propert file, or inf file. */
 		System.out.println("\n\nHELP:\n"

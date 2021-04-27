@@ -36,7 +36,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.EStatus;
 /**
  * @author      Ronaldo Marques.
  * @since       20210314.
- * @last_change 20210414.
+ * @last_change 20210424.
  * @version     0.2.1-beta.
  * @category    Modelagem do Negócio, classe concreta que representa diferentes veículos automotores.
  * @analysis    para o "Time DEV": os quais se assemelham e são registrados da mesma forma (com os mesmo atributos) no
@@ -61,7 +61,7 @@ public class MotorVehicleEntity extends AVehicle {
 	// @Column(name = "model_year_id", nullable = false)
 	@ManyToOne // (cascade = CascadeType.ALL? delete? set null?) FIXME: this cascade is not working at DB, it isn't
 				// declaring "actions" for the constraint.
-	@JoinColumn(name = "model_year_id", nullable = false) // fixme: to false, temporarilly true.
+	@JoinColumn(name = "model_year_id", nullable = false)
 	private ModelYearEntity modelYear; // FK(modelYearEntity.id) at DB.
 	
 	@Column(name = "price_adv", nullable = false, precision = 12, scale = 2)

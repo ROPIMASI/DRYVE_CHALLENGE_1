@@ -44,8 +44,8 @@ import dev.ronaldomarques.dryve.challenge1.domain.service.MotorVehicleRegistrySe
 /**
  * @author      Ronaldo Marques.
  * @since       20210315.
- * @last_change 20210414.
- * @version     0.2.0-beta.
+ * @last_change 20210426.
+ * @version     0.2.1-beta.
  * @category    Controladora: Classe especializada em receber as requisições de clientes.
  * @analysis    Processar dados preliminares, mínimo possível seguindo pricípios de "SOLID", delegar o processamento
  *              principal às respectivas classes de regras de negócio do domínio, e ou de serviços, e então enviar
@@ -71,7 +71,7 @@ public class MotorVehicleController {
 	 * disponibilização da comunicação visual; processamento das informações da infraestrutura da aplicação ou de
 	 * requisitos técnicos separados do processamento das informações do domínio do negócio.
 	 * -
-	 * Por último, o mais interessante, tratamento de exceções por camadas: versão futura, talvez "v0.3.0-dev". */
+	 * Por último, o mais interessante, tratamento de exceções por camadas: versão futura, talvez "0.3.0". */
 	@Autowired
 	private MotorVehicleRepository motorVehicleRepo;
 	private MotorVehicleRegistryService motorVehicleRegistryServ;
@@ -87,11 +87,13 @@ public class MotorVehicleController {
 		/* 1st step get entity list from repository. */
 		List<MotorVehicleEntity> mvEntities = new ArrayList<>();
 		mvEntities = motorVehicleRepo.findAll();
+		
 		pdln(" mvEntities.toString() depois de .findAll(); -->[" + mvEntities.toString() + "]");
 		
 		/* 2nd step convert entity list to DTOOutlet list. */
 		List<MotorVehicleDtoOutlet> mvDtoOutlets = new ArrayList<>();
 		mvDtoOutlets = MotorVehicleEntityConversion.toDtoOutletList(mvEntities);
+		
 		pdln(" mvDtoOutlets.toString() depois de .toDtoOutletList(); -->[" + mvDtoOutlets.toString() + "]");
 		
 		/* 3rd step retun the DTOOutlet list. */
@@ -102,17 +104,26 @@ public class MotorVehicleController {
 	
 	
 	@PostMapping
-	public ResponseEntity<?> adicionar(@RequestBody MotorVehicleDtoInlet motorVehicleDtoInlet) {
+	public ResponseEntity<?> adicionar(@RequestBody MotorVehicleDtoInlet mvDtoInlet) {
 		
-		pdln(this.getClass().getName() + ".adicionar();"); // Simple debug printing, using my personal LIB.
+		/* FIXME: somewhere deeper I have a bug to be fixed, the storageing MotorVehicle is not correct:
+		 * {
+		 * "id": "3868cd77-107c-4f80-9030-f327a25506a0",	// ok.
+		 * "model": null,									// it would be a object.
+		 * "year": 2021,									// ok.
+		 * "kbbId": 0										// it would be 2.00.
+		 * } */
+		
+		pdln(this.getClass().getName() + ".adicionar(mvDtoInlet);"); // Simple debug printing, using my personal LIB.
 		
 		var tmpMvEntity = new MotorVehicleEntity();
 		var tmpMvDtoOutlet = new MotorVehicleDtoOutlet();
 		
-		tmpMvEntity = motorVehicleRegistryServ.registrar(motorVehicleDtoInlet);
+		tmpMvEntity = motorVehicleRegistryServ.registrar(mvDtoInlet);
 		
 		tmpMvDtoOutlet = MotorVehicleEntityConversion.toDtoOutlet(tmpMvEntity);
 		
+		/* FURTHER: Implement a exception handling. */
 		return ResponseEntity.status(HttpStatus.CREATED).body(tmpMvDtoOutlet);
 		
 	}
