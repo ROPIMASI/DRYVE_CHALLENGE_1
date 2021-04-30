@@ -8,6 +8,14 @@ Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/
 *Started 202103112130-UTC/GMT/Z-time*  
 *Last change 202104261805-UTC/GMT/Z-time*  
   
+[![RedHat OpenJDK 11.0.9](project-resources/images/icons/badge-openjdk-11.0.9.png)](https://access.redhat.com/documentation/en-us/openjdk/11/ "RedHat OpenJDK 11.0.9")
+[![Spring Boot Project 2.4.3](project-resources/images/icons/badge-spring-boot-2.4.3.png)](https://spring.io/projects/spring-boot "Spring Boot Project 2.4.3")
+[![Apache-Tomcat 9.0.43](project-resources/images/icons/badge-spring-boot-2.4.3.png)](https://spring.io/projects/spring-boot "Apache-Tomcat 9.0.43")
+[![ROPIMASI-MyUtility 0.5.0-beta](project-resources/images/icons/badge-myutility-0.5.0.png)](https://github.com/users/ROPIMASI/projects/11 "ROPIMASI MyUtility 0.5.0-beta")
+[![Scrum Kanban Project Painel: Github Projects](project-resources/images/icons/badge-skpp-github-projetcs.png)](https://github.com/users/ROPIMASI/projects/11 "Scrum Kanban Project Painel: Github Projects")
+![Current Build: Fail](project-resources/images/icons/badge-build-fail.png)
+
+  
 &nbsp;  
 &nbsp;  
 &nbsp;  
