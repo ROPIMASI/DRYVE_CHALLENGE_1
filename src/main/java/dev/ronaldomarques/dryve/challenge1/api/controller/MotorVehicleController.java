@@ -44,7 +44,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.service.MotorVehicleRegistrySe
 /**
  * @author      Ronaldo Marques.
  * @since       20210315.
- * @last_change 20210426.
+ * @last_change 20210430.
  * @version     0.2.1-beta.
  * @category    Controladora: Classe especializada em receber as requisições de clientes.
  * @analysis    Processar dados preliminares, mínimo possível seguindo pricípios de "SOLID", delegar o processamento
@@ -108,10 +108,10 @@ public class MotorVehicleController {
 		
 		/* FIXME: somewhere deeper I have a bug to be fixed, the storageing MotorVehicle is not correct:
 		 * {
-		 * "id": "3868cd77-107c-4f80-9030-f327a25506a0",	// ok.
-		 * "model": null,									// it would be a object.
-		 * "year": 2021,									// ok.
-		 * "kbbId": 0										// it would be 2.00.
+		 * "id": "3868cd77-107c-4f80-9030-f327a25506a0", // ok.
+		 * "model": null, // it would be a object.
+		 * "year": 2021, // ok.
+		 * "kbbId": 0 // it would be 2.00.
 		 * } */
 		
 		pdln(this.getClass().getName() + ".adicionar(mvDtoInlet);"); // Simple debug printing, using my personal LIB.
@@ -122,6 +122,8 @@ public class MotorVehicleController {
 		tmpMvEntity = motorVehicleRegistryServ.registrar(mvDtoInlet);
 		
 		tmpMvDtoOutlet = MotorVehicleEntityConversion.toDtoOutlet(tmpMvEntity);
+		
+		pdln(this.getClass().getName() + ".adicionar(); --> tmpMvDtoOutlet.toString(); = " + tmpMvDtoOutlet.toString());
 		
 		/* FURTHER: Implement a exception handling. */
 		return ResponseEntity.status(HttpStatus.CREATED).body(tmpMvDtoOutlet);

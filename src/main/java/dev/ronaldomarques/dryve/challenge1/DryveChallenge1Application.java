@@ -40,7 +40,7 @@ public class DryveChallenge1Application {
 	public static void main(String[] args) {
 		
 		/* Iniciar minha "static LIB" pessoal com propriedade "FALSE" ou "TURE" para "I T P D". */
-		//DP.pdOff();
+		// DP.pdOff();
 		DP.pdOn();
 		
 		/* Starts the application itself. */

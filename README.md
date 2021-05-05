@@ -1,20 +1,19 @@
 # DRYVE CHALLENGE 1  
-en-US: Repository for the recruitment test for the junior java/kotlin job vacancy at [Dryve.com.br](https://dryve.com.br).  
+en-US: Repository of the junior java/kotlin developer challenge proposed by [Dryve.com.br](https://dryve.com.br).  
 Follow the [SCRUM-KANBAN Project's Painel](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
-pt-BR: Repositório para o teste de recrutamento à vaga de trabalho de desenvolvedor júnior java/kotlin na [Dryve.com.br](https://dryve.com.br).  
+pt-BR: Repositório do desafio de desenvolvedor júnior java/kotlin proposto pela [Dryve.com.br](https://dryve.com.br).  
 Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/projects/10 "SCRUM KANBAN Project's Painel").  
   
 *Started 202103112130-UTC/GMT/Z-time*  
-*Last change 202104261805-UTC/GMT/Z-time*  
+*Last change 202105051820-UTC/GMT/Z-time*  
   
-[![RedHat OpenJDK 11.0.9](project-resources/images/icons/badge-openjdk-11.0.9.png)](https://access.redhat.com/documentation/en-us/openjdk/11/ "RedHat OpenJDK 11.0.9")
-[![Spring Boot Project 2.4.3](project-resources/images/icons/badge-spring-boot-2.4.3.png)](https://spring.io/projects/spring-boot "Spring Boot Project 2.4.3")
-[![Apache-Tomcat 9.0.43](project-resources/images/icons/badge-tomcat-9.0.43.png)](https://tomcat.apache.org/tomcat-9.0-doc/ "Apache-Tomcat 9.0.43")
-[![ROPIMASI-MyUtility 0.5.0-beta](project-resources/images/icons/badge-myutility-0.5.0.png)](https://github.com/users/ROPIMASI/projects/11 "ROPIMASI MyUtility 0.5.0-beta")
-[![Scrum Kanban Project Painel: Github Projects](project-resources/images/icons/badge-skpp-github-projetcs.png)](https://github.com/users/ROPIMASI/projects/10 "Scrum Kanban Project Painel: Github Projects")
-![Current Build: Fail](project-resources/images/icons/badge-build-fail.png)
-
+[![RedHat OpenJDK 11.0.9](project-resources/images/icons/badge-2.3-openjdk-11.0.9.png)](https://access.redhat.com/documentation/en-us/openjdk/11/ "RedHat OpenJDK 11.0.9")
+[![Spring Boot Project 2.4.3](project-resources/images/icons/badge-2.3-spring-boot-2.4.3.png)](https://spring.io/projects/spring-boot "Spring Boot Project 2.4.3")
+[![Apache-Tomcat 9.0.43](project-resources/images/icons/badge-2.3-tomcat-9.0.43.png)](https://tomcat.apache.org/tomcat-9.0-doc/ "Apache-Tomcat 9.0.43")
+[![ROPIMASI-MyUtility 0.5.0-beta](project-resources/images/icons/badge-2.3-myutility-0.5.0-beta.png)](https://github.com/users/ROPIMASI/projects/11 "ROPIMASI MyUtility 0.5.0-beta")
+[![Scrum Kanban Project Painel: Github Projects](project-resources/images/icons/badge-2.3-skpp-github-projects.png)](https://github.com/users/ROPIMASI/projects/10 "Scrum Kanban Project Painel: Github Projects")
+![Current Build: Fail](project-resources/images/icons/badge-2.3-build-fail.png)
   
 &nbsp;  
 &nbsp;  
@@ -23,11 +22,11 @@ Acompanhe o [Painel SCRUM-KANBAN do Projecto](https://github.com/users/ROPIMASI/
 <a name="whatitis"></a>
 ## O QUÊ É / WHAT IT IS
 pt-BR: Projeto de uma RESTful-API que utiliza-se de um web-service, com finalidade de cadastrar anúncios de venda de veículo. Esta API recebe alguns dados básicos de um veículo, recupera uma informação (o preço) deste veículo em uma API pública do web-service KBB, grava tais informações em seu banco de dados, e responde as mesmas para o requisitante.  
-pt-BR:  **Agora, projeto _refatorado_ em nova fase** de desenvolvimento volutário para portfólio.  
+pt-BR:  **Projeto _refatorado_ em nova fase** de desenvolvimento volutário para portfólio.  
 > **Nota: a próxima versão do projeto será implementada e documentada apenas em inglês.**  
   
 en-US: Project of a RESTful-API that uses a web-service, in order to register ads for vehicle sales. This API receives some basic data from a vehicle, retrieves an information (the price) of this vehicle in a public API of the KBB web-service, records such information in its database, and responds to the requestor.  
-en-US: **Now, _refactored_ project in a new phase** of voluntary development for portfolio.  
+en-US: **_Refactored_ project in a new phase** of voluntary development for portfolio.  
   
 &nbsp;  
 &nbsp;  

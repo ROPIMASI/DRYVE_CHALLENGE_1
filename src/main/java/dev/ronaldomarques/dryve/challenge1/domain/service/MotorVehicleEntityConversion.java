@@ -20,6 +20,7 @@
 package dev.ronaldomarques.dryve.challenge1.domain.service;
 
 
+import static dev.ronaldomarques.myutility.debugger.DP.pdln;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntit
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210414.
+ * @last_change 20210430.
  * @version     0.2.1-beta.
  * @category    Service: class specialized in factoring a specific type object from converting a given objetct.
  * @analysis    ... TODO: this description: something about OVERLOAD two types of MotorVehicleDTO:
@@ -42,6 +43,8 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.entity.MotorVehicleEntit
 public final class MotorVehicleEntityConversion {
 	
 	public static MotorVehicleDtoOutlet toDtoOutlet(MotorVehicleEntity mvEntity) {
+		
+		pdln("MotorVehicleDtoOutlet .toDtoOutlet(mvEntity);"); // Simple debug printing, using my personal LIB.
 		
 		var mvDtoOutlet = new MotorVehicleDtoOutlet();
 		

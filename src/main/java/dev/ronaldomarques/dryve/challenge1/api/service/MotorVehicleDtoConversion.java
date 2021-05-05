@@ -41,7 +41,7 @@ import dev.ronaldomarques.myutility.debugger.DP;
 /**
  * @author      Ronaldo Marques.
  * @since       20210410.
- * @last_change 20210426.
+ * @last_change 20210430.
  * @version     0.2.1-beta.
  * @category    Service: class specialized in factoring a specific type object from converting a given objetct.
  * @analysis    This description something about using 'INTERFACES' it's possible two types of MotorVehicleDTO (Inlet
@@ -99,6 +99,9 @@ public final class MotorVehicleDtoConversion {
 		
 		mdYrEntity = modelYearRepo.findByModelIdAndYear(((MotorVehicleDtoInlet) mtVhDtoInlet).getModelId(),
 				mtVhDtoInlet.getYear());
+		
+		pdln("MotorVehicleDtoConversion -> modelYearRepo.findByModelIdAndYear(((... ... "
+				+ "mdYrEntity.toSting() = "+ mdYrEntity.toString()); // Simple debug printing, using my personal LIB.
 		
 		mtVhEntity.setModelYear(mdYrEntity);
 		

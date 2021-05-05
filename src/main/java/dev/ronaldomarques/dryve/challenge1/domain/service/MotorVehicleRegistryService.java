@@ -21,7 +21,6 @@ package dev.ronaldomarques.dryve.challenge1.domain.service;
 
 
 import static dev.ronaldomarques.myutility.debugger.DP.pdln;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import dev.ronaldomarques.dryve.challenge1.api.dto.MotorVehicleDtoInlet;
@@ -35,7 +34,7 @@ import dev.ronaldomarques.dryve.challenge1.domain.model.repository.MotorVehicleR
 /**
  * @author      Ronaldo Marques.
  * @since       20210409.
- * @last_change 20210426.
+ * @last_change 20210430.
  * @version     0.2.1-beta.
  * @category    Service: Operations of business.
  * @analysis    ...
@@ -62,7 +61,12 @@ public class MotorVehicleRegistryService {
 		mvEntity.setPriceKBB(KbbApiService.findPrice(mvEntity.getModelYear().getKbbId()));
 		
 		/* FURTHER: Errors/Exceptions handling. */
-		return motorVehicleRepo.save(mvEntity);
+		MotorVehicleEntity tmpMtVhEnt = motorVehicleRepo.save(mvEntity);
+		
+		pdln(this.getClass().getName() + ".registrar(); --> tmpMtVhEnt.toString(); = " + tmpMtVhEnt.toString());
+		// Simple debug printing, using my personal LIB.
+		
+		return tmpMtVhEnt;
 		
 	}
 	
